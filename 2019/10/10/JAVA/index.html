@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JAVA | Hexo</title>
+  <title>JAVA总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎来到常总博客！！！">
+  <meta name="description" content="Java OOP基础语法总结*** Java OOP 基 础 语 法 总 结 *****1,类与对象1),类(class)是相同属性和方法的一组集合。A,类的组成：属性和方法。B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致C,类的实例化：使用new关键字，eg：Student student=new Student();">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA">
+<meta property="og:title" content="JAVA总结">
 <meta property="og:url" content="http://yoursite.com/2019/10/10/JAVA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欢迎来到常总博客！！！">
+<meta property="og:description" content="Java OOP基础语法总结*** Java OOP 基 础 语 法 总 结 *****1,类与对象1),类(class)是相同属性和方法的一组集合。A,类的组成：属性和方法。B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致C,类的实例化：使用new关键字，eg：Student student=new Student();">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-10T10:52:07.267Z">
+<meta property="og:updated_time" content="2019-10-13T10:49:50.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA">
-<meta name="twitter:description" content="欢迎来到常总博客！！！">
+<meta name="twitter:title" content="JAVA总结">
+<meta name="twitter:description" content="Java OOP基础语法总结*** Java OOP 基 础 语 法 总 结 *****1,类与对象1),类(class)是相同属性和方法的一组集合。A,类的组成：属性和方法。B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致C,类的实例化：使用new关键字，eg：Student student=new Student();">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -161,7 +161,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA
+      JAVA总结
     </h1>
   
 
@@ -174,7 +174,92 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来到常总博客！！！</p>
+        <h2 id="Java-OOP基础语法总结"><a href="#Java-OOP基础语法总结" class="headerlink" title="Java OOP基础语法总结"></a>Java OOP基础语法总结</h2><p><strong><strong><strong>***</strong></strong></strong> Java OOP 基 础 语 法 总 结 <strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong><br>1,类与对象<br>1),类(class)是相同属性和方法的一组集合。<br>A,类的组成：属性和方法。<br>B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致<br>C,类的实例化：使用new关键字，eg：Student student=new Student();//声明一个Student类型的变量or实例化一个Student对象<br>D,类与文件的关系;<br>a，一个java文件可以包含多个java类<br>b,一个java文件最多只能有一个public类<br>c,java文件的名称必须和其中的public类名一致  </p>
+<p>eg：public class Student{//类(首字母大写)<br>public void getName(){//方法(一般为动词+名词，动词首字母小写，名词首字母大写)<br>String name；//属性(数据类型+属性名)<br>}<br>}<br>2),对象(object)是一个具体的实体(entity)。</p>
+<p>eg：某某学生即可作为一个对象</p>
+<hr>
+<p>2,方法<br>1),可以重复执行的代码块，对于调用者来说相当于一个“黑盒子”。<br>2),语法声明;访问控制修饰符 返回值类型 方法名 (参数列表){ 方法体； }  </p>
+<p> eg：public void getName(int num){<br>String name；<br>     }  </p>
+<p>3),方法的传参–数据类型：A,8种基本数据类型(byte,int,short,long,float,double,char,boolean)<br>   B,引用数据类型(eg:Student student=new Student();中的student就是引用数据类型)  </p>
+<p>注：基本数据类型与引用数据类型的区别：<br>a,存储方式不同，基本数据类型存在 栈 中，是按值传<br>       引用数控类型存在 堆 中，是按址传<br>b,使用方式不同，基本数据类型 无属性和方法<br>       引用数控类型 有属性和方法</p>
+<hr>
+<p>3,构造方法(Constructor)<br>1),是一个特殊的方法，该方法的作用是实例化对象，会在内存中分配空间，且可以对类的属性进行初始化<br>2),语法特征： </p>
+<p>a,构造方法的名字必须与所在的类一致<br>b,没有返回值类型，注意和没有返回值不是一回事<br>c,默认情况下有一个隐式的无参构造方法，其访问控制修饰与所在的类的访问控制修饰一致<br>d,如果我们自定义了构造方法，则隐式无参构造方法就不存在了<br>3),使用方法：使用new关键字调用   </p>
+<hr>
+<p>7,方法重载<br>1),在一个类中，具有相同的方法名，但是参数列表不同的方法。<br>2),可分为一般方法重载和构造方法重载。  </p>
+<p>eg：class Student{//同一个类<br>void getInformation(String name){//相同的方法名，不同的参数列表<br><strong>*;<br>}<br>void getInformation(int age){//相同的方法名，不同的参数列表<br>*</strong>;<br>}<br>   }</p>
+<hr>
+<p>8,this关键字<br>(1),使用环境：方法和构造方法中。<br>(2),使用方法两种：   </p>
+<p>1)，this.属性(方法);//this表示当前运行的实列(对象)，注意：this未运行时，不代表任何属性(方法)。<br>2)，this();//只能用在构造方法中。表示调用其他重载形式的构造方法，而且必须放在第一行。<br>(3),注意：静态方法中不能使用this！（静态方法属于类，不是实列，而this代表了当前运行的实列，放一起顺序会逻辑混乱），main中也不能使用this！</p>
+<p>eg：</p>
+<p>1 package com.zhi.java.course;<br>2 public class Text{<br>3     Text(int num){//this();只能用在构造方法中<br>4         this.num=num;<br>5     }<br>6     Text(){<br>7         this(100);//无参方法调用有参<br>8     }<br>9     int num=1;<br>10     int getNum(){<br>11         return num;//此处可以直接放回num<br>12     }<br>13     void setNum(int num){//新定义的num不同于成员变量num<br>14         this.num=num;//此处this不可省<br>15     }<br>16     void m1(){<br>17<br>18     }<br>19     void m2(){<br>20         this.m1();//此处this可以省<br>21     }<br>22      static void m3(){<br>23         System.out.println(this.num);//Error！Cannot use this in a static context<br>24     }<br>25 }</p>
+<hr>
+<p>9,super关键字（对比this关键字）<br>(1),使用环境：一般的实列方法中和构造方法中<br>(2),使用方法两种：           </p>
+<p>(1),super.属性(方法);//调用父类的属性(方法)<br>(2),super();//只能用在构造方法中。表示调用父类相应的构造方法，而且必须放在第一行。</p>
+<hr>
+<p>10,final关键字<br>(1),final修饰类，表示该类不能再被继承；   </p>
+<p>eg：final class Animal(){}//Animal不能再被继承。<br>(2),final修饰变量，该变量必须被赋值，final修饰后该变量变为常量，不能再改变； </p>
+<p>eg：final int num=10;//num不可再改变。<br>(3),final修饰方法，该方法不能再被重写；    </p>
+<p>eg：final void m1(){}//方法m1在f父类，在子类中final不能再被重写。<br>(4),final修饰属性   </p>
+<pre><code>1),可以直接在声明时赋值    </code></pre><p>  2),可以在代码块中赋值<br>  3),静态的可以在静态代码块中赋值</p>
+<hr>
+<p>11,继承<br>(1)，概念，继承是OOP特征之一，是子类通过继承获取父类中的部分属性和方法。<br>(2)，使用extends关键字   </p>
+<p>1)，符合is-a关系的设计使用继承<br>2)，继承是代码重用的一种方式<br>(3)，好处：</p>
+<pre><code>1)，做到代码重用</code></pre><p>2)，系统维护性更好。<br>(4),不能继承的有：</p>
+<p>1)，子类不能继承父类的构造方法。<br>2)，子类不能继承父类的私有方法（private）。<br>3)，子类和父类不在同一包，使用默认的访问权限的成员    </p>
+<p> eg:</p>
+<p>1 package com.zhi.java.course;<br>2 public class Animal {<br>3     String name;//公共的属性或方法<br>4     int age;<br>5 }<br>6 public class Dog extends Animal {//继承父类的属性，一个子类只能继承一个父类(单根继承)<br>7     public static void main(String[] args) {<br>8         Dog dog = new Dog();<br>9         dog.name = “大黄”;<br>10         dog.age = 300;<br>11         String na= “田不易”;//也可以有子类的特有属性（方法）<br>12     }<br>13 }</p>
+<hr>
+<p>12,类的初始化顺序：(从上到下)     </p>
+<p>父类的静态代码块<br>子类的静态代码块<br>父类的代码块<br>父类的构造方法<br>子类的代码块<br>子类的构造方法<br>注意：静态代码块只能执行一次！</p>
+<hr>
+<p>13,访问控制修饰符<br>1),概念，  </p>
+<pre><code>a:Java提供四种访问控制修饰符(public private 包 )    </code></pre><p>b:放在方法与变量前，部分访问控制修饰符也可以放在类前<br>c:目的是控制代码的访问权限。<br>2),控制范围(从大到小)<br>   public      所有代码都可以访问<br>   protected   本类，包及其子类的代码可以访问<br>   包          本类，同一个包中访问<br>   private     私有的，它修饰的属性，方法，或内部类只能本类使用    </p>
+<hr>
+<p>14,方法重写<br>1),概念：在子类中对父类的方法重新实现一遍，即在子类中对父类中某方法的默认逻辑进行修改。<br>2),语法：</p>
+<pre><code>a,方法名一样</code></pre><p>b,方法的参数一样<br>c,子类重写的方法返回值类型要与父类返回值类型一样或者是其子类<br>d,子类访问控制修饰符的范围不能比父类不能小<br>e,子类抛出的异常不能比父类抛出的异常多或范围更大<br>3),以下方法不能重写：     </p>
+<p>a,private方法<br>b,构造方法(Constructor)<br>c,static方法<br>d,final方法</p>
+<hr>
+<p>15,Object类<br>(1),java是单根继承，在java中不允许多根继承。<br>(2),Object是所有类的最终父类，所有类或者是数组都可以直接或间接继承Object类。<br>(3),Object类来自java.lang包。<br>(4),可以将所有的引用类型值赋给Object类型声明的变量，包括null。<br>(5),Object提供9中可用方法，所有的子类都都可以使用，其中<br>getClass()，notiFy()，notiFyall()，wait()不可以被子类重写<br>toString()，equals()，hashCode()，clone()，finalize()可以被子类重写<br>(6),toString()方法<br>1),自动调用toString()方法的场景：字符串拼接和控制台输出，如下列：</p>
+<p>1 package com.zhi.java.course;<br>2 public class Dog {<br>3     String name;<br>4     int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     public static void main(String[] args) {<br>18         Dog dog = new Dog();<br>19         dog.setName(“大黄”);<br>20         dog.setAge(300);<br>21         System.out.println(dog);//等同于System.out.println(dog.toString());会自动调用toString方法，故有以下结果<br>22     }<br>23 }</p>
+<p>运行结果： com.zhi.java.course.Dog@2a139a55 //默认实现输出格式：全限定类名@哈希码的16进制 </p>
+<p>2),重写toString()方法      </p>
+<p>1 package com.zhi.java.course;<br>2 public class Dog {<br>3     String name;<br>4     int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     @Override//重写注解，可判断是否重写<br>18     public String toString() {<br>19         return “名字：”+name+”\n年龄：”+age;  //重写获得需要的值<br>20     }<br>21     public static void main(String[] args) {<br>22         Dog dog = new Dog();<br>23         dog.setName(“大黄”);<br>24         dog.setAge(300);<br>25         System.out.println(dog);//等同于System.out.println(dog.toString());已经重写toString()方法<br>26     }<br>27 }</p>
+<p>运行结果：名字：大黄 年龄：300<br>　　<br>(7),equals()方法重写<br>1),当类有逻辑上的等同意义而不仅是对象意义上的等同时 需要重写equals()方法。<br>2),以下情况不能重写：    </p>
+<p>a,每个类实列本质上是唯一的。<br>b,不关心类是否提供了“逻辑意义上的等同”测试。<br>c,超类已经重新了equals，该方法也适合子类。<br>3),回顾 “==”：比较基本数据类型的值是否相等(按值比较)，比较引用数据类型是否是同一个对象(按址比较)。<br>equals：默认与”==”相同，重写可自定义比较规则。   </p>
+<p>4),未重写时结果如下：   </p>
+<p>1 package com.zhi.java.course;<br>2 class Game {<br>3     private String name;<br>4     private int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17 }<br>18 public class EqualsJob {<br>19     public static void main(String[] args) {<br>20         Game g1 = new Game();<br>21         g1.setName(“LOL”);<br>22         g1.setAge(6);<br>23         Game g2 = new Game();<br>24         g2.setName(“LOL”);<br>25         g2.setAge(6);<br>26         System.out.println(g1.equals(g2));// 用equals直接比较两个相同的引用类型,等同System.out.println(g1==g2);<br>27     }<br>28 }</p>
+<p>运行结果：false  </p>
+<p>5),重写equals()后如下：</p>
+<p>1 package com.zhi.java.course;<br>2 class Game {<br>3     private String name;<br>4     private int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     @Override<br>18     public boolean equals(Object obj) {<br>19         if (this == obj) {<br>20             return true;<br>21         }<br>22         if (obj instanceof Game) {//向下转型需要通过instanceof判断obj和Game是否同一类型<br>23             Game g = (Game) obj;//类型一致则强转类型，向下转型<br>24             return g.getAge() == age &amp;&amp; g.getName().equals(name);//自定义比较规则<br>25         }<br>26         return false;<br>27     }<br>28 }<br>29 public class EqualsJob {<br>30     public static void main(String[] args) {<br>31         Game g1 = new Game();<br>32         g1.setName(“LOL”);<br>33         g1.setAge(6);<br>34         Game g2 = new Game();<br>35         g2.setName(“LOL”);<br>36         g2.setAge(6);<br>37         System.out.println(g1.equals(g2));// 使用equals直接比较两个相同的引用类型<br>38     }<br>39 }</p>
+<p>运行结果：true  </p>
+<p>6),equals()重写约定   </p>
+<p>a,自反性<br>b,对称性<br>c,传递性<br>d,一致性<br>e,任何非空x,x.equals(null)总是false<br>f,重写equals方法时永远要重载hashCode方法   </p>
+<hr>
+<p>16,向上转型与向下转型：<br>(1),向上转型：子类的实例可以自动转换为父类的类型<br>(2),向下转型：父类型需要强制转化为子类型，前提是该对象本身就是子类型的对象，使用instanceof做判断</p>
+<hr>
+<p>17,抽象类：    </p>
+<p>(public abstract class shape{}就是一个抽象类)<br>(1),使用abstract声明抽象类或抽象方法<br>(2),抽象类可以有抽象方法，也可以没有抽象方法，但是抽象方法必须在抽象类中<br>(3),抽象类不能实例化<br>(4),抽象类可以有构造方法<br>抽象方法：(public sbstract void sss();就是一个抽象方法)<br>(1),没有实现体<br>(2),不能被final，private，static修饰<br>(3),主要给子类来重写的    </p>
+<pre><code>如果抽象类的子类是一个具体的类，该具体类必须实现父类的所有抽象方法   </code></pre><p> 如果子类也是抽象类，子类既可以实训父类的抽象方法，也可以不实现     </p>
+<hr>
+<p>18,接口<br> (1),概念：它是一个纯粹的抽象类，其它的方法全部都是抽象方法。它是一种约定，一种能力<br> (2),声明语法：使用interface关键字，</p>
+<pre><code>eg：public interface Swimable{} </code></pre><p>1),可以声明属性，该属性默认是public static final修饰的，必须赋初始值<br>2),可以有方法，全部是抽象方法，<br>3),接口不能直接实例化(接口是一个纯粹的抽象类)<br>(3),接口成员-常量属性     </p>
+<p>1),接口中所有的属性都是public static final修饰的<br>2)，常量可以是基本数据类型，也可以是引用数据类型</p>
+<p>(4),注意：</p>
+<pre><code>1),常量的命名规范是全部字母大写，eg：public static final int NUM=10;</code></pre><p>2),接口的修饰符可能是包级访问级别的，所以public常量有可能访问不到<br>3),推荐使用枚举保存一组相关的值(至少java5)<br>(5),继承接口    </p>
+<p>1),接口可以使用extends关键字继承另一个接口<br>2),可以继承：抽象方法和默认方法，常量属性，嵌套类型<br>3),不能继承静态方法<br>(6),实现接口</p>
+<p>1),实现接口的具体类需要使用implements关键字，并且需要重写接口中所有的抽象方法。eg：public class Fish implements Swimable{}<br>2),实现接口的抽象类可以重写接口中的部分抽象方法。<br>3),一个类可以实现多个接口，但是只能继承一个类，而且应先继承后实现。<br>4),接口可以作为数据类型用来声明变量。<br>5),接口也可以继承接口。</p>
+<hr>
+<p>19,面向对象的三大特征：封装，继承，多态<br>(1),封装：将实现的代码或属性放在一个类或方法中，不让外部代码随意访问。    </p>
+<p> 好处：安全。<br> 使用访问控制修饰符 private<br>(2),继承：子类会将父类的部分属性或方法继承下来。</p>
+<p> 好处：做到代码重用，提高系统的维护性能<br> 使用关键字：extends<br>(3),多态：在不同的场景下，类或方法有不同的指向。   </p>
+<p> 好处：代码量可以减少<br> 体现：1),方法上的多态：重写和重载<br>2),类的多态：类作为方法的参数或返回值类型  </p>
+<hr>
+<p>20,接口与抽象类的区别？   </p>
+<p>1),语法上，接口是使用interface声明，使用implements实现，<br> 抽象类是使用abstract声明，使用extends继承。<br>2),特定,接口不能有具体的方法，属性都是静态常量，<br>抽象类可以有构造方法、抽象方法、普通方法，还有属性。<br>3),设计上，表达某种能力使用接口，</p>
+<hr>
+<p>21,方法重写与重载的区别?   </p>
+<p>方法重写是在子类中对父类的方法重新实现一遍，即在子类中对父类中某方法的默认逻辑进行修改。方法名和参数列表都相同。<br>方法重载是在一个类中，具有相同的方法名，但是参数列表不同的方法。</p>
 
       
 
