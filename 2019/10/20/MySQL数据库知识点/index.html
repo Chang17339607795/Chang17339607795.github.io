@@ -177,199 +177,221 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <p>Mysql数据库知识点<br>1.管理数据库语句：<br>使用数据库：</p>
-<p>use test;</p>
+        <p>##Mysql数据库知识点<br>1.管理数据库语句：<br>使用数据库：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use test;</span><br></pre></td></tr></table></figure>
+
 <p>添加数据库：</p>
-<p>create database 数据库名;</p>
-<p>create database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database 数据库名;</span><br><span class="line"></span><br><span class="line">create database test;</span><br></pre></td></tr></table></figure>
+
 <p>修改数据库：</p>
-<p>alter database 数据库名;</p>
-<p>alter database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter database 数据库名;</span><br><span class="line"></span><br><span class="line">alter database test;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据库：</p>
-<p>drop database 数据库名;</p>
-<p>drop database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br><span class="line"></span><br><span class="line">drop database test;</span><br></pre></td></tr></table></figure>
+
 <p>查看所有数据库：</p>
-<p>show databases;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>2.管理表语句：<br>添加数据表：</p>
-<p>create table 表名(</p>
-<p>　　列名 数据类型 数据约束,</p>
-<p>　　列名 数据类型 数据约束</p>
-<p>);</p>
-<p>create table student(</p>
-<p>　　name varchar(20) not null,</p>
-<p>　　age int(4)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束,</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　age <span class="title">int</span><span class="params">(<span class="number">4</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>修改数据表：</p>
-<p>alter table 表名;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名;</span><br></pre></td></tr></table></figure>
+
 <p>1)在表中增加新字段</p>
-<p>alter table student add colunm name varchar(20);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student add colunm name <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>2)删除表中的字段</p>
-<p>alter table student drop name;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student drop name;</span><br></pre></td></tr></table></figure>
+
 <p>3)修改表中字段的类型</p>
-<p>alter table student modify name varchar(10);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student modify name <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据表：</p>
-<p>drop table 表名;</p>
-<p>drop table student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop table 表名;</span><br><span class="line"></span><br><span class="line">drop table student;</span><br></pre></td></tr></table></figure>
+
 <p>查看所有表：</p>
-<p>show tables;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>3.管理数据语句：<br>插入数据：</p>
-<p>insert into 表名 (列1,列2…)  values (值1,值2…);</p>
-<p>insert into student (name,age) values (‘张三’,20);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (列<span class="number">1</span>,列<span class="number">2</span>...)  values (值<span class="number">1</span>,值<span class="number">2</span>...);</span><br><span class="line"></span><br><span class="line"><span class="function">insert into <span class="title">student</span> <span class="params">(name,age)</span> <span class="title">values</span> <span class="params">(<span class="string">'张三'</span>,<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>更新数据：</p>
-<p>update 表名 set 列=修改值 where 条件;</p>
-<p>update student set  name=’李四’ where name=’张三’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列=修改值 where 条件;</span><br><span class="line"></span><br><span class="line">update student set  name=<span class="string">'李四'</span> where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据：</p>
-<p>delete from 表名 where 条件;</p>
-<p>delete from student where name=’李四’;</p>
-<p>查询数据：</p>
-<p>selete *  from 表名 where 条件;</p>
-<p>selete * from student where name=’张三’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">delete from student where name=<span class="string">'李四'</span>;</span><br><span class="line">```j</span><br><span class="line">查询数据：</span><br><span class="line">```java</span><br><span class="line">selete *  from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">selete * from student where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>4.各种查询语句：<br>查询时指定别名：</p>
-<p>1) selete id as ‘编号’,name as ‘姓名’ from student;</p>
-<p>2) selete id ‘编号’,name ‘姓名’ from student;(AS可以省略)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>) selete id as <span class="string">'编号'</span>,name as <span class="string">'姓名'</span> from student;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>) selete id <span class="string">'编号'</span>,name <span class="string">'姓名'</span> from student;(AS可以省略)</span><br></pre></td></tr></table></figure>
+
 <p>查询时合并列：</p>
 <p>需求:查询每个学生的总分</p>
-<p>selete name as ‘姓名’,(servlet+mysql) as ‘总成绩’ from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete name as <span class="string">'姓名'</span>,(servlet+mysql) as <span class="string">'总成绩'</span> from student;</span><br></pre></td></tr></table></figure>
+
 <p>注意:合并列的字段必须是数值类型的字段</p>
 <p>查询时去除重复(distinct)：</p>
 <p>需求:查询有哪些地区的学生</p>
-<p>selete DISTINCT address from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete distinct address from student;</span><br></pre></td></tr></table></figure>
+
 <p>另一种语法</p>
-<p>selete DISTINCT(address) from student;</p>
+<p>selete distinct(address) from student;</p>
 <p>条件查询<br>逻辑条件: and  or</p>
 <p>需求:查询学生的id为1，且姓名为张三的学生</p>
-<p>selete * from student where id=1 and name=’张三’;(交集)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">1</span> and name=<span class="string">'张三'</span>;(交集)</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询学生的id为2，或姓名为张三的学生</p>
-<p>selete * from student where id=2 or name=’张三’;(并集)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">2</span> or name=<span class="string">'张三'</span>;(并集)</span><br></pre></td></tr></table></figure>
+
 <p>比较条件: &gt;  &lt;  &gt;=  &lt;=  =  &lt;&gt;  (between and–在…之间 包前包后)</p>
 <p>需求:查询servlet分数大于80分的学生</p>
-<p>selete * from student where servlet&gt;80;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;<span class="number">80</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询mysql分数小于或等于85分的学生</p>
-<p>selete * from student where mysql&lt;=85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where mysql&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet分数大于或等于80分，且小于或等于85分的学生</p>
-<p>selete * from student where servlet&gt;=80 AND servlet&lt;=85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;=<span class="number">80</span> and servlet&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>代替上面语句的语法</p>
-<p>selete * from student where servlet BETWEEN 80 AND 85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet between <span class="number">80</span> and <span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询年龄不等于30的学生</p>
-<p>selete * from student where age&lt;&gt;30;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where age&lt;&gt;<span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+
 <p>判空条件: is null,   is not null,   =’’,   &lt;&gt;’’</p>
 <p>Null:表示没有数据</p>
 <p>空字符:表示有数据</p>
 <p>需求:查询没有性别数据的学生(数据‘男’或‘女’)</p>
-<p>selete* from student where gender IS NULL OR gender=’’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete* from student where gender IS <span class="keyword">null</span> or gender=<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询有性别数据的学生</p>
-<p>selete * from student where gender IS NOT NULL AND gender&lt;&gt;’’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where gender IS not <span class="keyword">null</span> and gender&lt;&gt;<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+
 <p>模糊条件: like</p>
 <p>模糊替代符号:</p>
 <p>%:替代任意个字符</p>
 <p>_:替代一个字符</p>
 <p>需求:查询姓“李”的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘李%’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询姓名中包含‘四’字的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘%四%’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'%四%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询姓‘李’，全名只有两个字的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘李_’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李_'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>聚合函数查询(用于统计结果)</p>
 <p>Max()取最大值  min()取最小值  avg()取平均值  count()统计标的记录数量 sum()求和</p>
 <p>需求:查询servlet的最高分</p>
-<p>SELECT MAX(servlet) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MAX</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询mysql的最低分</p>
-<p>SELECT MIN(mysql) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MIN</span><span class="params">(MYSQL)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet的平均分</p>
-<p>SELECT AVG(servlet) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">AVG</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询当前有几个学生</p>
-<p>SELECT COUNT(*) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">COUNT</span><span class="params">(*)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet成绩的总和</p>
-<p>SELETE SUM(servlet) from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELETE <span class="title">SUM</span><span class="params">(servlet)</span> from student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>分页查询(limit)</p>
 <p>Limit起始行数，查询的行数</p>
 <p>起始行数从0开始</p>
 <p>需求:查询第1,2条数据</p>
-<p>SELECT * FROM student LIMIT 0,2;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student LIMIT <span class="number">0</span>,<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
 <p>分页查询需知道:当前页码，每页显示条数</p>
-<p>结论分页查询当前页数据:select * from student limit (当前页码-1)*每页显示条数，每页显示条数;</p>
+<p>结论分页查询当前页数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="function">from student <span class="title">limit</span> <span class="params">(当前页码<span class="number">-1</span>)</span>*每页显示条数，每页显示条数</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:学生共20条数据，每页显示5条，共4页</p>
-<p>查询第3页(第11到15条)的学生数据:select * from student limit 10,5;</p>
+<p>查询第3页(第11到15条)的学生数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student limit <span class="number">10</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
 <p>查询后排序(order by)</p>
 <p>DESC:降序。数值从大到小</p>
 <p>ASC:升序。数值从小到大</p>
 <p>默认情况下，按照插入的顺序排序</p>
 <p>需求:按照id的升序排序</p>
-<p>select * from student order by id asc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by id asc;</span><br></pre></td></tr></table></figure>
+
 <p>需求:按照servlet成绩降序排序</p>
-<p>select * from student order by servlet desc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by servlet desc;</span><br></pre></td></tr></table></figure>
+
 <p>多个排序条件的情况:先按照前面的条件排序，当出现重复记录，再按照后面的条件排序</p>
 <p>需求:按照age升序，再按照servlet成绩升序排序</p>
-<p>select * from student order by age asc,servlet asc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by age asc,servlet asc;</span><br></pre></td></tr></table></figure>
+
 <p>分组查询(group by)</p>
 <p>需求:查询每个地区有多少人</p>
-<p>SELECT address,COUNT(*) FROM student GROUP BY address;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) FROM student GROUP BY address;</span><br></pre></td></tr></table></figure>
+
 <p>需求:统计男女的人数</p>
 <p>注意:where条件必须放在group by 分组之前</p>
-<p>SELECT gender,COUNT(*) FROM student WHERE gender IS NOT NULL AND gender&lt;&gt;’’ GROUP BY gender;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT gender,COUNT(*) FROM student WHERE gender IS NOT NULL AND gender&lt;&gt;<span class="string">''</span> GROUP BY gender;</span><br></pre></td></tr></table></figure>
+
 <p>分组后筛选(having)</p>
 <p>需求:查询哪些地区的人数是大于2个的地区</p>
 <p>查询哪些地区多少人 2)筛选人数大于2的地区</p>
 <p>注意:having使用在group by分组之后，对分组后的条件进行筛选</p>
-<p>SELECT address,COUNT(<em>) FROM student GROUP BY address HAVING COUNT(</em>)&gt;2;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) <span class="function">FROM student GROUP BY address HAVING <span class="title">COUNT</span><span class="params">(*)</span>&gt;2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>5.数据约束（给表添加数据约束，从而约束用户操作表数据的行为）<br>1）默认值约束(default)</p>
-<p>create table test(</p>
-<p>　　name varchar(20),</p>
-<p>　　gender varchar(20) default ‘男’</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> <span class="keyword">default</span> ‘男’</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求:当不插入gender的时候，分配一个‘男’的默认值</p>
 <p>注意:1)当没有插入gender字段的时候，分配一个默认值</p>
 <p>2）非空约束（not null）</p>
-<p>create table test(</p>
-<p>　　name varchar(20) not null,</p>
-<p>　　gender varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求；name字段一定要有值(不能不插入数据，不能是null)，这是给name添加非空约束</p>
 <p>1)非空约束，不能不插入值</p>
-<p>Insert into test(gender) values(‘男’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(gender)</span> <span class="title">values</span><span class="params">(‘男’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>2)非空约束，不能插入null</p>
-<p>Insert into test(name,gender) values(null,’男’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(name,gender)</span> <span class="title">values</span><span class="params">(<span class="keyword">null</span>,’男’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>3)唯一约束(unique)</p>
-<p>create table test(</p>
-<p>　　Id int unique,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> unique,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求:id的值不能出现重复。这时就要给id添加一个唯一约束</p>
 <p>1)不能插入重复的值</p>
 <p>2)唯一约束，可以插入多个null。所以唯一约束不能约束null</p>
-<p>Insert into test(id,name) values(1,’张三’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(id,name)</span> <span class="title">values</span><span class="params">(<span class="number">1</span>,’张三’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>4)主键约束(primary key)(唯一+非空)</p>
 <p>注意；</p>
 <p>1)通常情况下，我们会给每张表都设置一个主键字段，用来标记记录的唯一性</p>
 <p>2)但是不建议把业务含义字段作为主键，因为随着业务的变化，业务字段可能出现重复</p>
 <p>3)建议给每张表都独立添加一个叫id的字段，把这个id字段设置成主键，用来作为记录的唯一性</p>
-<p>create table test(</p>
-<p>　　Id int primary key,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>1)唯一性</p>
 <p>2)非空性</p>
 <p>5)自增长约束(auto_increment)</p>
-<p>create table test(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>自增长约束:初始值为0，每次递增1</p>
 <p>使用truncate table 删除数据的时候，可以把自增长的初始值置为0</p>
 <p>6)外键约束</p>
 <p>员工表(副表:被别的表约束的表，外键设置在副表)</p>
-<p>Create table employee(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　name varchar(20),</p>
-<p>　　deptId int,</p>
-<p>　　添加外键约束(foreign key)</p>
-<p>　　Constraint employee_dept_fk foreign key(deptId) references dept(id)</p>
-<pre><code>      　　　　　　 外键名                               外键字段                </code></pre><p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">employee</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　deptId <span class="keyword">int</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　添加外键约束<span class="params">(foreign key)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　Constraint employee_dept_fk foreign <span class="title">key</span><span class="params">(deptId)</span> references <span class="title">dept</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">          　　　　　　 外键名                               外键字段                </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>部门表(主表:约束别人的表)</p>
-<p>Create table dept(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　Name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">dept</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>外键约束在什么情况下会起作用？</p>
 <p>插入数据:当往副表插入了主表中不存在的数据时，外键起作用</p>
 <p>修改数据:当往副表中修改主表中不存在的数据时，外键起作用</p>

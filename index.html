@@ -988,199 +988,221 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>Mysql数据库知识点<br>1.管理数据库语句：<br>使用数据库：</p>
-<p>use test;</p>
+           <p>##Mysql数据库知识点<br>1.管理数据库语句：<br>使用数据库：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use test;</span><br></pre></td></tr></table></figure>
+
 <p>添加数据库：</p>
-<p>create database 数据库名;</p>
-<p>create database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database 数据库名;</span><br><span class="line"></span><br><span class="line">create database test;</span><br></pre></td></tr></table></figure>
+
 <p>修改数据库：</p>
-<p>alter database 数据库名;</p>
-<p>alter database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter database 数据库名;</span><br><span class="line"></span><br><span class="line">alter database test;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据库：</p>
-<p>drop database 数据库名;</p>
-<p>drop database test;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br><span class="line"></span><br><span class="line">drop database test;</span><br></pre></td></tr></table></figure>
+
 <p>查看所有数据库：</p>
-<p>show databases;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>2.管理表语句：<br>添加数据表：</p>
-<p>create table 表名(</p>
-<p>　　列名 数据类型 数据约束,</p>
-<p>　　列名 数据类型 数据约束</p>
-<p>);</p>
-<p>create table student(</p>
-<p>　　name varchar(20) not null,</p>
-<p>　　age int(4)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束,</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　age <span class="title">int</span><span class="params">(<span class="number">4</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>修改数据表：</p>
-<p>alter table 表名;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名;</span><br></pre></td></tr></table></figure>
+
 <p>1)在表中增加新字段</p>
-<p>alter table student add colunm name varchar(20);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student add colunm name <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>2)删除表中的字段</p>
-<p>alter table student drop name;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student drop name;</span><br></pre></td></tr></table></figure>
+
 <p>3)修改表中字段的类型</p>
-<p>alter table student modify name varchar(10);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student modify name <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据表：</p>
-<p>drop table 表名;</p>
-<p>drop table student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop table 表名;</span><br><span class="line"></span><br><span class="line">drop table student;</span><br></pre></td></tr></table></figure>
+
 <p>查看所有表：</p>
-<p>show tables;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>3.管理数据语句：<br>插入数据：</p>
-<p>insert into 表名 (列1,列2…)  values (值1,值2…);</p>
-<p>insert into student (name,age) values (‘张三’,20);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (列<span class="number">1</span>,列<span class="number">2</span>...)  values (值<span class="number">1</span>,值<span class="number">2</span>...);</span><br><span class="line"></span><br><span class="line"><span class="function">insert into <span class="title">student</span> <span class="params">(name,age)</span> <span class="title">values</span> <span class="params">(<span class="string">'张三'</span>,<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>更新数据：</p>
-<p>update 表名 set 列=修改值 where 条件;</p>
-<p>update student set  name=’李四’ where name=’张三’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列=修改值 where 条件;</span><br><span class="line"></span><br><span class="line">update student set  name=<span class="string">'李四'</span> where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>删除数据：</p>
-<p>delete from 表名 where 条件;</p>
-<p>delete from student where name=’李四’;</p>
-<p>查询数据：</p>
-<p>selete *  from 表名 where 条件;</p>
-<p>selete * from student where name=’张三’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">delete from student where name=<span class="string">'李四'</span>;</span><br><span class="line">```j</span><br><span class="line">查询数据：</span><br><span class="line">```java</span><br><span class="line">selete *  from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">selete * from student where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>4.各种查询语句：<br>查询时指定别名：</p>
-<p>1) selete id as ‘编号’,name as ‘姓名’ from student;</p>
-<p>2) selete id ‘编号’,name ‘姓名’ from student;(AS可以省略)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>) selete id as <span class="string">'编号'</span>,name as <span class="string">'姓名'</span> from student;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>) selete id <span class="string">'编号'</span>,name <span class="string">'姓名'</span> from student;(AS可以省略)</span><br></pre></td></tr></table></figure>
+
 <p>查询时合并列：</p>
 <p>需求:查询每个学生的总分</p>
-<p>selete name as ‘姓名’,(servlet+mysql) as ‘总成绩’ from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete name as <span class="string">'姓名'</span>,(servlet+mysql) as <span class="string">'总成绩'</span> from student;</span><br></pre></td></tr></table></figure>
+
 <p>注意:合并列的字段必须是数值类型的字段</p>
 <p>查询时去除重复(distinct)：</p>
 <p>需求:查询有哪些地区的学生</p>
-<p>selete DISTINCT address from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete distinct address from student;</span><br></pre></td></tr></table></figure>
+
 <p>另一种语法</p>
-<p>selete DISTINCT(address) from student;</p>
+<p>selete distinct(address) from student;</p>
 <p>条件查询<br>逻辑条件: and  or</p>
 <p>需求:查询学生的id为1，且姓名为张三的学生</p>
-<p>selete * from student where id=1 and name=’张三’;(交集)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">1</span> and name=<span class="string">'张三'</span>;(交集)</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询学生的id为2，或姓名为张三的学生</p>
-<p>selete * from student where id=2 or name=’张三’;(并集)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">2</span> or name=<span class="string">'张三'</span>;(并集)</span><br></pre></td></tr></table></figure>
+
 <p>比较条件: &gt;  &lt;  &gt;=  &lt;=  =  &lt;&gt;  (between and–在…之间 包前包后)</p>
 <p>需求:查询servlet分数大于80分的学生</p>
-<p>selete * from student where servlet&gt;80;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;<span class="number">80</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询mysql分数小于或等于85分的学生</p>
-<p>selete * from student where mysql&lt;=85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where mysql&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet分数大于或等于80分，且小于或等于85分的学生</p>
-<p>selete * from student where servlet&gt;=80 AND servlet&lt;=85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;=<span class="number">80</span> and servlet&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>代替上面语句的语法</p>
-<p>selete * from student where servlet BETWEEN 80 AND 85;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet between <span class="number">80</span> and <span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询年龄不等于30的学生</p>
-<p>selete * from student where age&lt;&gt;30;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where age&lt;&gt;<span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+
 <p>判空条件: is null,   is not null,   =’’,   &lt;&gt;’’</p>
 <p>Null:表示没有数据</p>
 <p>空字符:表示有数据</p>
 <p>需求:查询没有性别数据的学生(数据‘男’或‘女’)</p>
-<p>selete* from student where gender IS NULL OR gender=’’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete* from student where gender IS <span class="keyword">null</span> or gender=<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询有性别数据的学生</p>
-<p>selete * from student where gender IS NOT NULL AND gender&lt;&gt;’’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where gender IS not <span class="keyword">null</span> and gender&lt;&gt;<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+
 <p>模糊条件: like</p>
 <p>模糊替代符号:</p>
 <p>%:替代任意个字符</p>
 <p>_:替代一个字符</p>
 <p>需求:查询姓“李”的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘李%’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询姓名中包含‘四’字的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘%四%’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'%四%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询姓‘李’，全名只有两个字的学生</p>
-<p>SELECT * FROM student WHERE NAME LIKE ‘李_’;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李_'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>聚合函数查询(用于统计结果)</p>
 <p>Max()取最大值  min()取最小值  avg()取平均值  count()统计标的记录数量 sum()求和</p>
 <p>需求:查询servlet的最高分</p>
-<p>SELECT MAX(servlet) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MAX</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询mysql的最低分</p>
-<p>SELECT MIN(mysql) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MIN</span><span class="params">(MYSQL)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet的平均分</p>
-<p>SELECT AVG(servlet) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">AVG</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询当前有几个学生</p>
-<p>SELECT COUNT(*) FROM student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">COUNT</span><span class="params">(*)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:查询servlet成绩的总和</p>
-<p>SELETE SUM(servlet) from student;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELETE <span class="title">SUM</span><span class="params">(servlet)</span> from student</span>;</span><br></pre></td></tr></table></figure>
+
 <p>分页查询(limit)</p>
 <p>Limit起始行数，查询的行数</p>
 <p>起始行数从0开始</p>
 <p>需求:查询第1,2条数据</p>
-<p>SELECT * FROM student LIMIT 0,2;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student LIMIT <span class="number">0</span>,<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
 <p>分页查询需知道:当前页码，每页显示条数</p>
-<p>结论分页查询当前页数据:select * from student limit (当前页码-1)*每页显示条数，每页显示条数;</p>
+<p>结论分页查询当前页数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="function">from student <span class="title">limit</span> <span class="params">(当前页码<span class="number">-1</span>)</span>*每页显示条数，每页显示条数</span>;</span><br></pre></td></tr></table></figure>
+
 <p>需求:学生共20条数据，每页显示5条，共4页</p>
-<p>查询第3页(第11到15条)的学生数据:select * from student limit 10,5;</p>
+<p>查询第3页(第11到15条)的学生数据:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student limit <span class="number">10</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
 <p>查询后排序(order by)</p>
 <p>DESC:降序。数值从大到小</p>
 <p>ASC:升序。数值从小到大</p>
 <p>默认情况下，按照插入的顺序排序</p>
 <p>需求:按照id的升序排序</p>
-<p>select * from student order by id asc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by id asc;</span><br></pre></td></tr></table></figure>
+
 <p>需求:按照servlet成绩降序排序</p>
-<p>select * from student order by servlet desc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by servlet desc;</span><br></pre></td></tr></table></figure>
+
 <p>多个排序条件的情况:先按照前面的条件排序，当出现重复记录，再按照后面的条件排序</p>
 <p>需求:按照age升序，再按照servlet成绩升序排序</p>
-<p>select * from student order by age asc,servlet asc;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by age asc,servlet asc;</span><br></pre></td></tr></table></figure>
+
 <p>分组查询(group by)</p>
 <p>需求:查询每个地区有多少人</p>
-<p>SELECT address,COUNT(*) FROM student GROUP BY address;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) FROM student GROUP BY address;</span><br></pre></td></tr></table></figure>
+
 <p>需求:统计男女的人数</p>
 <p>注意:where条件必须放在group by 分组之前</p>
-<p>SELECT gender,COUNT(*) FROM student WHERE gender IS NOT NULL AND gender&lt;&gt;’’ GROUP BY gender;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT gender,COUNT(*) FROM student WHERE gender IS NOT NULL AND gender&lt;&gt;<span class="string">''</span> GROUP BY gender;</span><br></pre></td></tr></table></figure>
+
 <p>分组后筛选(having)</p>
 <p>需求:查询哪些地区的人数是大于2个的地区</p>
 <p>查询哪些地区多少人 2)筛选人数大于2的地区</p>
 <p>注意:having使用在group by分组之后，对分组后的条件进行筛选</p>
-<p>SELECT address,COUNT(<em>) FROM student GROUP BY address HAVING COUNT(</em>)&gt;2;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) <span class="function">FROM student GROUP BY address HAVING <span class="title">COUNT</span><span class="params">(*)</span>&gt;2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>5.数据约束（给表添加数据约束，从而约束用户操作表数据的行为）<br>1）默认值约束(default)</p>
-<p>create table test(</p>
-<p>　　name varchar(20),</p>
-<p>　　gender varchar(20) default ‘男’</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> <span class="keyword">default</span> ‘男’</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求:当不插入gender的时候，分配一个‘男’的默认值</p>
 <p>注意:1)当没有插入gender字段的时候，分配一个默认值</p>
 <p>2）非空约束（not null）</p>
-<p>create table test(</p>
-<p>　　name varchar(20) not null,</p>
-<p>　　gender varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求；name字段一定要有值(不能不插入数据，不能是null)，这是给name添加非空约束</p>
 <p>1)非空约束，不能不插入值</p>
-<p>Insert into test(gender) values(‘男’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(gender)</span> <span class="title">values</span><span class="params">(‘男’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>2)非空约束，不能插入null</p>
-<p>Insert into test(name,gender) values(null,’男’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(name,gender)</span> <span class="title">values</span><span class="params">(<span class="keyword">null</span>,’男’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>3)唯一约束(unique)</p>
-<p>create table test(</p>
-<p>　　Id int unique,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> unique,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>需求:id的值不能出现重复。这时就要给id添加一个唯一约束</p>
 <p>1)不能插入重复的值</p>
 <p>2)唯一约束，可以插入多个null。所以唯一约束不能约束null</p>
-<p>Insert into test(id,name) values(1,’张三’);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(id,name)</span> <span class="title">values</span><span class="params">(<span class="number">1</span>,’张三’)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>4)主键约束(primary key)(唯一+非空)</p>
 <p>注意；</p>
 <p>1)通常情况下，我们会给每张表都设置一个主键字段，用来标记记录的唯一性</p>
 <p>2)但是不建议把业务含义字段作为主键，因为随着业务的变化，业务字段可能出现重复</p>
 <p>3)建议给每张表都独立添加一个叫id的字段，把这个id字段设置成主键，用来作为记录的唯一性</p>
-<p>create table test(</p>
-<p>　　Id int primary key,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>1)唯一性</p>
 <p>2)非空性</p>
 <p>5)自增长约束(auto_increment)</p>
-<p>create table test(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>自增长约束:初始值为0，每次递增1</p>
 <p>使用truncate table 删除数据的时候，可以把自增长的初始值置为0</p>
 <p>6)外键约束</p>
 <p>员工表(副表:被别的表约束的表，外键设置在副表)</p>
-<p>Create table employee(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　name varchar(20),</p>
-<p>　　deptId int,</p>
-<p>　　添加外键约束(foreign key)</p>
-<p>　　Constraint employee_dept_fk foreign key(deptId) references dept(id)</p>
-<pre><code>      　　　　　　 外键名                               外键字段                </code></pre><p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">employee</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　deptId <span class="keyword">int</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　添加外键约束<span class="params">(foreign key)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　Constraint employee_dept_fk foreign <span class="title">key</span><span class="params">(deptId)</span> references <span class="title">dept</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">          　　　　　　 外键名                               外键字段                </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>部门表(主表:约束别人的表)</p>
-<p>Create table dept(</p>
-<p>　　Id int primary key auto_increment,</p>
-<p>　　Name varchar(20)</p>
-<p>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">dept</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+
 <p>外键约束在什么情况下会起作用？</p>
 <p>插入数据:当往副表插入了主表中不存在的数据时，外键起作用</p>
 <p>修改数据:当往副表中修改主表中不存在的数据时，外键起作用</p>
@@ -1215,24 +1237,26 @@
         
         
            <h2 id="Java-OOP基础语法总结"><a href="#Java-OOP基础语法总结" class="headerlink" title="Java OOP基础语法总结"></a>Java OOP基础语法总结</h2><p><strong><strong><strong>***</strong></strong></strong> Java OOP 基 础 语 法 总 结 <strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong><br>1,类与对象<br>1),类(class)是相同属性和方法的一组集合。<br>A,类的组成：属性和方法。<br>B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致<br>C,类的实例化：使用new关键字，eg：Student student=new Student();//声明一个Student类型的变量or实例化一个Student对象<br>D,类与文件的关系;<br>a，一个java文件可以包含多个java类<br>b,一个java文件最多只能有一个public类<br>c,java文件的名称必须和其中的public类名一致  </p>
-<p>eg：public class Student{//类(首字母大写)<br>public void getName(){//方法(一般为动词+名词，动词首字母小写，名词首字母大写)<br>String name；//属性(数据类型+属性名)<br>}<br>}<br>2),对象(object)是一个具体的实体(entity)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;<span class="comment">//类(首字母大写)   </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">()</span></span>&#123;<span class="comment">//方法(一般为动词+名词，动词首字母小写，名词首字母大写)  </span></span><br><span class="line">String name；<span class="comment">//属性(数据类型+属性名)   </span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2),对象(object)是一个具体的实体(entity)。</p>
 <p>eg：某某学生即可作为一个对象</p>
 <hr>
 <p>2,方法<br>1),可以重复执行的代码块，对于调用者来说相当于一个“黑盒子”。<br>2),语法声明;访问控制修饰符 返回值类型 方法名 (参数列表){ 方法体； }  </p>
-<p> eg：public void getName(int num){<br>String name；<br>     }  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> eg：<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123; </span><br><span class="line">String name； </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
 <p>3),方法的传参–数据类型：A,8种基本数据类型(byte,int,short,long,float,double,char,boolean)<br>   B,引用数据类型(eg:Student student=new Student();中的student就是引用数据类型)  </p>
 <p>注：基本数据类型与引用数据类型的区别：<br>a,存储方式不同，基本数据类型存在 栈 中，是按值传<br>       引用数控类型存在 堆 中，是按址传<br>b,使用方式不同，基本数据类型 无属性和方法<br>       引用数控类型 有属性和方法</p>
 <hr>
 <p>3,构造方法(Constructor)<br>1),是一个特殊的方法，该方法的作用是实例化对象，会在内存中分配空间，且可以对类的属性进行初始化<br>2),语法特征： </p>
 <p>a,构造方法的名字必须与所在的类一致<br>b,没有返回值类型，注意和没有返回值不是一回事<br>c,默认情况下有一个隐式的无参构造方法，其访问控制修饰与所在的类的访问控制修饰一致<br>d,如果我们自定义了构造方法，则隐式无参构造方法就不存在了<br>3),使用方法：使用new关键字调用   </p>
 <hr>
-<p>7,方法重载<br>1),在一个类中，具有相同的方法名，但是参数列表不同的方法。<br>2),可分为一般方法重载和构造方法重载。  </p>
-<p>eg：class Student{//同一个类<br>void getInformation(String name){//相同的方法名，不同的参数列表<br><strong>*;<br>}<br>void getInformation(int age){//相同的方法名，不同的参数列表<br>*</strong>;<br>}<br>   }</p>
+<p>7,方法重载<br>1),在一个类中，具有相同的方法名，但是参数列表不同的方法。<br>2),可分为一般方法重载和构造方法重载。<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">eg：<span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;<span class="comment">//同一个类   </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInformation</span><span class="params">(String name)</span></span>&#123;<span class="comment">//相同的方法名，不同的参数列表   </span></span><br><span class="line">***;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInformation</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;<span class="comment">//相同的方法名，不同的参数列表</span></span><br><span class="line">***;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>8,this关键字<br>(1),使用环境：方法和构造方法中。<br>(2),使用方法两种：   </p>
 <p>1)，this.属性(方法);//this表示当前运行的实列(对象)，注意：this未运行时，不代表任何属性(方法)。<br>2)，this();//只能用在构造方法中。表示调用其他重载形式的构造方法，而且必须放在第一行。<br>(3),注意：静态方法中不能使用this！（静态方法属于类，不是实列，而this代表了当前运行的实列，放一起顺序会逻辑混乱），main中也不能使用this！</p>
-<p>eg：</p>
-<p>1 package com.zhi.java.course;<br>2 public class Text{<br>3     Text(int num){//this();只能用在构造方法中<br>4         this.num=num;<br>5     }<br>6     Text(){<br>7         this(100);//无参方法调用有参<br>8     }<br>9     int num=1;<br>10     int getNum(){<br>11         return num;//此处可以直接放回num<br>12     }<br>13     void setNum(int num){//新定义的num不同于成员变量num<br>14         this.num=num;//此处this不可省<br>15     }<br>16     void m1(){<br>17<br>18     }<br>19     void m2(){<br>20         this.m1();//此处this可以省<br>21     }<br>22      static void m3(){<br>23         System.out.println(this.num);//Error！Cannot use this in a static context<br>24     }<br>25 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">eg：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span></span>&#123;</span><br><span class="line"><span class="number">3</span>     Text(<span class="keyword">int</span> num)&#123;<span class="comment">//this();只能用在构造方法中</span></span><br><span class="line"><span class="number">4</span>         <span class="keyword">this</span>.num=num;</span><br><span class="line"><span class="number">5</span>     &#125;</span><br><span class="line"><span class="number">6</span>     Text()&#123;</span><br><span class="line"><span class="number">7</span>         <span class="keyword">this</span>(<span class="number">100</span>);<span class="comment">//无参方法调用有参</span></span><br><span class="line"><span class="number">8</span>     &#125;</span><br><span class="line"><span class="number">9</span>     <span class="keyword">int</span> num=<span class="number">1</span>;</span><br><span class="line"><span class="number">10</span>     <span class="function"><span class="keyword">int</span> <span class="title">getNum</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">11</span>         <span class="keyword">return</span> num;<span class="comment">//此处可以直接放回num</span></span><br><span class="line"><span class="number">12</span>     &#125;</span><br><span class="line"><span class="number">13</span>     <span class="function"><span class="keyword">void</span> <span class="title">setNum</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;<span class="comment">//新定义的num不同于成员变量num</span></span><br><span class="line"><span class="number">14</span>         <span class="keyword">this</span>.num=num;<span class="comment">//此处this不可省</span></span><br><span class="line"><span class="number">15</span>     &#125;</span><br><span class="line"><span class="number">16</span>     <span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">17</span>         </span><br><span class="line"><span class="number">18</span>     &#125;</span><br><span class="line"><span class="number">19</span>     <span class="function"><span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">this</span>.m1();<span class="comment">//此处this可以省</span></span><br><span class="line"><span class="number">21</span>     &#125;</span><br><span class="line"><span class="number">22</span>      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">23</span>         System.out.println(<span class="keyword">this</span>.num);<span class="comment">//Error！Cannot use this in a static context</span></span><br><span class="line"><span class="number">24</span>     &#125;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>9,super关键字（对比this关键字）<br>(1),使用环境：一般的实列方法中和构造方法中<br>(2),使用方法两种：           </p>
 <p>(1),super.属性(方法);//调用父类的属性(方法)<br>(2),super();//只能用在构造方法中。表示调用父类相应的构造方法，而且必须放在第一行。</p>
@@ -1241,37 +1265,41 @@
 <p>eg：final class Animal(){}//Animal不能再被继承。<br>(2),final修饰变量，该变量必须被赋值，final修饰后该变量变为常量，不能再改变； </p>
 <p>eg：final int num=10;//num不可再改变。<br>(3),final修饰方法，该方法不能再被重写；    </p>
 <p>eg：final void m1(){}//方法m1在f父类，在子类中final不能再被重写。<br>(4),final修饰属性   </p>
-<pre><code>1),可以直接在声明时赋值    </code></pre><p>  2),可以在代码块中赋值<br>  3),静态的可以在静态代码块中赋值</p>
+<p>  1),可以直接在声明时赋值<br>  2),可以在代码块中赋值<br>  3),静态的可以在静态代码块中赋值</p>
 <hr>
 <p>11,继承<br>(1)，概念，继承是OOP特征之一，是子类通过继承获取父类中的部分属性和方法。<br>(2)，使用extends关键字   </p>
 <p>1)，符合is-a关系的设计使用继承<br>2)，继承是代码重用的一种方式<br>(3)，好处：</p>
-<pre><code>1)，做到代码重用</code></pre><p>2)，系统维护性更好。<br>(4),不能继承的有：</p>
+<p>1)，做到代码重用<br>2)，系统维护性更好。<br>(4),不能继承的有：</p>
 <p>1)，子类不能继承父类的构造方法。<br>2)，子类不能继承父类的私有方法（private）。<br>3)，子类和父类不在同一包，使用默认的访问权限的成员    </p>
-<p> eg:</p>
-<p>1 package com.zhi.java.course;<br>2 public class Animal {<br>3     String name;//公共的属性或方法<br>4     int age;<br>5 }<br>6 public class Dog extends Animal {//继承父类的属性，一个子类只能继承一个父类(单根继承)<br>7     public static void main(String[] args) {<br>8         Dog dog = new Dog();<br>9         dog.name = “大黄”;<br>10         dog.age = 300;<br>11         String na= “田不易”;//也可以有子类的特有属性（方法）<br>12     }<br>13 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;<span class="comment">//公共的属性或方法</span></span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span> &#125;</span><br><span class="line"><span class="number">6</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;<span class="comment">//继承父类的属性，一个子类只能继承一个父类(单根继承)</span></span><br><span class="line"><span class="number">7</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">8</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">9</span>         dog.name = <span class="string">"大黄"</span>;</span><br><span class="line"><span class="number">10</span>         dog.age = <span class="number">300</span>;</span><br><span class="line"><span class="number">11</span>         String na= <span class="string">"田不易"</span>;<span class="comment">//也可以有子类的特有属性（方法）</span></span><br><span class="line"><span class="number">12</span>     &#125;</span><br><span class="line"><span class="number">13</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>12,类的初始化顺序：(从上到下)     </p>
 <p>父类的静态代码块<br>子类的静态代码块<br>父类的代码块<br>父类的构造方法<br>子类的代码块<br>子类的构造方法<br>注意：静态代码块只能执行一次！</p>
 <hr>
 <p>13,访问控制修饰符<br>1),概念，  </p>
-<pre><code>a:Java提供四种访问控制修饰符(public private 包 )    </code></pre><p>b:放在方法与变量前，部分访问控制修饰符也可以放在类前<br>c:目的是控制代码的访问权限。<br>2),控制范围(从大到小)<br>   public      所有代码都可以访问<br>   protected   本类，包及其子类的代码可以访问<br>   包          本类，同一个包中访问<br>   private     私有的，它修饰的属性，方法，或内部类只能本类使用    </p>
+<p>a:Java提供四种访问控制修饰符(public private 包 )<br>b:放在方法与变量前，部分访问控制修饰符也可以放在类前<br>c:目的是控制代码的访问权限。<br>2),控制范围(从大到小)<br>   public      所有代码都可以访问<br>   protected   本类，包及其子类的代码可以访问<br>   包          本类，同一个包中访问<br>   private     私有的，它修饰的属性，方法，或内部类只能本类使用    </p>
 <hr>
 <p>14,方法重写<br>1),概念：在子类中对父类的方法重新实现一遍，即在子类中对父类中某方法的默认逻辑进行修改。<br>2),语法：</p>
-<pre><code>a,方法名一样</code></pre><p>b,方法的参数一样<br>c,子类重写的方法返回值类型要与父类返回值类型一样或者是其子类<br>d,子类访问控制修饰符的范围不能比父类不能小<br>e,子类抛出的异常不能比父类抛出的异常多或范围更大<br>3),以下方法不能重写：     </p>
+<p>a,方法名一样<br>b,方法的参数一样<br>c,子类重写的方法返回值类型要与父类返回值类型一样或者是其子类<br>d,子类访问控制修饰符的范围不能比父类不能小<br>e,子类抛出的异常不能比父类抛出的异常多或范围更大<br>3),以下方法不能重写：     </p>
 <p>a,private方法<br>b,构造方法(Constructor)<br>c,static方法<br>d,final方法</p>
 <hr>
 <p>15,Object类<br>(1),java是单根继承，在java中不允许多根继承。<br>(2),Object是所有类的最终父类，所有类或者是数组都可以直接或间接继承Object类。<br>(3),Object类来自java.lang包。<br>(4),可以将所有的引用类型值赋给Object类型声明的变量，包括null。<br>(5),Object提供9中可用方法，所有的子类都都可以使用，其中<br>getClass()，notiFy()，notiFyall()，wait()不可以被子类重写<br>toString()，equals()，hashCode()，clone()，finalize()可以被子类重写<br>(6),toString()方法<br>1),自动调用toString()方法的场景：字符串拼接和控制台输出，如下列：</p>
-<p>1 package com.zhi.java.course;<br>2 public class Dog {<br>3     String name;<br>4     int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     public static void main(String[] args) {<br>18         Dog dog = new Dog();<br>19         dog.setName(“大黄”);<br>20         dog.setAge(300);<br>21         System.out.println(dog);//等同于System.out.println(dog.toString());会自动调用toString方法，故有以下结果<br>22     }<br>23 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">18</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">19</span>         dog.setName(<span class="string">"大黄"</span>);</span><br><span class="line"><span class="number">20</span>         dog.setAge(<span class="number">300</span>);</span><br><span class="line"><span class="number">21</span>         System.out.println(dog);<span class="comment">//等同于System.out.println(dog.toString());会自动调用toString方法，故有以下结果</span></span><br><span class="line"><span class="number">22</span>     &#125;</span><br><span class="line"><span class="number">23</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>运行结果： com.zhi.java.course.Dog@2a139a55 //默认实现输出格式：全限定类名@哈希码的16进制 </p>
 <p>2),重写toString()方法      </p>
-<p>1 package com.zhi.java.course;<br>2 public class Dog {<br>3     String name;<br>4     int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     @Override//重写注解，可判断是否重写<br>18     public String toString() {<br>19         return “名字：”+name+”\n年龄：”+age;  //重写获得需要的值<br>20     }<br>21     public static void main(String[] args) {<br>22         Dog dog = new Dog();<br>23         dog.setName(“大黄”);<br>24         dog.setAge(300);<br>25         System.out.println(dog);//等同于System.out.println(dog.toString());已经重写toString()方法<br>26     }<br>27 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="meta">@Override</span><span class="comment">//重写注解，可判断是否重写</span></span><br><span class="line"><span class="number">18</span>     <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>         <span class="keyword">return</span> <span class="string">"名字："</span>+name+<span class="string">"\n年龄："</span>+age;  <span class="comment">//重写获得需要的值</span></span><br><span class="line"><span class="number">20</span>     &#125;</span><br><span class="line"><span class="number">21</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">22</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">23</span>         dog.setName(<span class="string">"大黄"</span>);</span><br><span class="line"><span class="number">24</span>         dog.setAge(<span class="number">300</span>);</span><br><span class="line"><span class="number">25</span>         System.out.println(dog);<span class="comment">//等同于System.out.println(dog.toString());已经重写toString()方法</span></span><br><span class="line"><span class="number">26</span>     &#125;</span><br><span class="line"><span class="number">27</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>运行结果：名字：大黄 年龄：300<br>　　<br>(7),equals()方法重写<br>1),当类有逻辑上的等同意义而不仅是对象意义上的等同时 需要重写equals()方法。<br>2),以下情况不能重写：    </p>
 <p>a,每个类实列本质上是唯一的。<br>b,不关心类是否提供了“逻辑意义上的等同”测试。<br>c,超类已经重新了equals，该方法也适合子类。<br>3),回顾 “==”：比较基本数据类型的值是否相等(按值比较)，比较引用数据类型是否是同一个对象(按址比较)。<br>equals：默认与”==”相同，重写可自定义比较规则。   </p>
 <p>4),未重写时结果如下：   </p>
-<p>1 package com.zhi.java.course;<br>2 class Game {<br>3     private String name;<br>4     private int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17 }<br>18 public class EqualsJob {<br>19     public static void main(String[] args) {<br>20         Game g1 = new Game();<br>21         g1.setName(“LOL”);<br>22         g1.setAge(6);<br>23         Game g2 = new Game();<br>24         g2.setName(“LOL”);<br>25         g2.setAge(6);<br>26         System.out.println(g1.equals(g2));// 用equals直接比较两个相同的引用类型,等同System.out.println(g1==g2);<br>27     }<br>28 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     <span class="keyword">private</span> String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span> &#125;</span><br><span class="line"><span class="number">18</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsJob</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">20</span>         Game g1 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">21</span>         g1.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">22</span>         g1.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">23</span>         Game g2 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">24</span>         g2.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">25</span>         g2.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">26</span>         System.out.println(g1.equals(g2));<span class="comment">// 用equals直接比较两个相同的引用类型,等同System.out.println(g1==g2);</span></span><br><span class="line"><span class="number">27</span>     &#125;</span><br><span class="line"><span class="number">28</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>运行结果：false  </p>
 <p>5),重写equals()后如下：</p>
-<p>1 package com.zhi.java.course;<br>2 class Game {<br>3     private String name;<br>4     private int age;<br>5     public String getName() {<br>6         return name;<br>7     }<br>8     public void setName(String name) {<br>9         this.name = name;<br>10     }<br>11     public int getAge() {<br>12         return age;<br>13     }<br>14     public void setAge(int age) {<br>15         this.age = age;<br>16     }<br>17     @Override<br>18     public boolean equals(Object obj) {<br>19         if (this == obj) {<br>20             return true;<br>21         }<br>22         if (obj instanceof Game) {//向下转型需要通过instanceof判断obj和Game是否同一类型<br>23             Game g = (Game) obj;//类型一致则强转类型，向下转型<br>24             return g.getAge() == age &amp;&amp; g.getName().equals(name);//自定义比较规则<br>25         }<br>26         return false;<br>27     }<br>28 }<br>29 public class EqualsJob {<br>30     public static void main(String[] args) {<br>31         Game g1 = new Game();<br>32         g1.setName(“LOL”);<br>33         g1.setAge(6);<br>34         Game g2 = new Game();<br>35         g2.setName(“LOL”);<br>36         g2.setAge(6);<br>37         System.out.println(g1.equals(g2));// 使用equals直接比较两个相同的引用类型<br>38     }<br>39 }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     <span class="keyword">private</span> String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">18</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>         <span class="keyword">if</span> (<span class="keyword">this</span> == obj) &#123;</span><br><span class="line"><span class="number">20</span>             <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">21</span>         &#125;</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Game) &#123;<span class="comment">//向下转型需要通过instanceof判断obj和Game是否同一类型</span></span><br><span class="line"><span class="number">23</span>             Game g = (Game) obj;<span class="comment">//类型一致则强转类型，向下转型</span></span><br><span class="line"><span class="number">24</span>             <span class="keyword">return</span> g.getAge() == age &amp;&amp; g.getName().equals(name);<span class="comment">//自定义比较规则</span></span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">27</span>     &#125;</span><br><span class="line"><span class="number">28</span> &#125;</span><br><span class="line"><span class="number">29</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsJob</span> </span>&#123;</span><br><span class="line"><span class="number">30</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">31</span>         Game g1 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">32</span>         g1.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">33</span>         g1.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">34</span>         Game g2 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">35</span>         g2.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">36</span>         g2.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">37</span>         System.out.println(g1.equals(g2));<span class="comment">// 使用equals直接比较两个相同的引用类型</span></span><br><span class="line"><span class="number">38</span>     &#125;</span><br><span class="line"><span class="number">39</span> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>运行结果：true  </p>
 <p>6),equals()重写约定   </p>
 <p>a,自反性<br>b,对称性<br>c,传递性<br>d,一致性<br>e,任何非空x,x.equals(null)总是false<br>f,重写equals方法时永远要重载hashCode方法   </p>
@@ -1280,13 +1308,13 @@
 <hr>
 <p>17,抽象类：    </p>
 <p>(public abstract class shape{}就是一个抽象类)<br>(1),使用abstract声明抽象类或抽象方法<br>(2),抽象类可以有抽象方法，也可以没有抽象方法，但是抽象方法必须在抽象类中<br>(3),抽象类不能实例化<br>(4),抽象类可以有构造方法<br>抽象方法：(public sbstract void sss();就是一个抽象方法)<br>(1),没有实现体<br>(2),不能被final，private，static修饰<br>(3),主要给子类来重写的    </p>
-<pre><code>如果抽象类的子类是一个具体的类，该具体类必须实现父类的所有抽象方法   </code></pre><p> 如果子类也是抽象类，子类既可以实训父类的抽象方法，也可以不实现     </p>
+<p> 如果抽象类的子类是一个具体的类，该具体类必须实现父类的所有抽象方法<br> 如果子类也是抽象类，子类既可以实训父类的抽象方法，也可以不实现     </p>
 <hr>
 <p>18,接口<br> (1),概念：它是一个纯粹的抽象类，其它的方法全部都是抽象方法。它是一种约定，一种能力<br> (2),声明语法：使用interface关键字，</p>
 <pre><code>eg：public interface Swimable{} </code></pre><p>1),可以声明属性，该属性默认是public static final修饰的，必须赋初始值<br>2),可以有方法，全部是抽象方法，<br>3),接口不能直接实例化(接口是一个纯粹的抽象类)<br>(3),接口成员-常量属性     </p>
 <p>1),接口中所有的属性都是public static final修饰的<br>2)，常量可以是基本数据类型，也可以是引用数据类型</p>
 <p>(4),注意：</p>
-<pre><code>1),常量的命名规范是全部字母大写，eg：public static final int NUM=10;</code></pre><p>2),接口的修饰符可能是包级访问级别的，所以public常量有可能访问不到<br>3),推荐使用枚举保存一组相关的值(至少java5)<br>(5),继承接口    </p>
+<p>1),常量的命名规范是全部字母大写，eg：public static final int NUM=10;<br>2),接口的修饰符可能是包级访问级别的，所以public常量有可能访问不到<br>3),推荐使用枚举保存一组相关的值(至少java5)<br>(5),继承接口    </p>
 <p>1),接口可以使用extends关键字继承另一个接口<br>2),可以继承：抽象方法和默认方法，常量属性，嵌套类型<br>3),不能继承静态方法<br>(6),实现接口</p>
 <p>1),实现接口的具体类需要使用implements关键字，并且需要重写接口中所有的抽象方法。eg：public class Fish implements Swimable{}<br>2),实现接口的抽象类可以重写接口中的部分抽象方法。<br>3),一个类可以实现多个接口，但是只能继承一个类，而且应先继承后实现。<br>4),接口可以作为数据类型用来声明变量。<br>5),接口也可以继承接口。</p>
 <hr>
