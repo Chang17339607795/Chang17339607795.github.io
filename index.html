@@ -163,6 +163,764 @@
             
 <div class="cube-excerpt" id="cube-excerpt-">
     <header class="cube-excerpt-header">
+        <h1><a href="/2019/10/31/Java虚拟机/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-10-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h1 id="JVM内存结构-VS-Java内存模型-VS-Java对象模型"><a href="#JVM内存结构-VS-Java内存模型-VS-Java对象模型" class="headerlink" title="JVM内存结构 VS Java内存模型 VS Java对象模型"></a>JVM内存结构 VS Java内存模型 VS Java对象模型</h1><h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p>Java代码是要运行在虚拟机上的，而虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域，这些区域都有各自的用途，其中有些区域随着虚拟机进程的启动而存在。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-5.jpg" alt></p>
+<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>概述：较小的内存空间，为当前线程执行的字节码的行号指示器<br><br>作用：通过改变计数器的值来指定下一条需要执行的字节码指令，来恢复中断前程序运行的位置<br><br>特点：</p>
+<ol>
+<li>线程私有化，每个线程都有独立的程序计数器   </li>
+<li>无内存溢出</li>
+</ol>
+<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>概述：每个方法从调用直到执行的过程，对应着一个栈帧在虚拟机栈的入栈和出栈的过程<br><br>作用：每个方法执行都创建一个“栈帧”来存储局部变量表、操作数栈、动态链接、方法出口等信息<br><br>特点：</p>
+<ol>
+<li>线程私有化   </li>
+<li>生命周期与线程执行结束相同</li>
+</ol>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>创建时间：JVM启动时创建该区域<br><br>占用空间：Java虚拟机管理内存最大的一块区域<br><br>作用：用于存放对象实例及数组（所有new的对象）<br></p>
+<p>特点：</p>
+<ol>
+<li>垃圾收集器作用该区域，回收不使用的对象的内存空间</li>
+<li>各个线程共享的内存区域</li>
+<li>该区域的大小可通过参数设置</li>
+</ol>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>作用：用于存储类信息、常量、静态变量、是各个线程共享的内存区域</p>
+<h2 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h2><p>Java内存模型是根据英文Java Memory Model（JMM）翻译过来的。其实JMM并不像JVM内存结构一样是真实存在的。他只是一个抽象的概念，JMM是和多线程相关的，这个规范定义了一个线程对共享变量的写入时对另一个线程是可见的。</p>
+<p>在JMM中，我们把多个线程间通信的共享内存称之为主内存，而在并发编程中多个线程都维护了一个自己的本地内存（这是个抽象概念），其中保存的数据是主内存中的数据拷贝。而JMM主要是控制本地内存和主内存之间的数据交互的。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-6.jpg" alt></p>
+<h2 id="Java对象模型"><a href="#Java对象模型" class="headerlink" title="Java对象模型"></a>Java对象模型</h2><p>Java是一种面向对象的语言，而Java对象在JVM中的存储也是有一定的结构的。而这个关于Java对象自身的存储模型称之为Java对象模型。</p>
+<p>每一个Java类，在被JVM加载的时候，JVM会给这个类创建一个instanceKlass，保存在方法区，用来在JVM层表示该Java类。当我们在Java代码中，使用new创建一个对象的时候，JVM会创建一个instanceOopDesc对象，这个对象中包含了对象头以及实例数据。</p>
+<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-7.jpg" alt></p>
+<h2 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h2><ol>
+<li>JVM内存结构，和Java虚拟机的运行时区域有关。</li>
+<li>Java内存模型，和Java的并发编程有关。</li>
+<li>Java对象模型，和Java对象在虚拟机中的表现形式有关。</li>
+</ol>
+<h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><h2 id="GC垃圾收集器"><a href="#GC垃圾收集器" class="headerlink" title="GC垃圾收集器"></a>GC垃圾收集器</h2><h3 id="Serial垃圾收集器（单线程、复制算法）"><a href="#Serial垃圾收集器（单线程、复制算法）" class="headerlink" title="Serial垃圾收集器（单线程、复制算法）"></a>Serial垃圾收集器（单线程、复制算法）</h3><p>Serial(英文：连续)是最基本垃圾收集器，使用复制算法，曾经是 JDK1.3.1 之前新生代唯一的垃圾收集器。Serial 是一个单线程的收集器，它不但只会使用一个 CPU 或一条线程去完成垃圾收集工作，并且在进行垃圾收集的同时，必须暂停其他所有的工作线程，直到垃圾收集结束。</p>
+<p>Serial 垃圾收集器虽然在收集垃圾过程中需要暂停所有其他的工作线程，但是它简单高效，对于限定单个 CPU 环境来说，没有线程交互的开销，可以获得最高的单线程垃圾收集效率，因此 Serial垃圾收集器依然是 java 虚拟机运行在 Client 模式下默认的新生代垃圾收集器。</p>
+<h3 id="ParNew垃圾收集器（Serial-多线程）"><a href="#ParNew垃圾收集器（Serial-多线程）" class="headerlink" title="ParNew垃圾收集器（Serial + 多线程）"></a>ParNew垃圾收集器（Serial + 多线程）</h3><p>ParNew（Parallel:平行的） 垃圾收集器其实是 Serial 收集器的多线程版本，也使用复制算法，除了使用多线程进行垃 圾收集之外，其余的行为和 Serial 收集器完全一样，ParNew 垃圾收集器在垃圾收集过程中同样也 要暂停所有其他的工作线程。</p>
+<p>ParNew 收集器默认开启和 CPU 数目相同的线程数，可以通过-XX:ParallelGCThreads 参数来限 制垃圾收集器的线程数。</p>
+<p>ParNew 虽然是除了多线程外和 Serial 收集器几乎完全一样，但是 ParNew 垃圾收集器是很多 java 虚拟机运行在 Server 模式下新生代的默认垃圾收集器。</p>
+<h3 id="Parllel-Scavenge收集器-（多线程、复制算法）"><a href="#Parllel-Scavenge收集器-（多线程、复制算法）" class="headerlink" title="Parllel Scavenge收集器 （多线程、复制算法）"></a>Parllel Scavenge收集器 （多线程、复制算法）</h3><h3 id="Serial-Old收集器（单线程标记整理算法）"><a href="#Serial-Old收集器（单线程标记整理算法）" class="headerlink" title="Serial Old收集器（单线程标记整理算法）"></a>Serial Old收集器（单线程标记整理算法）</h3><h3 id="Parallel-Old收集器（多线程标记整理算法）"><a href="#Parallel-Old收集器（多线程标记整理算法）" class="headerlink" title="Parallel Old收集器（多线程标记整理算法）"></a>Parallel Old收集器（多线程标记整理算法）</h3><h3 id="CMS收集器（多线程标记清除算法）"><a href="#CMS收集器（多线程标记清除算法）" class="headerlink" title="CMS收集器（多线程标记清除算法）"></a>CMS收集器（多线程标记清除算法）</h3><p>CMS（Concurrent Mark-Sweep）是以牺牲吞吐量为代价来获得最短回收停顿时间的垃圾回收器。对于要求服务器响应速度的应用上，这种垃圾回收器非常适合。</p>
+<p>在启动JVM参数加上-XX:+UseConcMarkSweepGC ，这个参数表示对于老年代的回收采用CMS。</p>
+<p>CMS采用的基础算法是：标记–清除</p>
+<p>CMS过程</p>
+<ol>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>并发预清除</li>
+<li>重新标记</li>
+<li>并发清理</li>
+<li>并发重置</li>
+</ol>
+<h4 id="CMS的缺点"><a href="#CMS的缺点" class="headerlink" title="CMS的缺点"></a>CMS的缺点</h4><ol>
+<li>CMS采用的基础算法是标记–清除。所有CMS不会整理、压缩堆空间。经过CMS收集的堆会产生空间碎片。虽然节约了垃圾回收的停顿时间，但也带来堆空间的浪费。</li>
+<li>需要更多的CPU资源，为了让应用程序不停顿，CMS线程和应用程序线程并发执行，这样就需要有更多的CPU，单纯靠线程切换是不靠谱的。</li>
+<li>CMS的另一个缺点是它需要更大的堆空间。因为CMS标记阶段应用程序的线程还是在执行的，那么就会有堆空间继续分配的情况，为了保证在CMS回<br>收完堆之前还有空间分配给正在运行的应用程序，必须预留一部分空间。也就是说，CMS不会在老年代满的时候才开始收集。相反，它会尝试更早的开始收集，已 避免上面提到的情况：在回收完成之前，堆没有足够空间分配！默认当老年代使用68%的时候，CMS就开始行动了。 – XX:CMSInitiatingOccupancyFraction =n 来设置这个阀值。</li>
+</ol>
+<h4 id="CMS的使用场景"><a href="#CMS的使用场景" class="headerlink" title="CMS的使用场景"></a>CMS的使用场景</h4><p>如果你的应用程序对停顿比较敏感，并且在应用程序运行的时候可以提供更大的内存和更多的CPU(也就是硬件牛逼)，那么使用CMS来收集会给你带来好处。还有，如果在JVM中，有相对较多存活时间较长的对象(老年代比较大)会更适合使用CMS。</p>
+<h3 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h3><p>G1(Garbage First)垃圾收集器是当今垃圾回收技术最前沿的成果之一。早在JDK7就已加入JVM的收集器大家庭中，成为HotSpot重点发展的垃圾回收技术，JDK9 默认就是使用的G1垃圾收集器。</p>
+<p>不同于其他的分代回收算法，G1最大的特点是引入分区的思路，弱化了分代的概念，合理利用垃圾收集各个周期的资源，解决了其他收集器甚至CMS的众多缺陷。每块区域既有可能属于O区、也有可能是Y区，且每类区域空间可以是不连续的（对比CMS的O区和Y区都必须是连续的）。</p>
+<p>G1有三个明显特点：1、压缩空间强，避免碎片 2、空间使用更灵活 3、GC停顿周期更可控， 避免雪崩</p>
+<p>一次完整G1GC的详细过程：</p>
+<ol>
+<li>YGC（不同于CMS）</li>
+<li>并发阶段</li>
+<li>混合模式</li>
+<li>full GC（一般在G1出现问题时发生）</li>
+</ol>
+<p>目前CMS还是默认首选的GC策略、可能在以下场景下G1更适合：</p>
+<ol>
+<li>服务端多核CPU、JVM内存占用较大的应用（至少大于4G）</li>
+<li>应用在运行过程中产生大量内存碎片、需要经常压缩空间</li>
+<li>想要更可控、可预期的GC停顿周期：防止高并发应用雪崩现象</li>
+</ol>
+<h4 id="G1对比CMS的区别"><a href="#G1对比CMS的区别" class="headerlink" title="G1对比CMS的区别"></a>G1对比CMS的区别</h4><ol>
+<li>G1在压缩空间方面有优势</li>
+<li>G1通过将内存空间分成区域（Region）的方式避免内存碎片问题</li>
+<li>Eden，Survivor，Old区不再固定、在内存使用效率上来说更灵活</li>
+<li>G1可以通过设置预期停顿时间（Pause Time）来控制垃圾收集时间避免应用雪崩现象，可驾驭度，G1 是可以设定GC 暂停的 target 时间的，根据预测模型选取性价比收益更高，且一定数目的 Region 作为<br>CSet，能回收多少便是多少。</li>
+<li>G1在回收内存后会马上同时做，合并空闲内存的工作、而CMS默认是在STW（stop the world）的时候做</li>
+<li>G1会在Young GC中使用、而CMS只能在O区使用</li>
+<li>SATB 算法在 remark 阶段延迟极低以及借助 RSet 的实现可以不做全堆扫描（G1 对大堆更友好）以外，最重要的是可驾驭度<h2 id="Major-GC和Full-GC的区别是什么？触发条件呢？"><a href="#Major-GC和Full-GC的区别是什么？触发条件呢？" class="headerlink" title="Major GC和Full GC的区别是什么？触发条件呢？"></a>Major GC和Full GC的区别是什么？触发条件呢？</h2></li>
+</ol>
+<p>针对HotSpot VM的实现，它里面的GC其实准确分类只有两大种：<br>Partial GC：并不收集整个GC堆的模式</p>
+<ul>
+<li>Young GC：只收集young gen的GC</li>
+<li>Old GC：只收集old gen的GC。只有CMS的concurrent collection是这个模式</li>
+<li>Mixed GC：收集整个young gen以及部分old gen的GC。只有G1有这个模式</li>
+</ul>
+<p>Full GC：收集整个堆，包括young gen、old gen、perm gen（如果存在的话）等所有部分的模式。</p>
+<h2 id="什么时候会触发full-gc"><a href="#什么时候会触发full-gc" class="headerlink" title="什么时候会触发full gc"></a>什么时候会触发full gc</h2><ol>
+<li>System.gc()方法的调用</li>
+<li>老年代空间不足</li>
+<li>永生区空间不足（JVM规范中运行时数据区域中的方法区，在HotSpot虚拟机中又被习惯称为永生代或者永生区，Permanet Generation中存放的为一些class的信息、常量、静态变量等数据）</li>
+<li>GC时出现promotion failed和concurrent mode failure</li>
+<li>统计得到的Minor GC晋升到旧生代平均大小大于老年代剩余空间</li>
+<li>堆中分配很大的对象</li>
+</ol>
+<h2 id="可以作为root的对象"><a href="#可以作为root的对象" class="headerlink" title="可以作为root的对象"></a>可以作为root的对象</h2><ol>
+<li>类中的静态变量，当它持有一个指向一个对象的引用时，它就作为root</li>
+<li>活动着的线程，可以作为root</li>
+<li>一个Java方法的参数或者该方法中的局部变量，这两种对象可以作为root</li>
+<li>JNI方法中的局部变量或者参数，这两种对象可以作为root</li>
+</ol>
+<p>例子：下述的Something和Apple都可以作为root对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> AClass&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Something;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Apple;</span><br><span class="line">   <span class="string">''</span><span class="string">''</span><span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> Java方法的参数和方法中的局部变量，可以作为root.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Aclass&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Object A)</span></span>&#123;</span><br><span class="line">    ObjectB b = <span class="keyword">new</span> ObjectB; </span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新生代转移到老年代的触发条件"><a href="#新生代转移到老年代的触发条件" class="headerlink" title="新生代转移到老年代的触发条件"></a>新生代转移到老年代的触发条件</h2><ol>
+<li>长期存活的对象</li>
+<li>大对象直接进入老年代</li>
+<li>minor gc后，survivor仍然放不下</li>
+<li>动态年龄判断 ，大于等于某个年龄的对象超过了survivor空间一半 ，大于等于某个年龄的对象直接进入老年代</li>
+</ol>
+<h2 id="G1和CMS的区别"><a href="#G1和CMS的区别" class="headerlink" title="G1和CMS的区别"></a>G1和CMS的区别</h2><ol>
+<li>G1同时回收老年代和年轻代，而CMS只能回收老年代，需要配合一个年轻代收集器。另外G1的分代更多是逻辑上的概念，G1将内存分成多个等大小的region，Eden/ Survivor/Old分别是一部分region的逻辑集合，物理上内存地址并不连续。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-8.jpg" alt></li>
+<li>CMS在old gc的时候会回收整个Old区，对G1来说没有old gc的概念，而是区分Fully young gc和Mixed gc，前者对应年轻代的垃圾回收，后者混合了年轻代和部分老年代的收集，因此每次收集肯定会回收年轻代，老年代根据内存情况可以不回收或者回收部分或者全部(这种情况应该是可能出现)。</li>
+</ol>
+<h1 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h1><h2 id="双亲委派模型中有哪些方法。用户如何自定义类加载器-。怎么打破双亲委托机制"><a href="#双亲委派模型中有哪些方法。用户如何自定义类加载器-。怎么打破双亲委托机制" class="headerlink" title="双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制"></a>双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制</h2><ol>
+<li>双亲委派模型中用到的方法：</li>
+</ol>
+<ul>
+<li>findLoadedClass(),</li>
+<li>loadClass()</li>
+<li>findBootstrapClassOrNull()</li>
+<li>findClass()</li>
+<li>defineClass()：把二进制数据转换成字节码。</li>
+<li>resolveClass()</li>
+</ul>
+<p>自定义类加载器的方法：继承 ClassLoader 类,重写 findClass()方法 。</p>
+<ol start="2">
+<li>继承ClassLoader覆盖loadClass方法<br>原顺序</li>
+<li>findLoadedClass</li>
+<li>委托parent加载器加载（这里注意bootstrap加载器的parent为null)</li>
+<li>自行加载<br>打破委派机制要做的就是打乱2和3的顺序，通过类名筛选自己要加载的类，其他的委托给parent加载器。</li>
+</ol>
+<h1 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h1><p>内存溢出是指应用系统中存在无法回收的内存或使用的内存过多，最终使得程序运行要用到的内存大于虚拟机能提供的最大内存。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>引起内存溢出的原因有很多种，常见的有以下几种：</p>
+<ol>
+<li>内存中加载的数据量过于庞大，如一次从数据库取出过多数据；</li>
+<li>集合类中有对对象的引用，使用完后未清空，使得JVM不能回收；</li>
+<li>代码中存在死循环或循环产生过多重复的对象实体；</li>
+<li>使用的第三方软件中的BUG；</li>
+<li>启动参数内存值设定的过小；</li>
+</ol>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>内存溢出虽然很棘手，但也有相应的解决办法，可以按照从易到难，一步步的解决。</p>
+<p>第一步，就是修改JVM启动参数，直接增加内存。JVM默认可以使用的内存为64M，Tomcat默认可以使用的内存为128MB，对于稍复杂一点的系统就会不够用。在某项目中，就因为启动参数使用的默认值，经常报“OutOfMemory”错误。因此，-Xms，-Xmx参数一定不要忘记加。</p>
+<p>第二步，检查错误日志，查看“OutOfMemory”错误前是否有其它异常或错误。查看日志对于分析内存溢出是非常重要的，通过仔细查看日志，分析内存溢出前做过哪些操作，可以大致定位有问题的模块。</p>
+<p>第三步，找出可能发生内存溢出的位置。重点排查以下几点：</p>
+<ol>
+<li><p>检查代码中是否有死循环或递归调用。</p>
+</li>
+<li><p>检查是否有大循环重复产生新对象实体。</p>
+</li>
+<li><p>检查对数据库查询中，是否有一次获得全部数据的查询。一般来说，如果一次取十万条记录到内存，就可能引起内存溢出。这个问题比较隐蔽，在上线前，数据库中数据较少，不容易出问题，上线后，数据库中数据多了，一次查询就有可能引起内存溢出。因此对于数据库查询尽量采用分页的方式查询。</p>
+</li>
+<li><p>检查List、MAP等集合对象是否有使用完后，未清除的问题。List、MAP等集合对象会始终存有对对象的引用，使得这些对象不能被GC回收。</p>
+</li>
+</ol>
+<p>第四步，使用内存查看工具动态查看内存使用情况。</p>
+<p>内存查看工具有许多，比较有名的有：Optimizeit Profiler、JProbe Profiler、JinSight和Java1.5的Jconsole等。它们的基本工作原理大同小异，都是监测Java程序运行时所有对象的申请、释放等动作，将内存管理的所有信息进行统计、分析、可视化。开发人员可以根据这些信息判断程序是否有内存泄漏问题。一般来说，一个正常的系统在其启动完成后其内存的占用量是基本稳定的，而不应该是无限制的增长的。持续地观察系统运行时使用的内存的大小，可以看到在内存使用监控窗口中是基本规则的锯齿形的图线，如果内存的大小持续地增长，则说明系统存在内存泄漏问题。通过间隔一段时间取一次内存快照，然后对内存快照中对象的使用与引用等信息进行比对与分析，可以找出是哪个类的对象在泄漏。</p>
+<h1 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h1><ol>
+<li>递归调用层次太多。递归函数在运行时会执行压栈操作，当压栈次数太多时，也会导致堆栈溢出。</li>
+<li>局部静态变量体积太大,局部数组过大。当函数内部的数组过大时，有可能导致堆栈溢出。</li>
+<li>指针或数组越界。这种情况最常见，例如进行字符串拷贝，或处理用户输入等等。</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>用栈把递归转换成非递归</li>
+<li>使用static对象替代nonstatic局部对象</li>
+<li>增大堆栈大小值</li>
+</ol>
+<h1 id="java应用系统运行速度慢的解决方法"><a href="#java应用系统运行速度慢的解决方法" class="headerlink" title="java应用系统运行速度慢的解决方法"></a>java应用系统运行速度慢的解决方法</h1><p> 问题解决思路：</p>
+<ol>
+<li>查看部署应用系统的系统资源使用情况，CPU,内存，IO这几个方面去看。找到对就的进程。</li>
+<li>使用jstack,jmap等命令查看是JVM是在在什么类型的内存空间中做GC（内存回收），和查看GC日志查看是那段代码在占用内存。<br> ​    首先，调节内存的参数设置，如果还是一样的问题，就要定位到相应的代码。</li>
+<li>定位代码，修改代码（一般是代码的逻辑问题，或者代码获取的数据量过大。）</li>
+</ol>
+<h1 id="逃逸分析"><a href="#逃逸分析" class="headerlink" title="逃逸分析"></a>逃逸分析</h1><p>逃逸是指在某个方法之内创建的对象，除了在方法体之内被引用之外，还在方法体之外被其它变量引用到；这样带来的后果是在该方法执行完毕之后，该方法中创建的对象将无法被GC回收，由于其被其它变量引用。正常的方法调用中，方法体中创建的对象将在执行完毕之后，将回收其中创建的对象；故由于无法回收，即成为逃逸。</p>
+<p>逃逸分析可以分析出某个对象是否永远只在某个方法、线程的范围内，并没有“逃逸”出这个范围，逃逸分析的一个结果就是对于某些未逃逸对象可以直接在栈上分配，由于该对象一定是局部的，所以栈上分配不会有问题。</p>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><h2 id="即时编译器的优化方法"><a href="#即时编译器的优化方法" class="headerlink" title="即时编译器的优化方法"></a>即时编译器的优化方法</h2><p>字节码可以通过以下两种方式转换成合适的语言：</p>
+<ol>
+<li>解释器</li>
+<li>即时编译器<br>即时编译器把<strong>整段字节码编译成本地代码</strong>，执行本地代码比一条一条进行解释执行的速度快很多，因为本地代码是保存在缓存里的</li>
+</ol>
+<h2 id="编译过程的五个阶段"><a href="#编译过程的五个阶段" class="headerlink" title="编译过程的五个阶段"></a>编译过程的五个阶段</h2><ol>
+<li>第一阶段：词法分析</li>
+<li>第二阶段：语法分析</li>
+<li>第三阶段:词义分析与中间代码产生</li>
+<li>第四阶段：优化</li>
+<li>第五阶段：目标代码生成</li>
+</ol>
+<h2 id="JVM、Java编译器和Java解释器"><a href="#JVM、Java编译器和Java解释器" class="headerlink" title="JVM、Java编译器和Java解释器"></a>JVM、Java编译器和Java解释器</h2><ol>
+<li><p>Java编译器：将Java源文件（.java文件）编译成字节码文件（.class文件，是特殊的二进制文件，二进制字节码文件），这种字节码就是JVM的“机器语言”。javac.exe可以简单看成是Java编译器。注意，它不会执行代码</p>
+<p>Java解释器：是JVM的一部分。Java解释器用来解释执行Java编译器编译后的程序。java.exe可以简单看成是Java解释器。注意，它会执行代码</p>
+<p>JVM是Java平台无关的基础。JVM负责运行字节码：JVM把每一条要执行的字节码交给解释器，翻译成对应的机器码，然后由解释器执行。JVM解释执行字节码文件就是JVM操作Java解释器进行解释执行字节码文件的过程。</p>
+</li>
+<li><p>JVM：一种能够运行Java字节码（Java bytecode）的虚拟机。</p>
+<p>字节码：字节码是已经经过编译，但与特定机器码无关，需要解释器转译后才能成为机器码的中间代码。</p>
+</li>
+<li><p>Java字节码：是Java虚拟机执行的一种指令格</p>
+</li>
+</ol>
+<p>Java字节码的执行有两种方式：<br>　　1. 即时编译方式：解释器先将字节码编译成机器码，然后再执行该机器码。<br>　　2. 解释执行方式：解释器通过每次解释并执行一小段代码来完成Java字节码程 序的所有操作。</p>
+<p>无论是采用解释器进行解释执行，还是采用即时编译器进行编译执行，最终字节码都需要被转换为对应平台的本地机器指令。</p>
+<p>从表象意义上看，重点就在：<br>解释：输入程序代码 -&gt; 得到执行结果，从用户的角度看一步到位<br>编译：输入程序代码 -&gt; 得到可执行代码<br>要得到执行结果还得再去执行可执行代码</p>
+<p>疑问,解释器通过翻译将字节码转换为机器码，即时编译器通过编译将字节码转换为机器码，翻译？编译？为什么都是一样的操作？？？</p>
+<ol>
+<li>每次读一代码就将字节码起转换（翻译）为JVM可执行的指令，叫翻译</li>
+<li>一次性全部将字节码转换为JVM可执行的指令，叫编译</li>
+</ol>
+<h2 id="JIT-编译过程"><a href="#JIT-编译过程" class="headerlink" title="JIT 编译过程"></a>JIT 编译过程</h2><p>当 JIT 编译启用时（默认是启用的），JVM 读入.class 文件解释后，将其发给 JIT 编译器。JIT 编译器将字节码编译成本机机器代码，下图展示了该过程。</p>
+<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-15.png" alt></p>
+<p>即时编译器是 Java 虚拟机中相对独立的模块，它主要负责接收 Java 字节码，并生成可以直接运行的二进制码。<br>即时编译器与 Java 虚拟机的交互可以分为如下三个方面。</p>
+<ol>
+<li>响应编译请求；</li>
+<li>获取编译所需的元数据（如类、方法、字段）和反映程序执行状态的 profile；</li>
+<li>将生成的二进制码部署至代码缓存（code cache）里。</li>
+</ol>
+<p>许多开发者会觉得用 C++ 写的 C2 肯定要比 Graal 快。实际上，在充分预热的情况下，Java 程序中的热点代码早已经通过即时编译转换为二进制码，在执行速度上并不亚于静态编译的 C++ 程序。</p>
+<h2 id="Graal-的实现"><a href="#Graal-的实现" class="headerlink" title="Graal 的实现"></a>Graal 的实现</h2><p>HotSpot集成了两个JIT compiler — C1及C2（或称为Client及Server）。两者的区别在于，前者没有应用激进的优化技术，因为这些优化往往伴随着耗时较长的代码分析。因此，C1的编译速度较快，而C2所编译的方法运行速度较快。</p>
+<p>Java 7引入了tiered compilation的概念，综合了C1的高启动性能及C2的高峰值性能。这两个JIT compiler以及interpreter将HotSpot的执行方式划分为五个级别：</p>
+<ol>
+<li>level 0：interpreter解释执行</li>
+<li>level 1：C1编译，无profiling</li>
+<li>level 2：C1编译，仅方法及循环back-edge执行次数的profiling</li>
+<li>level 3：C1编译，除level 2中的profiling外还包括branch（针对分支跳转字节码）及receiver type（针对成员方法调用或类检测，如checkcast，instnaceof，aastore字节码）的profiling</li>
+<li>level 4：C2编译</li>
+</ol>
+<p>Graal可替换C2成为HotSpot的顶层JIT compiler，即上述level 4。与C2相比，Graal采用更加激进的优化方式，因此当程序达到稳定状态后，其执行效率（峰值性能）将更有优势。</p>
+<p>Graal 和 C2 最为明显的一个区别是：Graal 是用 Java 写的，许多C2中实现的优化均被移植到Graal中.而 C2 是用 C++ 写的。相对来说，Graal 更加模块化，也更容易开发与维护。在充分预热的情况下，Java 程序中的热点代码早已经通过即时编译转换为二进制码，在执行速度上并不亚于静态编译的 C++ 程序。即便是解释执行 Graal，也仅是会减慢编译效率，而并不影响编译结果的性能。Graal 和 C2 另一个优化上的分歧则是方法内联算法。相对来说，Graal 的内联算法对新语法、新语言更加友好，例如 Java 8 的 lambda 表达式以及 Scala 语言。</p>
+<p>Graal 编译器将编译过程分为前端和后端两大部分。前端用于实现平台无关的优化（如方法内联），以及小部分平台相关的优化；而后端则负责大部分的平台相关优化（如寄存器分配），以及机器码的生成。</p>
+<p>Graal 和 C2 都采用了 Sea-of-Nodes IR。严格来说，这里指的是 Graal 的前端，而后端采用的是另一种非 Sea-of-Nodes 的 IR。通常，我们将前端的 IR 称之为 High-level IR，或者 HIR；后端的 IR 则称之为 Low-level IR，或者 LIR。</p>
+<p>Graal 是一个用 Java 写就的、并能够将 Java 字节码转换成二进制码的即时编译器。它通过 JVMCI 与 Java 虚拟机交互，响应由后者发出的编译请求、完成编译并部署编译结果。</p>
+<p>对 Java 程序而言，Graal 编译结果的性能略优于 OpenJDK 中的 C2；对 Scala 程序而言，它的性能优势可达到 10%（企业版甚至可以达到 20%！）。这背后离不开 Graal 所采用的激进优化方式。</p>
+<p>这种基于假设的优化手段。在编译过程中，Graal 支持自定义假设，并且直接与去优化节点相关联。</p>
+<h2 id="GraalVM-中的-Ahead-Of-Time（AOT）"><a href="#GraalVM-中的-Ahead-Of-Time（AOT）" class="headerlink" title="GraalVM 中的 Ahead-Of-Time（AOT）"></a>GraalVM 中的 Ahead-Of-Time（AOT）</h2><p>GraalVM 是一个高性能的、支持多种编程语言的执行环境。它既可以在传统的 OpenJDK 上运行，也可以通过 AOT（Ahead-Of-Time）编译成可执行文件单独运行，甚至可以集成至数据库中运行。<br>˚<br>即时编译指的是在程序的运行过程中，将字节码转换为可在硬件上直接运行的机器码，并部署至托管环境中的过程。</p>
+<p>而AOT 编译指的则是，在程序运行之前，便将字节码转换为机器码的过程。它的成果可以是需要链接至托管环境中的动态共享库，也可以是独立运行的可执行文件。</p>
+<p>AOT 编译的优点：无须在运行过程中耗费 CPU 资源来进行即时编译，而程序也能够在启动伊始就达到理想的性能。</p>
+<p>AOT 编译的缺点：AOT 编译无法得知程序运行时的信息，因此也（1）无法进行基于类层次分析的完全虚方法内联，或者（2）基于程序 profile 的投机性优化（并非硬性限制，我们可以通过限制运行范围，或者利用上一次运行的程序 profile 来绕开这两个限制）。这两者都会影响程序的峰值性能。</p>
+<p>Java 9 引入了实验性 AOT 编译工具jaotc。它借助了 Graal 编译器，将所输入的 Java 类文件（class字节码文件）转换为机器码，并存放至生成的动态共享库之中</p>
+<p>源文件就是程序员们所编写出来的文件 程序员们能看懂的文件<br>类文件则是利用java虚拟机生成的编译文件 是用来给机器看的机器语言</p>
+<h1 id="JVM的Intrinsics方法"><a href="#JVM的Intrinsics方法" class="headerlink" title="JVM的Intrinsics方法"></a>JVM的Intrinsics方法</h1><p>在hotspot jvm里会定义一些intrinsic的方法，从而可以定义自己独有的一些编译的算法，根据不同的架构使用不同的指令集，比如Math.sin,Math.cos之类.</p>
+<p>对每个方法hotspot jvm都会定义一个instrinisics id, 这个id可以用于区分java 里自己定义的lib类的方法还是用户自己定义的java的类的方法，用户自己写的类会用 vmIntrinsics::_none 来表示.</p>
+<p>CallGenerator是在hotspot jvm中方法调用的核心，不同运行方式是由不同的call generator决定的，而instrinsic_id又是决定不同的call generator的key.</p>
+<p>对Java自定义的lib库的方法，jvm 用了LibraryIntrinsic 作为lib库的CallGenerator， 在generate 函数的时候，初始化了LibraryCallKit，里面inline了很多lib的方法</p>
+<h1 id="JVM的invokedynamic方法"><a href="#JVM的invokedynamic方法" class="headerlink" title="JVM的invokedynamic方法"></a>JVM的invokedynamic方法</h1><p>我们常用的JavaScript, Python, Ruby都可以归为动态语言，而Java, Bytecode都可以认为是静态语言。这两种语言最大的差别是变量和函数的类型是不是在程序运行中确定的。</p>
+<p>invokedynamic 是 Java 7 引入的一条新指令，用以支持动态语言的方法调用。具体来说，它将调用点（CallSite）抽象成一个 Java 类，并且将原本由 Java 虚拟机控制的方法调用以及方法链接暴露给了应用程序。在运行过程中，每一条 invokedynamic 指令将捆绑一个调用点，并且会调用该调用点所链接的方法句柄。</p>
+<p>在第一次执行 invokedynamic 指令时，Java 虚拟机会调用该指令所对应的启动方法（BootStrap Method），来生成前面提到的调用点，并且将之绑定至该 invokedynamic 指令中。在之后的运行过程中，Java 虚拟机则会直接调用绑定的调用点所链接的方法句柄。</p>
+<p>在 Java 8 中，Lambda 表达式也是借助 invokedynamic 来实现的。<br>Lambda 表达式到函数式接口的转换是通过 invokedynamic 指令来实现的。该 invokedynamic 指令对应的启动方法将通过 ASM 生成一个适配器类。<br>对于没有捕获其他变量的 Lambda 表达式，该 invokedynamic 指令始终返回同一个适配器类的实例。对于捕获了其他变量的 Lambda 表达式，每次执行 invokedynamic 指令将新建一个适配器类实例。</p>
+<p>不管是捕获型的还是未捕获型的 Lambda 表达式，它们的性能上限皆可以达到直接调用的性能。其中，捕获型 Lambda 表达式借助了即时编译器中的逃逸分析，来避免实际的新建适配器类实例的操作。</p>
+<h1 id="方法句柄"><a href="#方法句柄" class="headerlink" title="方法句柄"></a>方法句柄</h1><p>invokedynamic 底层机制的基石：方法句柄。</p>
+<p>方法句柄是一个强类型的、能够被直接执行的引用。它仅关心所指向方法的参数类型以及返回类型，而不关心方法所在的类以及方法名。方法句柄的权限检查发生在创建过程中，相较于反射调用节省了调用时反复权限检查的开销。</p>
+<p>方法句柄可以通过 invokeExact 以及 invoke 来调用。其中，invokeExact 要求传入的参数和所指向方法的描述符严格匹配。方法句柄还支持增删改参数的操作，这些操作是通过生成另一个充当适配器的方法句柄来实现的。</p>
+<p>方法句柄的调用和反射调用一样，都是间接调用，同样会面临无法内联的问题。</p>
+<h1 id="栈上分配和TLAB"><a href="#栈上分配和TLAB" class="headerlink" title="栈上分配和TLAB"></a>栈上分配和TLAB</h1><h2 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h2><p>JVM提供了一种叫做栈上分配的概念，针对那些作用域不会逃逸出方法的对象，在分配内存时不在将对象分配在堆内存中，而是将对象属性打散后分配在栈（线程私有的，属于栈内存）上，这样，随着方法的调用结束，栈空间的回收就会随着将栈上分配的打散后的对象回收掉，不再给gc增加额外的无用负担，从而提升应用程序整体的性能</p>
+<h2 id="线程私有分配区TLAB"><a href="#线程私有分配区TLAB" class="headerlink" title="线程私有分配区TLAB"></a>线程私有分配区TLAB</h2><p>对象分配在堆上，而堆是一个全局共享的区域，当多个线程同一时刻操作堆内存分配对象空间时，就需要通过锁机制或者指针碰撞的方式确保不会申请到同一块内存，而这带来的效果就是对象分配效率变差（尽管JVM采用了CAS的形式处理分配失败的情况），但是对于存在竞争激烈的分配场合仍然会导致效率变差。因此，在Hotspot 1.6的实现中引入了TLAB技术。</p>
+<p>TLAB全称ThreadLocalAllocBuffer，是线程的一块私有内存，如果设置了虚拟机参数 -XX:UseTLAB，在线程初始化时，同时也会申请一块指定大小的内存，只给当前线程使用，这样每个线程都单独拥有一个Buffer，如果需要分配内存，就在自己的Buffer上分配，这样就不存在竞争的情况，可以大大提升分配效率。</p>
+<p>TLAB只是让每个线程有私有的分配指针，但底下存对象的内存空间还是给所有线程访问的，只是其它线程无法在这个区域分配而已。当一个TLAB用满（分配指针_top撞上分配极限_end了），就新申请一个TLAB。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ThreadLocalAllocBuffer: public CHeapObj&lt;mtThread&gt; &#123;</span><br><span class="line">  HeapWord* _start;                              <span class="comment">// address of TLAB</span></span><br><span class="line">  HeapWord* _top;                                <span class="comment">// address after last allocation</span></span><br><span class="line">  HeapWord* _pf_top;                             <span class="comment">// allocation prefetch watermark</span></span><br><span class="line">  HeapWord* _end;                                <span class="comment">// allocation end (excluding alignment_reserve)</span></span><br><span class="line">  size_t    _desired_size;                       <span class="comment">// desired size   (including alignment_reserve)</span></span><br><span class="line">  size_t    _refill_waste_limit;                 <span class="comment">// hold onto tlab if free() is larger than this</span></span><br><span class="line">  .....................省略......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>TLAB空间主要有3个指针：_start、_top、_end。_start指针表示TLAB空间的起始内存，_end指针表示TLAB空间的结束地址，通过_start和_end指针，表示线程管理的内存区域，每个线程都会从Eden分配一大块空间（TLAB实际上是一块Eden区中划出的线程私有的堆空间），标识出 Eden 里被这个 TLAB 所管理的区域，卡住eden里的一块空间不让其它线程来这里分配</p>
+<p>当进行对象的内存划分的时候，就会通过移动_top指针分配内存（TLAB，Eden，To，From 区主要采用指针碰撞来分配内存（pointer bumping）），在TLAB空间为对象分配内存需要遵循下面的原则：</p>
+<ol>
+<li>obj_size + tlab_top &lt;= tlab_end，直接在TLAB空间分配对象</li>
+<li>obj_size + tlab_top &gt;= tlab_end  &amp;&amp;  tlab_free &gt; tlab_refill_waste_limit，对象不在TLAB分配，在Eden区分配。（tlab_free：剩余的内存空间，tlab_refill_waste_limit：允许浪费的内存空间）</li>
+<li>obj_size + tlab_top &gt;= tlab_end  &amp;&amp;  tlab_free &lt; _refill_waste_limit，重新分配一块TLAB空间，在新的TLAB中分配对象</li>
+</ol>
+<h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-2.png" alt></p>
+<h2 id="对象分配流程图"><a href="#对象分配流程图" class="headerlink" title="对象分配流程图"></a>对象分配流程图</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-1.png" alt></p>
+<h1 id="Java-8-从永久代（PermGen）到元空间（Metaspace）"><a href="#Java-8-从永久代（PermGen）到元空间（Metaspace）" class="headerlink" title="Java 8: 从永久代（PermGen）到元空间（Metaspace）"></a>Java 8: 从永久代（PermGen）到元空间（Metaspace）</h1><p>在 Java8 中，永久代（PermGen）已经被移除，被一个称为“元空间（Metaspace）”的区域所取代。元空间并不在虚拟机中，而是使用本地内存（Native memory）</p>
+<p>类的元数据信息（metadata）转移到Metaspace的原因是PermGen很难调整。PermGen中类的元数据信息在每次FullGC的时候可能会被收集。而且应该为PermGen分配多大的空间很难确定，因为PermSize的大小依赖于很多因素，比如JVM加载的class的总数，常量池的大小，方法的大小等。</p>
+<p>由于类的元数据可以在本地内存(native memory)之外分配,所以其最大可利用空间是整个系统内存的可用空间。这样，你将不再会遇到OOM错误，溢出的内存会涌入到交换空间。最终用户可以为类元数据指定最大可利用的本地内存空间，JVM也可以增加本地内存空间来满足类元数据信息的存储。</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/10/31/Java虚拟机/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/10/31/Java并发/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-10-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="JAVA-线程状态转换图示"><a href="#JAVA-线程状态转换图示" class="headerlink" title="JAVA 线程状态转换图示"></a>JAVA 线程状态转换图示</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-3.jpg" alt></p>
+<p>线程共包括以下5种状态。</p>
+<ol>
+<li><p>新建状态(New)         : 线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。</p>
+</li>
+<li><p>就绪状态(Runnable): 也被称为“可执行状态”。线程对象被创建后，其它线程调用了该对象的start()方法，从而来启动该线程。例如，thread.start()。处于就绪状态的线程，随时可能被CPU调度执行。</p>
+</li>
+<li><p>运行状态(Running) : 线程获取CPU权限进行执行。需要注意的是，线程只能从就绪状态进入到运行状态。</p>
+</li>
+<li><p>阻塞状态(Blocked)  : 阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况分三种：</p>
+<p> 1、等待阻塞 – 通过调用线程的wait()方法，让线程等待某工作的完成。</p>
+<p> 2、同步阻塞 – 线程在获取synchronized同步锁失败(因为锁被其它线程所占用)，它会进入同步阻塞状态。</p>
+<p> 3、 其他阻塞 – 通过调用线程的sleep()或join()或发出了I/O请求时，线程会进入到阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。</p>
+</li>
+<li><p>死亡状态(Dead)    : 线程执行完了或者因异常退出了run()方法，该线程结束生命周期。</p>
+<p> 1、run()或者call()方法执行完成，线程正常结束；</p>
+<p> 2、线程抛出一个未捕获的Exception或Error；</p>
+<p> 3、直接调用该线程的stop()方法来结束该线程；</p>
+</li>
+</ol>
+<p>线程进入等待状态有三种方式：</p>
+<ol>
+<li>cpu调度给优先级更高的线程</li>
+<li>线程要等待获得资源或者信号</li>
+<li>时间片的轮转，时间片到了，进入等待状态</li>
+</ol>
+<h3 id="线程为什么调用start-而不是直接调用run"><a href="#线程为什么调用start-而不是直接调用run" class="headerlink" title="线程为什么调用start()而不是直接调用run()"></a>线程为什么调用start()而不是直接调用run()</h3><ol>
+<li>run()方法只是一个类中的普通方法，直接执行和普通的方法没有设么两样</li>
+<li>start()方法则不同，它首先做了创建线程等一系列工作，然后调用行的run()方法</li>
+</ol>
+<p>所以：start() 创建新进程 ，run() 并没有</p>
+<p>新建线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread();</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+
+<p>这样就开启了一个线程。<br>有一点需要注意的是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread();</span><br><span class="line">thread.run();</span><br></pre></td></tr></table></figure>
+
+<p>直接调用run方法是无法开启一个新线程的。直接调用run其实就是一个普通的函数调用而已，并没有达到多线程的作用</p>
+<p>start方法其实是在一个新的操作系统线程上面去调用run方法。换句话说，直接调用run方法而不是调用start方法的话，它并不会开启新的线程，而是在调用run的当前的线程当中执行你的操作。</p>
+<h2 id="synchronized-的底层怎么实现"><a href="#synchronized-的底层怎么实现" class="headerlink" title="synchronized 的底层怎么实现"></a>synchronized 的底层怎么实现</h2><ol>
+<li><strong>同步代码块</strong>(Synchronization)基于进入和退出管程(Monitor)对象实现。每个对象有一个监视器锁（monitor）。当monitor被占用时就会处于锁定状态，线程执行monitorenter指令时尝试获取monitor的所有权，过程如下：</li>
+</ol>
+<ul>
+<li><p>如果monitor的进入数为0，则该线程进入monitor，然后将进入数设置为1，该线程即为monitor的所有者。</p>
+</li>
+<li><p>如果线程已经占有该monitor，只是重新进入，则进入monitor的进入数加1.</p>
+</li>
+<li><p>如果其他线程已经占用了monitor，则该线程进入阻塞状态，直到monitor的进入数为0，再重新尝试获取monitor的所有权。</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>被 synchronized 修饰的同步方法</strong>并没有通过指令monitorenter和monitorexit来完成（理论上其实也可以通过这两条指令来实现），不过相对于普通方法，其常量池中多了ACC_SYNCHRONIZED标示符。JVM就是根据该标示符来实现方法的同步的：当方法调用时，调用指令将会检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置，如果设置了，执行线程将先获取monitor，获取成功之后才能执行方法体，方法执行完后再释放monitor。在方法执行期间，其他任何线程都无法再获得同一个monitor对象。 其实本质上没有区别，只是方法的同步是一种隐式的方式来实现，无需通过字节码来完成<h2 id="讲一下CAS"><a href="#讲一下CAS" class="headerlink" title="讲一下CAS"></a>讲一下CAS</h2>CAS,compare and swap的缩写，中文翻译成比较并交换。乐观锁用到的机制就是CAS，每次不加锁而是假设没有冲突而去完成某项操作，如果因为冲突失败就重试。</li>
+</ol>
+<p>原理：</p>
+<ol>
+<li>CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。</li>
+</ol>
+<p>JDK文档说cas同时具有volatile读和volatile写的内存语义。</p>
+<p>缺点：</p>
+<ol>
+<li><p>ABA问题。<br>因为CAS需要在操作值的时候检查下值有没有发生变化，如果没有发生变化则更新，但是如果一个值原来是A，变成了B，又变成了A，那么使用CAS进行检查时会发现它的值没有发生变化</p>
+</li>
+<li><p>循环时间长开销大。<br>自旋CAS如果长时间不成功，会给CPU带来非常大的执行开销。</p>
+</li>
+<li><p>只能保证一个共享变量的原子操作。<br>对多个共享变量操作时，循环CAS就无法保证操作的原子性，这个时候就可以用锁，或者有一个取巧的办法，就是把多个共享变量合并成一个共享变量来操作。比如有两个共享变量i＝2,j=a，合并一下ij=2a，然后用CAS来操作ij。从Java1.5开始JDK提供了AtomicReference类来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行CAS操作。</p>
+</li>
+</ol>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>Executor线程池框架是一个根据一组<strong>执行策略调用，调度，执行和控制</strong>的异步任务的框架。</p>
+<h3 id="ThreadPoolExecutor执行的策略"><a href="#ThreadPoolExecutor执行的策略" class="headerlink" title="ThreadPoolExecutor执行的策略"></a>ThreadPoolExecutor执行的策略</h3><ol>
+<li>线程数量未达到corePoolSize，则新建一个线程(核心线程)执行任务</li>
+<li>线程数量达到了corePools，则将任务移入队列等待</li>
+<li>队列已满，新建线程(非核心线程)执行任务</li>
+<li>队列已满，总线程数又达到了maximumPoolSize，就会由(RejectedExecutionHandler)抛出异常</li>
+</ol>
+<p>新建线程 -&gt; 达到核心数 -&gt; 加入队列 -&gt; 新建线程（非核心） -&gt; 达到最大数 -&gt; 触发拒绝策略</p>
+<h3 id="常见四种线程池"><a href="#常见四种线程池" class="headerlink" title="常见四种线程池"></a>常见四种线程池</h3><ol>
+<li><p>CachedThreadPool()：可缓存线程池。</p>
+<ul>
+<li>线程数无限制</li>
+<li>有空闲线程则复用空闲线程，若无空闲线程则新建线程</li>
+<li>一定程序减少频繁创建/销毁线程，减少系统开销</li>
+</ul>
+</li>
+<li><p>FixedThreadPool()：定长线程池。</p>
+</li>
+</ol>
+<ul>
+<li>可控制线程最大并发数（同时执行的线程数）</li>
+<li>超出的线程会在队列中等待</li>
+</ul>
+<ol start="3">
+<li>ScheduledThreadPool()：定时线程池。</li>
+</ol>
+<ul>
+<li>支持定时及周期性任务执行。</li>
+</ul>
+<ol start="4">
+<li>SingleThreadExecutor()：单线程化的线程池。</li>
+</ol>
+<ul>
+<li>有且仅有一个工作线程执行任务</li>
+<li>所有任务按照指定顺序执行，即遵循队列的入队出队规则</li>
+</ul>
+<h3 id="四种线程池使用场景"><a href="#四种线程池使用场景" class="headerlink" title="四种线程池使用场景"></a>四种线程池使用场景</h3><ol>
+<li>newSingleThreadExecutor：适用于串行执行任务的场景</li>
+<li>newFixedThreadExecutor：适用于处理CPU密集型的任务，确保CPU在长期被工作线程使用的情况下，尽可能的少的分配线程即可。一般Ncpu + 1</li>
+<li>newCachedThreadExecutor：适用于北方执行大量短期的小任务</li>
+<li>newScheduledThreadExecutor：适用于需要多个后台线程执行周期任务，同时需要限制线程数量的场景</li>
+</ol>
+<h3 id="四种拒绝策略"><a href="#四种拒绝策略" class="headerlink" title="四种拒绝策略"></a>四种拒绝策略</h3><ol>
+<li>AbortPolicy：不执行新任务，直接抛出异常，提示线程池已满，线程池默认策略 </li>
+<li>DiscardPolicy：不执行新任务，也不抛出异常，基本上为静默模式。</li>
+<li>DisCardOldSetPolicy：将消息队列中的第一个任务替换为当前新进来的任务执行</li>
+<li>CallerRunPolicy：拒绝新任务进入，如果该线程池还没有被关闭，那么这个新的任务在执行线程中被调用 </li>
+</ol>
+<h3 id="为什么要用线程池"><a href="#为什么要用线程池" class="headerlink" title="为什么要用线程池"></a>为什么要用线程池</h3><ol>
+<li>减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
+<li>运用线程池能有效的控制线程最大并发数，可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。 </li>
+<li>对线程进行一些简单的管理，比如：延时执行、定时循环执行的策略等，运用线程池都能进行很好的实现</li>
+</ol>
+<h3 id="线程池ThreadPoolExecutor参数设置"><a href="#线程池ThreadPoolExecutor参数设置" class="headerlink" title="线程池ThreadPoolExecutor参数设置"></a>线程池ThreadPoolExecutor参数设置</h3><p>参数的设置跟系统的负载有直接的关系，下面为系统负载的相关参数：</p>
+<ul>
+<li>tasks，每秒需要处理的的任务数</li>
+<li>tasktime，处理每个任务花费的时间</li>
+<li>responsetime，系统允许任务最大的响应时间，比如每个任务的响应时间不得超过2秒。</li>
+</ul>
+<h4 id="corePoolSize"><a href="#corePoolSize" class="headerlink" title="corePoolSize"></a>corePoolSize</h4><p>每个任务需要tasktime秒处理，则每个线程每钞可处理1/tasktime个任务。系统每秒有tasks个任务需要处理，则需要的线程数为：tasks/(1/tasktime)，即tasks*tasktime个线程数。</p>
+<p>假设系统每秒任务数为100 ~ 1000，每个任务耗时0.1秒，则需要100 * 0.1至1000 * 0.1，即10 ~ 100个线程。那么corePoolSize应该设置为大于10，具体数字最好根据8020原则，即80%情况下系统每秒任务数小于200，最多时为1000，则corePoolSize可设置为20。</p>
+<h4 id="maxPoolSize"><a href="#maxPoolSize" class="headerlink" title="maxPoolSize"></a>maxPoolSize</h4><p>当系统负载达到最大值时，核心线程数已无法按时处理完所有任务，这时就需要增加线程。每秒200个任务需要20个线程，那么当每秒达到1000个任务时，则需要(1000-queueCapacity)*(20/200)，即60个线程，可将maxPoolSize设置为60。</p>
+<h4 id="queueCapacity"><a href="#queueCapacity" class="headerlink" title="queueCapacity"></a>queueCapacity</h4><p>任务队列的长度要根据核心线程数，以及系统对任务响应时间的要求有关。队列长度可以设置为(corePoolSize/tasktime)<em>responsetime： (20/0.1)</em>2=400，即队列长度可设置为400。</p>
+<p>队列长度设置过大，会导致任务响应时间过长，切忌以下写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LinkedBlockingQueue queue = <span class="keyword">new</span> LinkedBlockingQueue();</span><br></pre></td></tr></table></figure>
+
+<p>这实际上是将队列长度设置为Integer.MAX_VALUE，将会导致线程数量永远为corePoolSize，再也不会增加，当任务数量陡增时，任务响应时间也将随之陡增。</p>
+<h4 id="keepAliveTime"><a href="#keepAliveTime" class="headerlink" title="keepAliveTime"></a>keepAliveTime</h4><p>当负载降低时，可减少线程数量，当线程的空闲时间超过keepAliveTime，会自动释放线程资源。默认情况下线程池停止多余的线程并最少会保持corePoolSize个线程。</p>
+<h4 id="allowCoreThreadTimeout"><a href="#allowCoreThreadTimeout" class="headerlink" title="allowCoreThreadTimeout"></a>allowCoreThreadTimeout</h4><p>默认情况下核心线程不会退出，可通过将该参数设置为true，让核心线程也退出。</p>
+<p>如果涉及到有突发流量的场景，又该如何设置？</p>
+<h2 id="Executorshe和ThreaPoolExecutor创建线程池的区别"><a href="#Executorshe和ThreaPoolExecutor创建线程池的区别" class="headerlink" title="Executorshe和ThreaPoolExecutor创建线程池的区别"></a>Executorshe和ThreaPoolExecutor创建线程池的区别</h2><ul>
+<li>Executors 各个方法的弊端：</li>
+</ul>
+<ol>
+<li>newFixedThreadPool 和 newSingleThreadExecutor:<br>主要问题是堆积的请求处理队列可能会耗费非常大的内存，甚至 OOM。</li>
+<li>newCachedThreadPool 和 newScheduledThreadPool:<br>主要问题是线程数最大数是 Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至 OOM。</li>
+</ol>
+<ul>
+<li>ThreaPoolExecutor</li>
+</ul>
+<ol>
+<li>创建线程池方式只有一种，就是走它的构造函数，参数自己指定</li>
+</ol>
+<h2 id="CountDownLatch与CyclicBarrier的比较"><a href="#CountDownLatch与CyclicBarrier的比较" class="headerlink" title="CountDownLatch与CyclicBarrier的比较"></a>CountDownLatch与CyclicBarrier的比较</h2><p>CountDownLatch与CyclicBarrier都是用于控制并发的工具类，都可以理解成维护的就是一个计数器，但是这两者还是各有不同侧重点的：</p>
+<ol>
+<li>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；CountDownLatch强调一个线程等多个线程完成某件事情。CyclicBarrier是多个线程互等，等大家都完成，再携手共进。</li>
+<li>调用CountDownLatch的countDown方法后，当前线程并不会阻塞，会继续往下执行；而调用CyclicBarrier的await方法，会阻塞当前线程，直到CyclicBarrier指定的线程全部都到达了指定点的时候，才能继续往下执行；</li>
+<li>CountDownLatch方法比较少，操作比较简单，而CyclicBarrier提供的方法更多，比如能够通过getNumberWaiting()，isBroken()这些方法获取当前多个线程的状态，并且CyclicBarrier的构造方法可以传入barrierAction，指定当所有线程都到达时执行的业务功能；</li>
+<li>CountDownLatch是不能复用的，而CyclicLatch是可以复用的。</li>
+</ol>
+<h2 id="对象锁和静态锁之间的区别"><a href="#对象锁和静态锁之间的区别" class="headerlink" title="对象锁和静态锁之间的区别"></a>对象锁和静态锁之间的区别</h2><ol>
+<li>对象锁用于对象实例方法，</li>
+<li>类锁用于类的静态方法或一个类的class对象。</li>
+<li>类的对象实例可以有很多，不同对象实例的对象锁互不干扰，而每个类只有一个类锁 </li>
+</ol>
+<h2 id="简述volatile字"><a href="#简述volatile字" class="headerlink" title="简述volatile字"></a>简述volatile字</h2><p>两个特性</p>
+<ol>
+<li>保证了不同线程对这个变量进行 读取 时的可见性，即一个线程修改<br>了某个变量的值 ， 这新值对其他线程来说是立即可见的 。(volatile 解决了<br>线程间 共享变量</li>
+<li>禁止进行指令重排序 ，阻止编译器对代码的优化</li>
+</ol>
+<p><strong>要想并发程序正确地执行，必须要保证原子性、可见性以及有序性，锁保证了原子性，而volatile保证可见性和有序性</strong></p>
+<h2 id="happens-before-原则（先行发生原则）"><a href="#happens-before-原则（先行发生原则）" class="headerlink" title="happens-before 原则（先行发生原则）"></a>happens-before 原则（先行发生原则）</h2><p>我们无法就所有场景来规定某个线程修改的变量何时对其他线程可见，但是我们可以指定某些规则，这规则就是happens-before。特别关注在多线程之间的内存可见性。</p>
+<p>它是判断数据是否存在竞争、线程是否安全的主要依据，依靠这个原则，我们解决在并发环境下两操作之间是否可能存在冲突的所有问题。</p>
+<ol>
+<li>程序次序规则：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在<br>后面的操作</li>
+<li>锁定规则：一个 unLock 操作先行发生于后面对同一个锁的 lock 操作</li>
+<li>volatile 变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作</li>
+<li>传递规则：如果操作 A 先行发生于操作 B，而操作 B 又先行发生于操作 C，则可以<br>得出操作 A 先行发生于操作 C</li>
+<li>线程启动规则：Thread 对象的 start()方法先行发生于此线程的每个一个动作</li>
+<li>线程中断规则：对线程 interrupt()方法的调用先行发生于被中断线程的代码检测<br>到中断事件的发生</li>
+<li>线程终结规则：线程中所有的操作都先行发生于线程的终止检测，我们可以通过 T<br>hread.join()方法结束、Thread.isAlive()的返回值手段检测到线程已经终止执行</li>
+<li>对象终结规则：一个对象的初始化完成先行发生于他的 finalize()方法的开始</li>
+</ol>
+<h2 id="Lock-和synchronized-的区别"><a href="#Lock-和synchronized-的区别" class="headerlink" title="Lock 和synchronized 的区别"></a>Lock 和synchronized 的区别</h2><ol>
+<li><p>Lock 是一个 接口，而 synchronized 是 Java 中的 关键字，<br>synchronized 是 内置的语言实现；</p>
+</li>
+<li><p>synchronized 在 发生异常时，会 自动释放线程占有的锁，因此 不会导<br>致死锁现象发生；而 Lock 在发生异常时，如果没有主动通过 unLock()去释放<br>锁，则很 可能造成死锁现象，因此用 使用 Lock 时需要在 finally 块中释放锁；</p>
+</li>
+<li><p>Lock 可以让 等待锁的线程响应中断 （可中断锁），而 synchronized<br>却不行，使用 synchronized 时，等待的线程会一直等待下去， 不能够响应中<br>断 （不可中断锁）；</p>
+</li>
+<li><p>通过 Lock 可以知道 有没有成功获取锁 （tryLock （ ） 方法 ： 如果获取<br>了锁 ，回 则返回 true ；回 否则返回 false e, , 也就说这个方法无论如何都会立即返回 。<br>在拿不到锁时不会一直在那等待。 ），而 synchronized 却无法办到。</p>
+</li>
+<li><p>Lock 可以提高 多个线程进行读操作的效率（ 读写锁）。</p>
+</li>
+<li><p>Lock 可以实现 公平锁，synchronized 不保证公平性。<br>在性能上来说，如果线程竞争资源不激烈时，两者的性能是差不多的，而<br>当竞争资源非常激烈时（即有大量线程同时竞争），此时 Lock 的性能要远远优<br>于 synchronized。所以说，在具体使用时要根据适当情况选择。</p>
+</li>
+</ol>
+<h2 id="ThreadLocal-线程变量副本"><a href="#ThreadLocal-线程变量副本" class="headerlink" title="ThreadLocal(线程变量副本)"></a>ThreadLocal(线程变量副本)</h2><p>Synchronized实现内存共享，ThreadLocal为每个线程维护一个本地变量。</p>
+<p>采用空间换时间，它用于线程间的数据隔离，为每一个使用该变量的线程提供一个副本，每个线程都可以独立地改变自己的副本，而不会和其他线程的副本冲突。</p>
+<p>ThreadLocal类中维护一个Map，用于存储每一个线程的变量副本，Map中元素的键为线程对象，而值为对应线程的变量副本。</p>
+<p>注意：跟多线程并发问题没关系！！！</p>
+<p>ThreadLocal 适用于每个线程需要自己独立的实例且该实例需要在多个方法中被使用，也即变量在线程间隔离而在方法或类间共享的场景。</p>
+<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-10.png" alt></p>
+<h3 id="Threadlocal和run方法的局部变量的区别"><a href="#Threadlocal和run方法的局部变量的区别" class="headerlink" title="Threadlocal和run方法的局部变量的区别"></a>Threadlocal和run方法的局部变量的区别</h3><ol>
+<li>ThreadLocal可以跨方法共享变量，ThreadLocal减少同一个线程多个方法函数或者组件之间一些公共变量的传递的复杂度</li>
+<li>run局部变量只能在单个方法</li>
+</ol>
+<h3 id="ThreadLocal-适用于如下两种场景"><a href="#ThreadLocal-适用于如下两种场景" class="headerlink" title="ThreadLocal 适用于如下两种场景"></a>ThreadLocal 适用于如下两种场景</h3><ol>
+<li>每个线程需要有自己单独的实例</li>
+<li>实例需要在多个方法中共享，但不希望被多线程共享</li>
+</ol>
+<p>比如：</p>
+<ul>
+<li>ThreadLocal在Spring中发挥着巨大的作用，在管理Request作用域中的Bean、事务管理、任务调度、AOP等模块都出现了它的身影。</li>
+<li>Spring中绝大部分Bean都可以声明成Singleton作用域，采用ThreadLocal进行封装，因此有状态的Bean就能够以singleton的方式在多线程中正常工作了。</li>
+</ul>
+<h3 id="ThreadLocal内存泄露"><a href="#ThreadLocal内存泄露" class="headerlink" title="ThreadLocal内存泄露"></a>ThreadLocal内存泄露</h3><p>ThreadLocal.ThreadLocalMap.Entry中的key是弱引用的，也即是当某个ThreadLocal对象不存在强引用时，就会被GC回收，但是value是基于强引用的，所以当key被回收，但是value还存在其他强引用时，就会出现内存的泄露情况，在最新的ThreadLocal中已经做出了修改，即在调用set、get、remove方法时，会清除key为null的Entry，但是如果不调用这些方法，仍然还是会出现内存泄漏 ：），所以要养成用完ThreadLocal对象之后及时remove的习惯。</p>
+<h2 id="通过Callable和Future创建线程"><a href="#通过Callable和Future创建线程" class="headerlink" title="通过Callable和Future创建线程"></a>通过Callable和Future创建线程</h2><p>Java 5在concurrency包中引入了java.util.concurrent.Callable 接口，它和Runnable接口很相似，但它可以返回一个对象或者抛出一个异常。</p>
+<p>Callable接口<strong>使用泛型去定义它的返回类型</strong>。Executors类提供了<strong>一些有用的方法去在线程池中执行Callable内的任务</strong>。由于Callable任务是并行的，我们必须等待它返回的结果。java.util.concurrent.Future对象为我们解决了这个问题。在线程池<strong>提交Callable任务</strong>后<strong>返回了一个Future对象</strong>，使用它我们可以知道Callable任务的状态和得到Callable返回的执行结果。<strong>Future提供了get()方法让我们可以等待Callable结束并获取它的执行结果</strong>。</p>
+<ol>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。</li>
+<li>创建Callable实现类的实例，<strong>使用FutureTask类来包装Callable对象</strong>，该FutureTask对象封装了该Callable对象的call()方法的返回值。</li>
+<li><strong>使用FutureTask对象作为Thread对象的target创建并启动新线程</strong>。</li>
+<li>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</li>
+</ol>
+<h2 id="什么叫守护线程，用什么方法实现守护线程（Thread-setDeamon-的含义）"><a href="#什么叫守护线程，用什么方法实现守护线程（Thread-setDeamon-的含义）" class="headerlink" title="什么叫守护线程，用什么方法实现守护线程（Thread.setDeamon()的含义）"></a>什么叫守护线程，用什么方法实现守护线程（Thread.setDeamon()的含义）</h2><p>在Java中有两类线程：User Thread(用户线程)、Daemon Thread(守护线程)<br>用个比较通俗的比如，任何一个守护线程都是整个JVM中所有非守护线程的保姆：<br>只要当前JVM实例中尚存在任何一个非守护线程没有结束，守护线程就；只有当最后一个非守护线程结束时，守护线程随着JVM一同结束工作。<br>JVM内部的实现是如果运行的程序只剩下守护线程的话，程序将终止运行，直接结束。所以守护线程是作为辅助线程存在的，主要的作用是提供计数等等辅助的功能。</p>
+<h2 id="如何停止一个线程？"><a href="#如何停止一个线程？" class="headerlink" title="如何停止一个线程？"></a>如何停止一个线程？</h2><p>终止线程的三种方法：</p>
+<ol>
+<li>使用退出标志，使线程正常退出，也就是当run方法完成后线程终止。<br>在定义退出标志exit时，使用了一个Java关键字volatile，这个关键字的目的是使exit同步，也就是说在同一时刻只能由一个线程来修改exit的值， </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thread.exit = <span class="keyword">true</span>;  <span class="comment">// 终止线程thread</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用stop方法强行终止线程（这个方法不推荐使用，因为stop和suspend、resume一样，也可能发生不可预料的结果）。<br>使用stop方法可以强行终止正在运行或挂起的线程。我们可以使用如下的代码来终止线程：<br>thread.stop();<br>虽然使用上面的代码可以终止线程，但使用stop方法是很危险的，就象突然关闭计算机电源，而不是按正常程序关机一样，可能会产生不可预料的结果，因此，并不推荐使用stop方法来终止线程。 </li>
+</ol>
+<ol start="3">
+<li>使用interrupt方法中断线程，使用interrupt方法来终端线程可分为两种情况： </li>
+</ol>
+<ul>
+<li>线程处于阻塞状态，如使用了sleep方法。 </li>
+<li>使用while（！isInterrupted（））{……}来判断线程是否被中断。<br>  在第一种情况下使用interrupt方法，sleep方法将抛出一个InterruptedException例外，而在第二种情况下线程将直接退出。</li>
+</ul>
+<p>注意：在Thread类中有两个方法可以判断线程是否通过interrupt方法被终止。一个是静态的方法interrupted（），一个是非静态的方法isInterrupted（），这两个方法的区别是interrupted用来判断当前线是否被中断，而isInterrupted可以用来判断其他线程是否被中断。因此，while （！isInterrupted（））也可以换成while （！Thread.interrupted（））。</p>
+<h2 id="什么是线程安全？什么是线程不安全？"><a href="#什么是线程安全？什么是线程不安全？" class="headerlink" title="什么是线程安全？什么是线程不安全？"></a>什么是线程安全？什么是线程不安全？</h2><ol>
+<li>线程安全就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。</li>
+<li>线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据<br>在多线程的情况下，由于同一进程的多个线程共享同一片存储空间，在带来方便的同时，也带来了访问冲突这个严重的问题。Java语言提供了专门机制以解决这种冲突，有效避免了同一个数据对象被多个线程同时访问。</li>
+</ol>
+<h2 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a>I/O多路复用</h2><p>单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流 。尽量多的提高服务器的吞吐能力</p>
+<p>select, poll, epoll 都是I/O多路复用的具体的实现</p>
+<h2 id="讲一下netty"><a href="#讲一下netty" class="headerlink" title="讲一下netty"></a>讲一下netty</h2><p>netty通过Reactor模型基于多路复用器接收并处理用户请求，内部实现了两个线程池，boss线程和work线程池，其中boss线程池的线程负责处理请求的accept事件，当接收到accept事件的请求，把对应的socket封装到一个NioSocketChannel中，并交给work线程池，其中work线程池负责请求的read和write事件</p>
+<h2 id="Nio的原理（同步非阻塞）"><a href="#Nio的原理（同步非阻塞）" class="headerlink" title="Nio的原理（同步非阻塞）"></a>Nio的原理（同步非阻塞）</h2><p>服务端和客户端各自维护一个管理通道的对象，我们称之为 selector，该对<br>象能检测一个或多个通道（channel）上的事件。我们以服务端为例，如果服务<br>端的 selector 上注册了读事件，某时刻客户端给服务端送了一些数据，阻塞 I/O<br>这时会调用 read()方法阻塞地读取数据，而 NIO 的服务端会在 selector 中添加<br>一个读事件。服务端的处理线程会轮询地访问 selector，如果访问 selector 时发<br>现有感兴趣的事件到达，则处理这些事件，如果没有感兴趣的事件到达，则处<br>理线程会一直阻塞直到感兴趣的事件到达为止。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-4.jpg" alt></p>
+<h2 id="缓冲区Buffer、通道Channel、选择器Selector"><a href="#缓冲区Buffer、通道Channel、选择器Selector" class="headerlink" title="缓冲区Buffer、通道Channel、选择器Selector"></a>缓冲区Buffer、通道Channel、选择器Selector</h2><p>缓冲区Buffer</p>
+<ul>
+<li>缓冲区实际上是一个容器对象，更直接的说，其实就是一个数组，在NIO库中，所有数据都是用缓冲区处理的。在读取数据时，它是直接读到缓冲区中的； 在写入数据时，它也是写入到缓冲区中的；任何时候访问 NIO 中的数据，都是将它放到缓冲区中。而在面向流I/O系统中，所有数据都是直接写入或者直接将数据读取到Stream对象中。</li>
+</ul>
+<p>通道Channel</p>
+<ul>
+<li>通道是一个对象，通过它可以读取和写入数据，当然了所有数据都通过Buffer对象来处理。我们永远不会将字节直接写入通道中，相反是将数据写入包含一个或者多个字节的缓冲区。同样不会直接从通道中读取字节，而是将数据从通道读入缓冲区，再从缓冲区获取这个字节。通道与流的不同之处在于 通道是双向<br>的。而流只是在一个方向上移动(一个流必须是 InputStream 或者<br>OutputStream 的子类，比如 InputStream 只能进行读取操作，OutputStream<br>只能进行写操作)，而通道是双向的，可以用于读、写或者同时用于读写。</li>
+</ul>
+<p>选择器（Selector ）</p>
+<ul>
+<li>NIO 有一个主要的类 Selector,这个类似一个观察者，只要我们把需要探知<br>的 socketchannel 告诉 Selector,我们接着做别的事情， 当有事件发生时，他会<br>通知我们，传回一组 SelectionKey, 我们读取这些 Key, 就会获得我们刚刚注册<br>过的 socketchannel, 然后，我们从这个 Channel 中读取数据，放心，包准能<br>够读到，接着我们可以处理这些数据。</li>
+<li>Selector 内部原理实际是在做一个 对所注册的 channel 的轮询访问，不断<br>地轮询，一旦轮询到一个 channel 有所注册的事情发生，比如数据来了，他就<br>会站起来报告， 交出一把钥匙，让我们 通过这把钥匙来读取这个 channel 的内<br>容。</li>
+</ul>
+<h2 id="BIO和NIO的区别"><a href="#BIO和NIO的区别" class="headerlink" title="BIO和NIO的区别"></a>BIO和NIO的区别</h2><ol>
+<li>BIO：同步阻塞式IO，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。 </li>
+<li>NIO：同步非阻塞式IO，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。 </li>
+</ol>
+<h2 id="NIO的selector作用"><a href="#NIO的selector作用" class="headerlink" title="NIO的selector作用"></a>NIO的selector作用</h2><p>Selector（选择器）是Java NIO中能够检测一到多个NIO通道，并能够知晓通道是否为诸如读写事件做好准备的组件。这样，一个单独的线程可以管理多个channel，从而管理多个网络连接。</p>
+<p>为了实现Selector管理多个SocketChannel，必须将具体的SocketChannel对象注册到Selector，并声明需要监听的事件（这样Selector才知道需要记录什么数据），一共有4种事件：</p>
+<ol>
+<li>connect：客户端连接服务端事件，对应值为SelectionKey.OP_CONNECT(8)</li>
+<li>accept：服务端接收客户端连接事件，对应值为SelectionKey.OP_ACCEPT(16)</li>
+<li>read：读事件，对应值为SelectionKey.OP_READ(1)</li>
+<li>write：写事件，对应值为SelectionKey.OP_WRITE(4)</li>
+</ol>
+<p>每次请求到达服务器，都是从connect开始，connect成功后，服务端开始准备accept，准备就绪，开始读数据，并处理，最后写回数据返回。</p>
+<p>所以，当SocketChannel有对应的事件发生时，Selector都可以观察到，并进行相应的处理。</p>
+<h2 id="final域的内存语义"><a href="#final域的内存语义" class="headerlink" title="final域的内存语义"></a>final域的内存语义</h2><ol>
+<li>JMM禁止编译器把final域的写重排序到构造函数之外。</li>
+<li>编译器会在final域的写之后，构造函数return之前，插入一个StoreStore屏障。这个屏障<br>禁止处理器把final域的写重排序到构造函数之外。</li>
+</ol>
+<h3 id="写final域的重排序规则"><a href="#写final域的重排序规则" class="headerlink" title="写final域的重排序规则"></a>写final域的重排序规则</h3><p>对于 final 域，编译器和处理器要遵守两个重排序规则：</p>
+<ol>
+<li>JMM 禁止编译器把 final 域的写重排序到构造函数之外</li>
+<li>编译器会在 final 域的写之后，构造函数 return 之前，插入一个 StoreStore 屏障，这个屏障禁止处理器把 final 域的写重排序到构造函数之外。</li>
+</ol>
+<h3 id="读final域的重排序规则"><a href="#读final域的重排序规则" class="headerlink" title="读final域的重排序规则"></a>读final域的重排序规则</h3><p>在一个线程中,初次读对象引用与初次读该对象包含的 final 域,JMM 禁止处理器重排序这两个操作(注意,这个规则仅仅针对处理器)。编译器会在读 final 域操作的前面插入一个 LoadLoad 屏障。<br>reader() 方法包含三个操作:</p>
+<ol>
+<li>初次读引用变量 obj;</li>
+<li>初次读引用变量 obj 指向对象的普通域 j。</li>
+<li>初次读引用变量 obj 指向对象的 final 域 i。</li>
+</ol>
+<h2 id="notify和notifyAll的区别"><a href="#notify和notifyAll的区别" class="headerlink" title="notify和notifyAll的区别"></a>notify和notifyAll的区别</h2><ul>
+<li>如果线程调用了对象的 wait()方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。</li>
+<li>当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait<br>线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。也就是说，调用了notify后只要一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争</li>
+<li>优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，唯有线程再次调用 wait()方法，它才会重新回到等待池中。而竞争到对象锁的线程则继续往下执行，直到执行完了 synchronized<br>代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁。</li>
+<li>尽量使用 notifyAll()，notify()可能会导致死锁</li>
+</ul>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/10/31/Java并发/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/10/31/Java容器/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-10-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="Java集合类框架图"><a href="#Java集合类框架图" class="headerlink" title="Java集合类框架图"></a>Java集合类框架图</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-16.png" alt></p>
+<h2 id="HashSet和TreeSet区别"><a href="#HashSet和TreeSet区别" class="headerlink" title="HashSet和TreeSet区别"></a>HashSet和TreeSet区别</h2><p><strong>HashSet</strong></p>
+<ol>
+<li>不能保证元素的排列顺序，顺序有可能发生变化</li>
+<li>不是同步的</li>
+<li>集合元素可以是null,但只能放入一个null<br>当向HashSet结合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。</li>
+</ol>
+<p><strong>TreeSet</strong></p>
+<ol>
+<li>TreeSet是SortedSet接口的唯一实现类</li>
+<li>TreeSet可以确保集合元素处于排序状态。TreeSet支持两种排序方式，自然排序 和定制排序，其中自然排序为默认的排序方式。向TreeSet中加入的应该是同一个类的对象</li>
+</ol>
+<h2 id="讲一下LinkedHashMap"><a href="#讲一下LinkedHashMap" class="headerlink" title="讲一下LinkedHashMap"></a>讲一下LinkedHashMap</h2><p>LinkedHashMap的实现就是HashMap+LinkedList的实现方式，以HashMap维护数据结构，以LinkList的方式维护数据插入顺序</p>
+<p>LinkedHashMap保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的。<br>在遍历的时候会比HashMap慢TreeMap能够把它保存的记录根据键排序，默认是按升序排序，也可以指定排序的比较器</p>
+<p>利用LinkedHashMap实现LRU算法缓存（</p>
+<ol>
+<li>LinkedList首先它是一个Map，Map是基于K-V的，和缓存一致</li>
+<li>LinkedList提供了一个boolean值可以让用户指定是否实现LRU）</li>
+</ol>
+<h2 id="Java8-中HashMap的优化（引入红黑树的数据结构和扩容的优化）"><a href="#Java8-中HashMap的优化（引入红黑树的数据结构和扩容的优化）" class="headerlink" title="Java8 中HashMap的优化（引入红黑树的数据结构和扩容的优化）"></a>Java8 中HashMap的优化（引入红黑树的数据结构和扩容的优化）</h2><ol>
+<li>if (binCount &gt;= TREEIFY_THRESHOLD - 1)<br>当符合这个条件的时候，把链表变成treemap红黑树，这样查找效率从o(n)变成了o(log n) ，在JDK1.8的实现中，优化了高位运算的算法，通过hashCode()的高16位异或低16位实现的：</li>
+<li>我们使用的是2次幂的扩展(指长度扩为原来2倍)，所以，元素的位置要么是在原位置，要么是在原位置再移动2次幂的位置</li>
+</ol>
+<p>这里的Hash算法本质上就是三步：取key的hashCode值、高位运算、取模运算。</p>
+<p><strong>元素在重新计算hash之后，因为n变为2倍，那么n-1的mask范围在高位多1bit(红色)，因此新的index就会发生这样的变化：</strong><br>hashMap 1.8 哈希算法例图2<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-2.jpg" alt><br><strong>因此，我们在扩充HashMap的时候，不需要像JDK1.7的实现那样重新计算hash，只需要看看原来的hash值新增的那个bit是1还是0就好了，是0的话索引没变，是1的话索引变成“原索引+oldCap”</strong></p>
+<h2 id="Map遍历的keySet-和entrySet-性能差异原因"><a href="#Map遍历的keySet-和entrySet-性能差异原因" class="headerlink" title="Map遍历的keySet()和entrySet()性能差异原因"></a>Map遍历的keySet()和entrySet()性能差异原因</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Entry&lt;String, String&gt;&gt; entrySet = map.entrySet();</span><br><span class="line">Set&lt;String&gt; set = map.keySet();`</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>keySet（）循环中通过key获取对应的value的时候又会调用getEntry（）进行循环。循环两次</li>
+<li>entrySet（）直接使用getEntry（）方法获取结果，循环一次</li>
+<li>所以 keySet（）的性能会比entrySet（）差点。所以遍历map的话还是用entrySet()来遍历<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span> getForNullKey();</span><br><span class="line">       Entry&lt;K,V&gt; entry = getEntry(key);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span> == entry ? <span class="keyword">null</span> : entry.getValue();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Entry&lt;K,V&gt; <span class="title">getEntry</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> hash = (key == <span class="keyword">null</span>) ? <span class="number">0</span> : hash(key);</span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];</span><br><span class="line">             e != <span class="keyword">null</span>;</span><br><span class="line">             e = e.next) &#123;</span><br><span class="line">            Object k;</span><br><span class="line">            <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                <span class="keyword">return</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HashMap中的indexFor方法"><a href="#HashMap中的indexFor方法" class="headerlink" title="HashMap中的indexFor方法"></a>HashMap中的indexFor方法</h2><p>在HashMap的工作原理，发现它调用了 indexFor(int h, int length) 方法来计算Entry对象保存在 table中的数组索引值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static int indexFor(int h, int length) &#123;</span><br><span class="line">    return h &amp; (length-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HashMap的初始容量和扩容都是以2的次方来进行的，那么length-1换算成二进制的话肯定所有位都为1，就比如2的3次方为8，length-1的二进制表示就是111， 而按位与计算的原则是两位同时为“1”，结果才为“1”，否则为“0”。所以h&amp; (length-1)运算从数值上来讲其实等价于对length取模，也就是h%length。</p>
+<p>只有当数组长度为2的n次方时，那么length-1换算成二进制的话肯定所有位都为1,不同的key计算得出的index索引相同的几率才会较小，数据在数组上分布也比较均匀，碰撞的几率也小，相对的，查询的时候就不用遍历某个位置上的链表，这样查询效率也就较高了。</p>
+<h2 id="如何删除ArrayList里面的元素"><a href="#如何删除ArrayList里面的元素" class="headerlink" title="如何删除ArrayList里面的元素"></a>如何删除ArrayList里面的元素</h2><p>使用以下for循环使用remove()删除是有问题的，因为每次删除一个元素，后面元素往前移，数组大小也变小，会到数组下标越界异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; list1.size();i++)&#123;</span><br><span class="line">            list1.remove(i);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>推荐两种方法：</p>
+<ol>
+<li><p>根据长度，不断删除第一个元素，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; list1.size();i++)&#123;</span><br><span class="line">            list1.remove(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用迭代器(推荐)，不会导致数组长度变化而抛异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; iter = list1.iterator();</span><br><span class="line">     <span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">         Integer s = iter.next();</span><br><span class="line">         <span class="keyword">if</span>(s.equals(<span class="string">"1"</span>))&#123;</span><br><span class="line">             iter.remove();</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="并发的HashMap为什么会引起死循环？"><a href="#并发的HashMap为什么会引起死循环？" class="headerlink" title="并发的HashMap为什么会引起死循环？"></a>并发的HashMap为什么会引起死循环？</h2><p>线程不安全的HashMap, HashMap在并发执行put操作时会引起死循环，是因为多线程会导致HashMap的Entry链表形成环形数据结构，查找时会陷入死循环</p>
+<p>在扩容resize（）方法中，调用transfer方法，把旧表中的元素添加到新表中，这也是引起死循环的根本原因所在</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    Entry&lt;K,V&gt; next = e.next; <span class="comment">// &lt;--假设线程一执行到这里就被调度挂起了</span></span><br><span class="line">    <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">    e.next = newTable[i];</span><br><span class="line">    newTable[i] = e;</span><br><span class="line">    e = next;</span><br><span class="line">&#125; <span class="keyword">while</span> (e != <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>执行一：  线程A执行到transfer函数中（1）处挂起（transfer函数代码中有标注）。此时在线程A的栈中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e = <span class="number">3</span></span><br><span class="line">next = <span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<p>执行二：线程B执行 transfer函数中的while循环，即会把原来的table变成新一table（线程B自己的栈中），再写入到内存,如下图（假设两个元素在新的hash函数下也会映射到同一个位置）<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-9.jpg" alt></p>
+<p>执行三： 线程A解挂，接着执行（看到的仍是旧表），即从transfer代码（1）处接着执行，当前的 e = 3, next = 7, 上面已经描述。</p>
+<ol>
+<li>处理元素 3 ， 将 3 放入 线程A自己栈的新table中（新table是处于线程A自己栈中，是线程私有的，不肥线程2的影响），处理3后的图如下：<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-10.jpg" alt></li>
+<li>线程A再复制元素 7 ， <strong>当前 e = 7 ,而next值由于线程 B 修改了它的引用，所以next 为 3</strong> ，处理后的新表如下图<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-11.jpg" alt></li>
+<li>由于上面取到的next = 3, 接着while循环，即当前处理的结点为3， next就为null ，退出while循环，执行完while循环后，新表中的内容如下图：<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-12.jpg" alt></li>
+<li>当操作完成，执行查找时，会陷入死循环！</li>
+</ol>
+<p>总结：多线程PUT操作时可能会覆盖刚PUT进去的值,扩容操作会让链表形成环形数据结构，形成死循环</p>
+<h2 id="ConcurrentHashMap原理"><a href="#ConcurrentHashMap原理" class="headerlink" title="ConcurrentHashMap原理"></a>ConcurrentHashMap原理</h2><p>HashTable 在每次同步执行时都要锁住整个结构。ConcurrentHashMap 锁的方式是稍微细粒度的。 ConcurrentHashMap 将 hash 表分为 16 个桶（默认值）</p>
+<p>Java7<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-13.jpg" alt></p>
+<p>ConcurrentHashMap 类中包含两个静态内部类 HashEntry 和 Segment。HashEntry 用来封装映射表的键 / 值对；Segment 用来充当锁的角色，每个 Segment 对象守护整个散列映射表的若干个桶。每个桶是由若干个 HashEntry 对象链接起来的链表。一个 ConcurrentHashMap 实例中包含由若干个 Segment 对象组成的数组。</p>
+<p>Java8<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-14.jpg" alt><br>Java 8为进一步提高并发性，摒弃了分段锁的方案，而是直接使用一个大的数组。同时为了提高哈希碰撞下的寻址性能，Java 8在链表长度超过一定阈值（8）时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(long(N))</p>
+<p>Java 8的ConcurrentHashMap同样是通过Key的哈希值与数组长度取模确定该Key在数组中的索引。</p>
+<p>对于put操作，如果Key对应的数组元素为null，则通过CAS操作将其设置为当前值。如果Key对应的数组元素（也即链表表头或者树的根元素）不为null，则对该元素使用synchronized关键字申请锁，然后进行操作。如果该put操作使得当前链表长度超过一定阈值，则将该链表转换为树，从而提高寻址效率。</p>
+<h2 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h2><h3 id="HashMap特性"><a href="#HashMap特性" class="headerlink" title="HashMap特性"></a>HashMap特性</h3><p>HashMap的特性：HashMap存储键值对，实现快速存取数据；允许null键/值；非同步；不保证有序(比如插入的顺序)。实现map接口。</p>
+<h3 id="HashMap的原理，内部数据结构"><a href="#HashMap的原理，内部数据结构" class="headerlink" title="HashMap的原理，内部数据结构"></a>HashMap的原理，内部数据结构</h3><p>HashMap是基于hashing的原理，底层使用哈希表（数组 + 链表）实现。里边最重要的两个方法put、get，使用put(key, value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。 </p>
+<p>存储对象时，我们将K/V传给put方法时，它调用hashCode计算hash从而得到bucket位置，进一步存储，HashMap会根据当前bucket的占用情况自动调整容量(超过Load Facotr则resize为原来的2倍)。获取对象时，我们将K传给get，它调用hashCode计算hash从而得到bucket位置，并进一步调用equals()方法确定键值对。如果发生碰撞的时候，Hashmap通过链表将产生碰撞冲突的元素组织起来，在Java 8中，如果一个bucket中碰撞冲突的元素超过某个限制(默认是8)，则使用红黑树来替换链表，从而提高速度。</p>
+<h3 id="讲一下-HashMap-中-put-方法过程"><a href="#讲一下-HashMap-中-put-方法过程" class="headerlink" title="讲一下 HashMap 中 put 方法过程"></a>讲一下 HashMap 中 put 方法过程</h3><ol>
+<li>对key的hashCode做hash操作，然后再计算在bucket中的index（1.5 HashMap的哈希函数）； </li>
+<li>如果没碰撞直接放到bucket里； </li>
+<li>如果碰撞了，以链表的形式存在buckets后； </li>
+<li>如果节点已经存在就替换old value(保证key的唯一性) </li>
+<li>如果bucket满了(超过阈值，阈值=loadfactor*current capacity，load factor默认0.75)，就要resize。</li>
+</ol>
+<h3 id="get-方法的工作原理"><a href="#get-方法的工作原理" class="headerlink" title="get()方法的工作原理"></a>get()方法的工作原理</h3><p>通过对key的hashCode()进行hashing，并计算下标( n-1 &amp; hash)，从而获得buckets的位置。如果产生碰撞，则利用key.equals()方法去链表中查找对应的节点。</p>
+<h3 id="HashMap中hash函数怎么是是实现的？还有哪些-hash-的实现方式？"><a href="#HashMap中hash函数怎么是是实现的？还有哪些-hash-的实现方式？" class="headerlink" title="HashMap中hash函数怎么是是实现的？还有哪些 hash 的实现方式？"></a>HashMap中hash函数怎么是是实现的？还有哪些 hash 的实现方式？</h3><ol>
+<li>对key的hashCode做hash操作（高16bit不变，低16bit和高16bit做了一个异或）； </li>
+<li>h &amp; (length-1); //通过位操作得到下标index。</li>
+</ol>
+<p>还有数字分析法、平方取中法、分段叠加法、 除留余数法、 伪随机数法。</p>
+<h3 id="HashMap-怎样解决冲突？"><a href="#HashMap-怎样解决冲突？" class="headerlink" title="HashMap 怎样解决冲突？"></a>HashMap 怎样解决冲突？</h3><p>HashMap中处理冲突的方法实际就是链地址法，内部数据结构是数组+单链表。</p>
+<h4 id="扩展问题1：当两个对象的hashcode相同会发生什么？"><a href="#扩展问题1：当两个对象的hashcode相同会发生什么？" class="headerlink" title="扩展问题1：当两个对象的hashcode相同会发生什么？"></a>扩展问题1：当两个对象的hashcode相同会发生什么？</h4><p>因为两个对象的Hashcode相同，所以它们的bucket位置相同，会发生“碰撞”。HashMap使用链表存储对象，这个Entry(包含有键值对的Map.Entry对象)会存储在链表中。</p>
+<h4 id="扩展问题2：抛开-HashMap，hash-冲突有那些解决办法？"><a href="#扩展问题2：抛开-HashMap，hash-冲突有那些解决办法？" class="headerlink" title="扩展问题2：抛开 HashMap，hash 冲突有那些解决办法？"></a>扩展问题2：抛开 HashMap，hash 冲突有那些解决办法？</h4><p>开放定址法、链地址法、再哈希法。</p>
+<h3 id="如果两个键的hashcode相同，你如何获取值对象？"><a href="#如果两个键的hashcode相同，你如何获取值对象？" class="headerlink" title="如果两个键的hashcode相同，你如何获取值对象？"></a>如果两个键的hashcode相同，你如何获取值对象？</h3><p>重点在于理解hashCode()与equals()。 </p>
+<p>通过对key的hashCode()进行hashing，并计算下标( n-1 &amp; hash)，从而获得buckets的位置。两个键的hashcode相同会产生碰撞，则利用key.equals()方法去链表或树（java1.8）中去查找对应的节点。</p>
+<h3 id="针对-HashMap-中某个-Entry-链太长，查找的时间复杂度可能达到-O-n-，怎么优化？"><a href="#针对-HashMap-中某个-Entry-链太长，查找的时间复杂度可能达到-O-n-，怎么优化？" class="headerlink" title="针对 HashMap 中某个 Entry 链太长，查找的时间复杂度可能达到 O(n)，怎么优化？"></a>针对 HashMap 中某个 Entry 链太长，查找的时间复杂度可能达到 O(n)，怎么优化？</h3><p>将链表转为红黑树，实现 O(logn) 时间复杂度内查找。JDK1.8 已经实现了。</p>
+<h3 id="如果HashMap的大小超过了负载因子-load-factor-定义的容量，怎么办？"><a href="#如果HashMap的大小超过了负载因子-load-factor-定义的容量，怎么办？" class="headerlink" title="如果HashMap的大小超过了负载因子(load factor)定义的容量，怎么办？"></a>如果HashMap的大小超过了负载因子(load factor)定义的容量，怎么办？</h3><p>扩容。这个过程也叫作rehashing，因为它重建内部数据结构，并调用hash方法找到新的bucket位置。 大致分两步： </p>
+<ol>
+<li>扩容：容量扩充为原来的两倍（2 * table.length）； </li>
+<li>移动：对每个节点重新计算哈希值，重新计算每个元素在数组中的位置，将原来的元素移动到新的哈希表中。<br>　　<br>补充： </li>
+<li>loadFactor：加载因子。默认值DEFAULT_LOAD_FACTOR = 0.75f； </li>
+<li>capacity：容量； </li>
+<li>threshold：阈值=capacity<em>loadFactor。当HashMap中存储数据的数量达到threshold时，就需要将HashMap的容量加倍（capacity</em>2）； </li>
+<li>size：HashMap的大小，它是HashMap保存的键值对的数量。</li>
+</ol>
+<h3 id="为什么String-Interger这样的类适合作为键？"><a href="#为什么String-Interger这样的类适合作为键？" class="headerlink" title="为什么String, Interger这样的类适合作为键？"></a>为什么String, Interger这样的类适合作为键？</h3><p>　　String, Interger这样的类作为HashMap的键是再适合不过了，而且String最为常用。<br>　　因为String对象是不可变的，而且已经重写了equals()和hashCode()方法了。<br>　　1.不可变性是必要的，因为为了要计算hashCode()，就要防止键值改变，如果键值在放入时和获取时返回不同的hashcode的话，那么就不能从HashMap中找到你想要的对象。不可变性还有其他的优点如线程安全。<br>　　注：String的不可变性可以看这篇文章《【java基础】浅析String》。<br>　　2.因为获取对象的时候要用到equals()和hashCode()方法，那么键对象正确的重写这两个方法是非常重要的。如果两个不相等的对象返回不同的hashcode的话，那么碰撞的几率就会小些，这样就能提高HashMap的性能。</p>
+<h2 id="HashMap与HashTable区别"><a href="#HashMap与HashTable区别" class="headerlink" title="HashMap与HashTable区别"></a>HashMap与HashTable区别</h2><p>　　Hashtable可以看做是线程安全版的HashMap，两者几乎“等价”（当然还是有很多不同）。Hashtable几乎在每个方法上都加上synchronized（同步锁），实现线程安全。</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ol>
+<li>HashMap继承于AbstractMap，而Hashtable继承于Dictionary； </li>
+<li>线程安全不同：Hashtable的几乎所有函数都是同步的，即它是线程安全的，支持多线程。而HashMap的函数则是非同步的，它不是线程安全的。若要在多线程中使用HashMap，需要我们额外的进行同步处理； </li>
+<li>null值：HashMap的key、value都可以为null。Hashtable的key、value都不可以为null； </li>
+<li>迭代器(Iterator)：HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。所以当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出ConcurrentModificationException。 </li>
+<li>容量的初始值和增加方式都不一样：HashMap默认的容量大小是16；增加容量时，每次将容量变为“原始容量x2”。Hashtable默认的容量大小是11；增加容量时，每次将容量变为“原始容量x2 + 1”； </li>
+<li>添加key-value时的hash值算法不同：HashMap添加元素时，是使用自定义的哈希算法。Hashtable没有自定义哈希算法，而直接采用的key的hashCode()。 </li>
+<li>速度。由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。如果你不需要同步，只需要单一线程，那么使用HashMap性能要好过Hashtable。</li>
+</ol>
+<h3 id="能否让HashMap同步？"><a href="#能否让HashMap同步？" class="headerlink" title="能否让HashMap同步？"></a>能否让HashMap同步？</h3><p>　　HashMap可以通过下面的语句进行同步：Map m = Collections.synchronizeMap(hashMap);</p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/10/31/Java容器/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
         <h1><a href="/2019/10/31/JAVA知识点/"></a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
@@ -613,7 +1371,7 @@
     
     
     <div class="count">
-        <a class="count articles"><span>3</span>Article</a>
+        <a class="count articles"><span>6</span>Article</a>
         <a class="count tags"><span>0</span>Tags</a>
         <a class="count categories"><span>0</span>Categories</a>
     </div>
@@ -652,7 +1410,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/31/JAVA知识点/" title=""></a>
+                    <a href="/2019/10/31/Java虚拟机/" title=""></a>
                 </p>
             </div>
             
@@ -666,7 +1424,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/20/MySQL数据库知识点/" title=""></a>
+                    <a href="/2019/10/31/Java并发/" title=""></a>
                 </p>
             </div>
         </li>
@@ -679,7 +1437,33 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/10/JAVA oop知识点/" title="JAVA oop总结">JAVA oop总结</a>
+                    <a href="/2019/10/31/Java容器/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/10/31/JAVA知识点/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/10/20/MySQL数据库知识点/" title=""></a>
                 </p>
             </div>
         </li>
