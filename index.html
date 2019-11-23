@@ -163,6 +163,1276 @@
             
 <div class="cube-excerpt" id="cube-excerpt-">
     <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/5. jQuery用法/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>jQuery : 是一个 JavaScript 函数库, 也是一个轻量级的”写的少，做的多”的JavaScript库.</p>
+<h4 id="1-导入jQuery库的方法"><a href="#1-导入jQuery库的方法" class="headerlink" title="1. 导入jQuery库的方法"></a>1. 导入jQuery库的方法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一种:本地导入</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">第二种:cdn导入法(建议采用)</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-jQuery-语法"><a href="#2-jQuery-语法" class="headerlink" title="2. jQuery 语法"></a>2. jQuery 语法</h4><p>jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">   //执行代码</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-jQuery-的-函数的用法"><a href="#3-jQuery-的-函数的用法" class="headerlink" title="3. jQuery 的$函数的用法:"></a>3. jQuery 的$函数的用法:</h4><p>(1). 如果$函数的参数是一个函数那么这个函数是文档加载完成之后要执行的回调函数.</p>
+<p>(2). 如果$函数的参数是选择器字符串那么$函数会返回代表对应的标签的jQuery对象.</p>
+<p>(3). 如果$函数的参数是一个原生JavaScript对象那么$函数会返回与之对应的jQuery对象.</p>
+<p>(4). 如果$函数的参数一个标签字符串那么$函数会创建对应的元素而且返回jQuery对象.</p>
+<h4 id="4-原生的JS对象和jQuery对象如何实现转换"><a href="#4-原生的JS对象和jQuery对象如何实现转换" class="headerlink" title="4. 原生的JS对象和jQuery对象如何实现转换?"></a>4. 原生的JS对象和jQuery对象如何实现转换?</h4><p>$(原生JS对象) —&gt; jQuery对象</p>
+<p>jQuery对象.get(index) / jQuery对象[index] —&gt; JS对象</p>
+<p><strong>注意:</strong> jQuery对象的本质是一个数组</p>
+<h4 id="5-对元素的增删改插"><a href="#5-对元素的增删改插" class="headerlink" title="5. 对元素的增删改插"></a>5. 对元素的增删改插</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">实例1:对水果列表进行添加删除操作</span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">			* &#123;</span><br><span class="line">				margin: 0;</span><br><span class="line">				padding: 0;</span><br><span class="line">			&#125;</span><br><span class="line">			h1 &#123;</span><br><span class="line">				text-align: center;</span><br><span class="line">				width: 350px;</span><br><span class="line">				height: 70px;</span><br><span class="line">				margin: 0 auto;</span><br><span class="line">				margin-top: 10px;</span><br><span class="line">				background-color: black;</span><br><span class="line">				color: white;</span><br><span class="line">				font: 36px/70px Arial;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits &#123;</span><br><span class="line">				width: 350px;</span><br><span class="line">				margin: 0 auto;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li &#123;</span><br><span class="line">				width: 350px;</span><br><span class="line">				height: 75px;</span><br><span class="line">				background-color: darkolivegreen;</span><br><span class="line">				color: white;</span><br><span class="line">				list-style: none;</span><br><span class="line">				border-bottom: 1px solid lightgray;</span><br><span class="line">				text-align: center;</span><br><span class="line">				font: 32px/75px "微软雅黑";</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li img &#123;</span><br><span class="line">				float: right;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li a:link, #fruits li a:visited &#123;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li button &#123;</span><br><span class="line">				float: right;</span><br><span class="line">				width: 75px;</span><br><span class="line">				height: 75px;</span><br><span class="line">				border: none;</span><br><span class="line">				outline: none;</span><br><span class="line">				background-color: coral;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li input &#123;</span><br><span class="line">				width: 240px;</span><br><span class="line">				height: 30px;</span><br><span class="line">				text-align: center;</span><br><span class="line">				font-size: 22px;</span><br><span class="line">				line-height: 30px;</span><br><span class="line">			&#125;</span><br><span class="line">			#fruits li span &#123;</span><br><span class="line">				color: lightgoldenrodyellow;</span><br><span class="line">				font-size: 14px;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>水果列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"fruits"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"fruit1"</span>&gt;</span>苹果<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/icon-trash.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"fruit2"</span>&gt;</span>香蕉<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/icon-trash.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"fruit3"</span>&gt;</span>草莓<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/icon-trash.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"输入水果名称"</span>&gt;</span> </span><br><span class="line">				<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"ok"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">			$(function() &#123;  //推荐使用on来绑定事件   target:事件源</span><br><span class="line">				function removeItem(evt) &#123;</span><br><span class="line">					$(evt.target).parent()    //parent() 方法返回被选元素的直接父元素。</span><br><span class="line">						.css('position', 'relative')</span><br><span class="line">						.animate(</span><br><span class="line">							&#123;'left': '-350px', 'height': '0'&#125;, </span><br><span class="line">							360, </span><br><span class="line">							'linear',</span><br><span class="line">							function() &#123;</span><br><span class="line">								$(this).remove();</span><br><span class="line">							&#125;</span><br><span class="line">						);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">				$('#fruits li').hide().each(function(index) &#123;</span><br><span class="line">					$(this).delay(600 * index).fadeIn(600);</span><br><span class="line">				&#125;);</span><br><span class="line">				$('#fruits li img').on('click', removeItem);</span><br><span class="line">				$('#fruits li:lt(3)').one('click', function(evt) &#123;</span><br><span class="line">					var target = $(evt.target);</span><br><span class="line"><span class="xml">					target.append($('<span class="tag">&lt;<span class="name">span</span>&gt;</span>').text(target.attr('id')));</span></span><br><span class="line">				&#125;)</span><br><span class="line">				var index = 4;</span><br><span class="line">				$('#ok').on('click', function() &#123;     //val():无参取value属性, 有参传值</span><br><span class="line">					var fruit = $('#fruits li input').val().trim();   //$.trim() 函数用于去除字符串两端的空白字符。</span><br><span class="line">					if (fruit.length &gt; 0) &#123;</span><br><span class="line"><span class="xml">						$('<span class="tag">&lt;<span class="name">li</span>&gt;</span>').text(fruit).attr('id', 'fruit' + index)   //$('<span class="tag">&lt;<span class="name">li</span>&gt;</span>')创建li标签</span></span><br><span class="line">							.append(</span><br><span class="line"><span class="xml">								$('<span class="tag">&lt;<span class="name">img</span>&gt;</span>').attr('src', 'img/icon-trash.png')    //attr() 方法设置或返回被选元素的属性和值</span></span><br><span class="line">									.on('click', removeItem)</span><br><span class="line">							)</span><br><span class="line">							.one('click', function(evt) &#123;</span><br><span class="line">								var target = $(evt.target);</span><br><span class="line"><span class="xml">								target.append('<span class="tag">&lt;<span class="name">span</span>&gt;</span>' + target.attr('id') + '<span class="tag">&lt;/<span class="name">span</span>&gt;</span>');</span></span><br><span class="line">							&#125;)</span><br><span class="line">							.insertBefore($('#fruits li:last'))</span><br><span class="line">							.hide().fadeIn(600);</span><br><span class="line">						$('#fruits li input').val('').focus();</span><br><span class="line">						index += 1;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-跑马灯实例-点击添加按钮添加方块格-点击闪烁按钮方块随机变换颜色"><a href="#6-跑马灯实例-点击添加按钮添加方块格-点击闪烁按钮方块随机变换颜色" class="headerlink" title="6. 跑马灯实例: 点击添加按钮添加方块格, 点击闪烁按钮方块随机变换颜色."></a>6. 跑马灯实例: 点击添加按钮添加方块格, 点击闪烁按钮方块随机变换颜色.</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">			#container &#123;</span><br><span class="line">				width: 800px;</span><br><span class="line">				height: 400px;</span><br><span class="line">				border: 1px solid black;</span><br><span class="line">				margin: 0 auto;</span><br><span class="line">				overflow: hidden;</span><br><span class="line">			&#125;</span><br><span class="line">			#panel &#123;</span><br><span class="line">				width: 800px;</span><br><span class="line">				margin: 10px auto;</span><br><span class="line">				text-align: center;</span><br><span class="line">			&#125;</span><br><span class="line">			.piece &#123;</span><br><span class="line">				width: 80px;</span><br><span class="line">				height: 80px;</span><br><span class="line">				float: left;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"panel"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"addBtn"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"flaBtn"</span>&gt;</span>闪烁<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">			function randomColor() &#123;</span><br><span class="line">				var r = parseInt(Math.random() * 256);</span><br><span class="line">				var g = parseInt(Math.random() * 256);</span><br><span class="line">				var b = parseInt(Math.random() * 256);</span><br><span class="line">				return 'rgb(' + r + ',' + g + ',' + b +')'; </span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			$(function() &#123;</span><br><span class="line">				$('#addBtn').on('click', function() &#123;</span><br><span class="line"><span class="xml">					$('#container').append($('<span class="tag">&lt;<span class="name">div</span>&gt;</span>').attr('class', 'piece').css('background-color', randomColor()));</span></span><br><span class="line">				&#125;);</span><br><span class="line">				$('#flaBtn').one('click', function() &#123;</span><br><span class="line">					window.setInterval(function() &#123;</span><br><span class="line">						$('#container div').each(function() &#123;</span><br><span class="line">							$(this).css('background-color', randomColor());</span><br><span class="line">						&#125;);</span><br><span class="line">					&#125;, 200);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/5. jQuery用法/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/4. JavaScript的BOM与DOM对象/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="JavaScript-的组成部分"><a href="#JavaScript-的组成部分" class="headerlink" title="JavaScript  的组成部分:"></a>JavaScript  的组成部分:</h2><p><strong>ECMAScript :</strong> 核心;  ECMAScript是JavaScript的规格，JavaScript是ECMAScript的一种实现 .</p>
+<p><strong>BOM :</strong> 浏览器对象模型;  它定义了JavaScript可以进行操作的浏览器的各个功能部件的接口, BOM 的核心对象是    </p>
+<p>​         window, 它的作用使JavaScript有能力与浏览器’对话.</p>
+<p><strong>DOM :</strong> 文档对象模型;   DOM是一个使程序和脚本有能力动态地访问和更新文档的内容、结构以及样式的平台和语言中立的接口, 它是W3C 的标准[所有浏览器公共遵守的标准] .</p>
+<h2 id="1-BOM-浏览器对象模型"><a href="#1-BOM-浏览器对象模型" class="headerlink" title="1.BOM  浏览器对象模型"></a>1.BOM  浏览器对象模型</h2><h3 id="1-window对象"><a href="#1-window对象" class="headerlink" title="(1) window对象"></a>(1) window对象</h3><p><strong>window对象:</strong> 代表的是浏览器中打开的窗口, 在js中我们使用window来引用window对象,  window对象是最顶层的一个对象, 它的属性和方法的调用都可以省略window.</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">innerHeight / innerWidth</td>
+<td>获取浏览器窗口的内部高度 / 宽度(包括滚动条)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">screen.availWidth / availHeight</td>
+<td>获取可用的屏幕宽度 / 高度</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">prompt()</td>
+<td>弹出输入框</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">alert()</td>
+<td>弹框警告框</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">confirm()</td>
+<td>弹出确认与取消提示框(返回的布尔值true和false)</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">open(‘url’)</td>
+<td>打开新窗口</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">close()</td>
+<td>关闭浏览器窗口</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left">print()</td>
+<td>打印当前窗口的内容(调出打印机)</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left">moveTo(*, *)</td>
+<td>移动当前窗口</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">resizeTo(*, *)</td>
+<td>调整当前窗口的尺寸</td>
+</tr>
+</tbody></table>
+<h3 id="2-location对象"><a href="#2-location对象" class="headerlink" title="(2) location对象"></a>(2) location对象</h3><p><strong>location对象:</strong> 代表的是URL(统一资源定位符, 通常所说的网址);  使用location. 来调用属性</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">location.hostname</td>
+<td>返回 web 主机的域名</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">location.pathname</td>
+<td>返回当前页面的路径和文件名</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">location.port</td>
+<td>返回 web 主机的端口 （80 或 443）</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">location.protocol</td>
+<td>返回所使用的 web 协议（http:// 或 https://）</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">location.href</td>
+<td>返回当前页面的URL</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">location.assign(‘url’)</td>
+<td>加载新的文档网页</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">location.reload()</td>
+<td>重新加载, 刷新页面</td>
+</tr>
+</tbody></table>
+<h3 id="3-history对象"><a href="#3-history对象" class="headerlink" title="(3) history对象"></a>(3) history对象</h3><p><strong>window.history:</strong> 对象返回浏览器的历史记录列表;   使用 history. 来调用属性</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>history.forward()</td>
+<td>前进</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>history.back()</td>
+<td>后退</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>go(number)</td>
+<td>+前进 / -后退</td>
+</tr>
+</tbody></table>
+<h3 id="4-navigator对象"><a href="#4-navigator对象" class="headerlink" title="(4) navigator对象"></a>(4) navigator对象</h3><p><strong>navigator对象</strong>: 包含有关浏览器的信息 </p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>navigator.appCodeName</td>
+<td>浏览器代号</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>navigator.appName</td>
+<td>浏览器名称</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>navigator.appVersion</td>
+<td>浏览器版本</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>navigator.cookieEnabled</td>
+<td>启用Cookies</td>
+</tr>
+</tbody></table>
+<h3 id="5-计时器-计时事件"><a href="#5-计时器-计时事件" class="headerlink" title="(5)计时器 (计时事件)"></a>(5)计时器 (计时事件)</h3><p><strong>计时事件:</strong> 我们通过使用JavaScript能做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行.</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>setInterval (function() {) },2000);</td>
+<td>间隔指定的毫秒数不停地执行指定的代码(周期执行)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>clearInterval()</td>
+<td>用于停止 setInterval() 方法执行的函数代码。</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>setTimeout (function(){)}, 2000);</td>
+<td>在指定的毫秒数后执行指定代码(执行一次)</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>clearTimeout()</td>
+<td>用于停止执行setTimeout()方法的函数代码</td>
+</tr>
+</tbody></table>
+<h2 id="2-DOM-文档对象模型"><a href="#2-DOM-文档对象模型" class="headerlink" title="2.DOM  文档对象模型"></a>2.DOM  文档对象模型</h2><p>使用DOM模型能够使用JS操作文档内容进行  添加, 删除, 修改, 查询, 复制, 等.</p>
+<h3 id="1-获取元素节点"><a href="#1-获取元素节点" class="headerlink" title="(1)获取元素节点"></a>(1)获取元素节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">document. getElementById() /  document.querySelector</td>
+<td align="center">通过id查找元素, 返回带有指定id的元素对象(拿单个元素)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">document. getElementsByTagName() / getElementsByName</td>
+<td align="center">通过标签名查找元素, 返回指定标签的所有元素的集合(使用lenght获取元素个数)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">document. getElementsByClassName() /  document. querySelectorAll</td>
+<td align="center">通过类名查找元素, 返回指定类名的所有元素的集合(使用lenght获取元素个数)</td>
+</tr>
+</tbody></table>
+<h3 id="2-添加节点"><a href="#2-添加节点" class="headerlink" title="(2) 添加节点"></a>(2) 添加节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>var 变量名 = document.createElement(‘li’)</td>
+<td>创建元素节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>var 变量名 = document.createTextNode(‘hello’)</td>
+<td>创建文本节点</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>ul.appendChild(li)</td>
+<td>添加节点(添加到内部末尾)</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>ul. insertBefore(li, li[0])</td>
+<td>插入节点(添加到内部之前)</td>
+</tr>
+</tbody></table>
+<h3 id="3-删除节点"><a href="#3-删除节点" class="headerlink" title="(3) 删除节点"></a>(3) 删除节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>父元素.removeChild(删除的节点对象)</td>
+<td>删除指定的节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>元素. removeAttribute(属性名)</td>
+<td>删除指定的属性</td>
+</tr>
+</tbody></table>
+<h3 id="4-修改元素内容及属性"><a href="#4-修改元素内容及属性" class="headerlink" title="(4) 修改元素内容及属性"></a>(4) 修改元素内容及属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>元素. innerHTML</td>
+<td>获取 / 修改内部的HTML文本, 会渲染标签</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>元素. innerText  /  textContent</td>
+<td>获取 / 修改内部的纯文本</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>元素. setAttribute(属性名, 属性值)</td>
+<td>修改元素的的属性, 设置新属性</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>元素. getAttribute(属性名)</td>
+<td>通过元素名获取属性的值</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>元素. 属性名 = 属性值</td>
+<td>直接修改属性值</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>元素. style. 属性名 = 属性值</td>
+<td>修改CSS的属性</td>
+</tr>
+</tbody></table>
+<h3 id="5-节点查找-层次"><a href="#5-节点查找-层次" class="headerlink" title="(5) 节点查找(层次)"></a>(5) 节点查找(层次)</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>parentNode</td>
+<td>查找某节点的父节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>childNodes</td>
+<td>查找所有孩子节点</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>children</td>
+<td>查找被选元素的所有直接子元素</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>firstChild</td>
+<td>查找被选节点的第一个节点</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>lastChild</td>
+<td>查找被选节点的最后一个节点</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>previousSibling</td>
+<td>查找被选节点的上一个兄弟节点</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>nextSibling</td>
+<td>查找备选节点的后一个兄弟节点</td>
+</tr>
+</tbody></table>
+<h3 id="6-复制节点"><a href="#6-复制节点" class="headerlink" title="(6) 复制节点"></a>(6) 复制节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>var copy = node. cloneNode(true / false)</td>
+<td>参数表示是否克隆后代, 默认为false, 即不克隆后代</td>
+</tr>
+</tbody></table>
+<h3 id="7-事件对象"><a href="#7-事件对象" class="headerlink" title="(7) 事件对象"></a>(7) 事件对象</h3><p><strong>事件驱动模型 :</strong> 事件(动作) –&gt; 事件类型(动作类型) –&gt; 事件源(事件发生的地方) –&gt; 事件处理程序(事件响应程序 - 函                        </p>
+<p>​               数) –&gt; 事件监听器(监听事件的发生 - 浏览器).</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onclick</td>
+<td>事件在元素被点击时发生(元素被点击的整个过程)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onload</td>
+<td>事件在页面或图像加载完成后立即发生</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onunload</td>
+<td>事件在用户退出页面时发生</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>onchange</td>
+<td>事件会在域的内容改变时发生</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>onfocus</td>
+<td>获得焦点是发生</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>onblur</td>
+<td>失去焦点时发生</td>
+</tr>
+</tbody></table>
+<h4 id="A-鼠标属性"><a href="#A-鼠标属性" class="headerlink" title="A. 鼠标属性"></a>A. 鼠标属性</h4><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onmouseover</td>
+<td>鼠标移至元素上方时触发函数</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onmouseout</td>
+<td>鼠标移至移出元素时触发函数</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onmousedown</td>
+<td>鼠标按下时发生</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>onmouseup</td>
+<td>鼠标释放时发生</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>onmousemove</td>
+<td>鼠标被移动时发生</td>
+</tr>
+</tbody></table>
+<h4 id="B-键盘属性"><a href="#B-键盘属性" class="headerlink" title="B. 键盘属性"></a>B. 键盘属性</h4><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onkeydown</td>
+<td>某个键盘按键被按下</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onkeyup</td>
+<td>某个键盘按键被松开</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onkeypress</td>
+<td>某个键盘按键被按下并松开的整个过程</td>
+</tr>
+</tbody></table>
+<p><strong>注意:</strong> 事件回柄需要加on, 添加事件监听addEventListener类型不需要加’on’前缀, 其他都要加on.</p>
+<h3 id="8-事件冒泡与捕获"><a href="#8-事件冒泡与捕获" class="headerlink" title="(8) 事件冒泡与捕获"></a>(8) 事件冒泡与捕获</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>evt.stopPropagation()</td>
+<td>阻止事件冒泡</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>evt.cancelBubble = true</td>
+<td>阻止事件冒泡(IE9之前)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>evt.preventDefault()</td>
+<td>阻止事件默认行为</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>evt.returnValue = false</td>
+<td>阻止事件默认行为(IE9之前)</td>
+</tr>
+</tbody></table>
+<h3 id="9-事件监听"><a href="#9-事件监听" class="headerlink" title="(9) 事件监听"></a>(9) 事件监听</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>document. addEventListener(“click”,  function(){ }, true)    #捕获方式默认为false</td>
+<td>添加事件监听</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>document. attachEvent(‘onclick’ , function(){ })</td>
+<td>添加事件监听(IE9之前)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>document. removeEventListener(“click”,  function(){ })</td>
+<td>移除事件监听</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>document. detachEvent(‘onclick’ , function(){ })</td>
+<td>移除事件监听(IE9之前)</td>
+</tr>
+</tbody></table>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/4. JavaScript的BOM与DOM对象/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/3. JS基本语法/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="JavaScript基本语法"><a href="#JavaScript基本语法" class="headerlink" title="JavaScript基本语法"></a>JavaScript基本语法</h3><p><strong>a.</strong>  JavaScript 是一种轻量级的、基于对象和事件驱动的、跨平台的客户端脚本语言。</p>
+<p><strong>b.</strong>  JavaScript 是用来制作web页面交互效果，提升用户体验(具有简单易用, 解释执行,基于对象等特点)</p>
+<h3 id="1-引入方式"><a href="#1-引入方式" class="headerlink" title="1.引入方式"></a>1.引入方式</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">&lt;script type=”text/javascript” src=”main.js”&gt;&lt;/script&gt;</td>
+<td align="center">导入外部js文件</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">&lt;script type=”text/javascript”&gt;&lt;/script&gt;</td>
+<td align="center">写在body的最下方</td>
+</tr>
+</tbody></table>
+<h3 id="2-输出方式"><a href="#2-输出方式" class="headerlink" title="2.输出方式"></a>2.输出方式</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">window.alert()</td>
+<td align="center">弹出对话框提示</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">document.write()</td>
+<td align="center">将内容写入到 HTML 文档中</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">console.log()</td>
+<td align="center">从浏览器控制台输出</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">document.getElementById(‘p1’).innerHTML = ‘innerHTML’;</td>
+<td align="center">显示在指定的标签中</td>
+</tr>
+</tbody></table>
+<h3 id="3-变量"><a href="#3-变量" class="headerlink" title="3.变量"></a>3.变量</h3><p><strong>语法格式：</strong>var 变量名 = 变量值</p>
+<p><strong>变量的命名规则:</strong><br><strong>a.</strong> 变量名可以包含字母、数字、下划线、美元符号$。</p>
+<p><strong>b.</strong> 变量名不能以数字开头，可以以字母或下划线开头。如：var _name;（正确） var 3abc;（语法错误）</p>
+<p><strong>c.</strong> 变量名不能是系统关键字，如：var、switch、try、case、else、while等。</p>
+<p><strong>d.</strong> JS中的变量名是区分大小写的。如：name和Name是两个变量。</p>
+<p><strong>e.</strong> JS中变量的名称一定要有意义，也就是常说的语义化。</p>
+<p><strong>f.</strong> 驼峰式命名。</p>
+<p><strong>g.</strong> 下划线式命名。</p>
+<h3 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h3><p><strong>typeof()</strong> : 查看数据类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">类型</th>
+<th align="center">语义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">String</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Number</td>
+<td align="center">数字型</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Boolean</td>
+<td align="center">布尔型</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Array</td>
+<td align="center">数组型</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Object</td>
+<td align="center">对象型</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Null</td>
+<td align="center">空型</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">Undefined</td>
+<td align="center">未定义型</td>
+</tr>
+</tbody></table>
+<h3 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5.运算符"></a>5.运算符</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能</th>
+<th>运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>算术运算符</td>
+<td>+、 -、 *、 /、 %、 ++、 –</td>
+</tr>
+<tr>
+<td>2</td>
+<td>赋值运算符</td>
+<td>=、  +=、  -=、  *=、  /=、  %=</td>
+</tr>
+<tr>
+<td>3</td>
+<td>比较运算符</td>
+<td>&gt;、 &lt;、 &gt;=、 &lt;=、 !=、 !==、 ==、 ===</td>
+</tr>
+<tr>
+<td>4</td>
+<td>逻辑运算符</td>
+<td>&amp;&amp; (and)、    || (or)、    ! (not)</td>
+</tr>
+</tbody></table>
+<h3 id="6-条件语句"><a href="#6-条件语句" class="headerlink" title="6.条件语句"></a>6.条件语句</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">if 语句</td>
+<td align="center">只有当指定条件为 true 时，使用该语句来执行代码</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">if…else 语句</td>
+<td align="center">当条件为 true 时执行代码，当条件为 false 时执行其他代码</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">if…else if….else 语句</td>
+<td align="center">使用该语句来选择多个代码块之一来执行</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">switch 语句</td>
+<td align="center">使用该语句来选择多个代码块之一来执行</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">条件表达式？结果1：结果2</td>
+<td align="center">三元运算符 ( 三目运算符 )</td>
+</tr>
+</tbody></table>
+<p><strong>基本结构形式如下:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">(1). if单分支选择结构：</span><br><span class="line">if条件判断----只判断true，不判断false。</span><br><span class="line">语法结构：</span><br><span class="line">if(条件判断，结果只要两个true或false)</span><br><span class="line">&#123;</span><br><span class="line">	条件为true，将执行该代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2).  if...else双分支选择结构：</span><br><span class="line">语法结构-----既判断true，又判断false。</span><br><span class="line">if(条件判断：结果只有两个true或false)</span><br><span class="line">&#123;</span><br><span class="line">	条件为true，将执行该代码</span><br><span class="line">&#125;else</span><br><span class="line">&#123;</span><br><span class="line">	条件为false，将执行该代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(3).  if...else if...else多分支选择结构：</span><br><span class="line">语法结构语句来选择多个代码块之一来执行</span><br><span class="line">if (条件1)</span><br><span class="line">&#123;</span><br><span class="line">    当条件 1 为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line">else if (条件2)</span><br><span class="line">&#123;</span><br><span class="line">    当条件 2 为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">  当条件 1 和 条件 2 都不为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(4)switch 语句是用来选择要执行的多个代码块之一</span><br><span class="line">switch(n)</span><br><span class="line">&#123;</span><br><span class="line">    case 1:</span><br><span class="line">        执行代码块 1</span><br><span class="line">        break;</span><br><span class="line">    case 2:</span><br><span class="line">        执行代码块 2</span><br><span class="line">        break;</span><br><span class="line">    default:</span><br><span class="line">        与 case 1 和 case 2 不同时执行的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(5)三元运算符(三目运算符)</span><br><span class="line">语法：条件表达式？结果1：结果2</span><br><span class="line">语法：操作数！？操作数2：操作数3</span><br><span class="line">含义：如果条件为true，则执行"结果1"的代码；如果条件为false，则执行"结果2"的代码。</span><br><span class="line">其实：三元运算符，就是if else的变形形式</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-循环结构"><a href="#7-循环结构" class="headerlink" title="7.循环结构"></a>7.循环结构</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">语法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">for循环</td>
+<td>循环代码块一定的次数</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">for in循环</td>
+<td>循环遍历对象的属性</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">while循环</td>
+<td>当指定的条件为 true 时循环指定的代码块</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">do  while循环</td>
+<td>同样当指定的条件为 true 时循环指定的代码块</td>
+</tr>
+</tbody></table>
+<p><strong>基本循环结构语法如下:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">(1) for循环:</span><br><span class="line">for (变量初始化; 条件判断; 变量更新)</span><br><span class="line">&#123;</span><br><span class="line">    循环体代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2)for in 循环:</span><br><span class="line">var person=&#123;name:"hanbo", age:23&#125;; </span><br><span class="line">for (x in person)    // x 为属性名</span><br><span class="line">&#123;</span><br><span class="line">    txt=txt + person[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(3)while循环:</span><br><span class="line">while(条件判断)</span><br><span class="line">&#123;</span><br><span class="line">	如果条件为true，则执行循环体代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(4)do while循环:  先斩后奏，先执行一次</span><br><span class="line">表达式1;             //表达式1：从哪里开始</span><br><span class="line">    do</span><br><span class="line">    &#123;  </span><br><span class="line">        语句组;       //当我们满足循环时要执行的语句</span><br><span class="line">        表达式3;      //步长（步进）</span><br><span class="line">    &#125;</span><br><span class="line">    while()表达式2：  //到哪里结束（循环条件）</span><br><span class="line"></span><br><span class="line">注意：循环体中，应有结束循环的条件，否则会造成死循环。</span><br><span class="line"></span><br><span class="line">在循环中break是终止循环, continue是跳过本次循环继续循环</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-函数"><a href="#8-函数" class="headerlink" title="8.函数"></a>8.函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">语法:</span><br><span class="line">function foo（形参1, 形参2, ...）</span><br><span class="line">&#123;</span><br><span class="line">     函数功能代码</span><br><span class="line">     return 参数(表达式);</span><br><span class="line">&#125;</span><br><span class="line">foo（实参1, 实参2, ...）;    //调用函数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prototype:给类添加方法:</span><br><span class="line">类名.prototype.方法名 = 函数</span><br><span class="line">Number.prototype.sum = function(num) </span><br><span class="line">&#123;</span><br><span class="line">	// body...</span><br><span class="line">	// js中this就相当于python中的self;谁调用当前这个方法，this就指向谁</span><br><span class="line">	return this+num;</span><br><span class="line">&#125;;</span><br><span class="line">var a = 20</span><br><span class="line">var b = a.sum(30);</span><br><span class="line">console.log(&apos;b:&apos;,b);  &gt;&gt;&gt;b:50</span><br></pre></td></tr></table></figure>
+
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/3. JS基本语法/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/2. css属性的基本用法/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h1 id="CSS的基本属性"><a href="#CSS的基本属性" class="headerlink" title="CSS的基本属性"></a>CSS的基本属性</h1><h3 id="1、CSS简介"><a href="#1、CSS简介" class="headerlink" title="1、CSS简介"></a>1、CSS简介</h3><p>英文全名：cascading style sheets</p>
+<p>定义:  层叠样式表,  是WEB标准中的表现标准语言,  表现标准语言在网页中主要对网页信息的显示进行控制，简单说就是如何修饰网页信息的显示样式。</p>
+<p>目前推荐遵循的是W3C发布的CSS3.0.<br>用来表现XHTML或者XML等样式文件的计算机语言。</p>
+<p>1998年5月21日由w3C正式推出的css2.0</p>
+<h3 id="2-css语法"><a href="#2-css语法" class="headerlink" title="2.css语法"></a>2.css语法</h3><p>CSS语法：选择符{属性：属性值；属性：属性值；} </p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">属性值</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">text-align</td>
+<td align="center">center,  left,  right</td>
+<td align="center">文字居中格式</td>
+</tr>
+<tr>
+<td align="center">font-size</td>
+<td align="center">18px</td>
+<td align="center">设置文字大小</td>
+</tr>
+<tr>
+<td align="center">font-family</td>
+<td align="center">微软雅黑,  宋体等</td>
+<td align="center">设置字体</td>
+</tr>
+<tr>
+<td align="center">font-weight</td>
+<td align="center">normal(默认), bold(粗体), 100px ,等</td>
+<td align="center">设置字体加粗</td>
+</tr>
+<tr>
+<td align="center">font-style</td>
+<td align="center">normal(默认), italic(斜体)</td>
+<td align="center">设置字体样式</td>
+</tr>
+<tr>
+<td align="center">color</td>
+<td align="center">颜色值</td>
+<td align="center">设置文字颜色</td>
+</tr>
+<tr>
+<td align="center">background-color</td>
+<td align="center">颜色值</td>
+<td align="center">设置背景颜色</td>
+</tr>
+</tbody></table>
+<h3 id="3-样式的创建"><a href="#3-样式的创建" class="headerlink" title="3.样式的创建"></a>3.样式的创建</h3><h4 id="1-内部样式"><a href="#1-内部样式" class="headerlink" title="(1)  内部样式:"></a>(1)  内部样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">        css语句</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-外部样式"><a href="#2-外部样式" class="headerlink" title="(2)  外部样式:"></a>(2)  外部样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">第一种:</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"目标文件的路径及文件名全称"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">rel（relation）：用于定义文档关联，表示关联样式表；</span><br><span class="line">type：定义文档类型</span><br><span class="line"></span><br><span class="line">第二种:</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">        @import url(目标文件的路径及文件名全称);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">注意:a.  @和import之间没有空格 url和小括号之间也没有空格；必须结尾以分号结束</span><br><span class="line">	b.  @import是CSS2.1提出的，所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-内联样式"><a href="#3-内联样式" class="headerlink" title="(3)内联样式:"></a>(3)内联样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：<span class="tag">&lt;<span class="name">标签</span> <span class="attr">style</span>=<span class="string">"属性：属性值;属性:属性值;"</span>&gt;</span><span class="tag">&lt;/<span class="name">标签</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-样式表的优先级"><a href="#4-样式表的优先级" class="headerlink" title="4.样式表的优先级"></a>4.样式表的优先级</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A、内联样式表的优先级别最高</span><br><span class="line">B、内部样式表与外部样式表的优先级和书写的顺序有关，后书写的优先级别高。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-css选择器"><a href="#5-css选择器" class="headerlink" title="5.css选择器"></a>5.css选择器</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">选择器</th>
+<th align="left">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">标签选择器</td>
+<td align="left">标签名称{属性：属性值；}</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">id选择器</td>
+<td align="left">#id名{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">class选择器</td>
+<td align="left">.class名{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">通配符</td>
+<td align="left">*{属性：属性值；}</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">群组选择器</td>
+<td align="left">选择符1，选择符2，选择符3{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">包含选择器</td>
+<td align="left">选择符1 选择符2{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">伪类选择器</td>
+<td align="left">如下 : 注意3</td>
+</tr>
+</tbody></table>
+<p><strong>注意1: class选择器 定义类名称要规范:</strong>    如下表格是常见的命名:</p>
+<table>
+<thead>
+<tr>
+<th align="center">部位</th>
+<th align="center">命名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">头</td>
+<td align="center">header</td>
+</tr>
+<tr>
+<td align="center">内容</td>
+<td align="center">content</td>
+</tr>
+<tr>
+<td align="center">尾</td>
+<td align="center">footer</td>
+</tr>
+<tr>
+<td align="center">导航</td>
+<td align="center">nav</td>
+</tr>
+<tr>
+<td align="center">侧边栏</td>
+<td align="center">sidebar</td>
+</tr>
+<tr>
+<td align="center">标志</td>
+<td align="center">logo</td>
+</tr>
+<tr>
+<td align="center">广告</td>
+<td align="center">banner</td>
+</tr>
+<tr>
+<td align="center">页面主体</td>
+<td align="center">main</td>
+</tr>
+</tbody></table>
+<p><strong>注意2 : 包含选择器</strong>选择符之间是用空格隔开,并且选择符1&gt;大于选择符2;<br>         而群组选择器选择符之间是用逗号隔开.</p>
+<h4 id="注意3-伪类选择器"><a href="#注意3-伪类选择器" class="headerlink" title="注意3.  伪类选择器"></a>注意3.  伪类选择器</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">语法 ：</span><br><span class="line">a:link&#123;属性：属性值;&#125;超链接的初始状态;</span><br><span class="line">a:visited&#123;属性：属性值;&#125;超链接被访问后的状态;</span><br><span class="line">a:hover&#123;属性：属性值;&#125;鼠标悬停，即鼠标划过超链接时的状态;</span><br><span class="line">a:active&#123;属性：属性值;&#125;超链接被激活时的状态，即鼠标按下时超链接的状态;</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">a:hover&#123;color: red;&#125;</span><br><span class="line">a&#123;text-decoration: none;&#125;   /*去掉超链接的下划线*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-css选择器的权重"><a href="#6-css选择器的权重" class="headerlink" title="6.css选择器的权重"></a>6.css选择器的权重</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">css中用四位数字表示权重，权重的表达方式如：0，0，0，0</span><br><span class="line">标签选择器的权重为0001</span><br><span class="line">class选择器的权重为0010</span><br><span class="line">id选择器的权重为0100</span><br><span class="line">伪类选择器的权重为0001 </span><br><span class="line">包含选择器的权重：为包含选择符的权中之和</span><br><span class="line">内联样式的权重为1000</span><br><span class="line">!important 语法是提升指定样式条目的应用优先权</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-浮动属性的应用"><a href="#7-浮动属性的应用" class="headerlink" title="7.浮动属性的应用"></a>7.浮动属性的应用</h3><p><strong>A.  语法:</strong>  float : none / left / right ;</p>
+<p><strong>B.  float:</strong>  定义网页中其它文本如何环绕该元素显示 </p>
+<p><strong>C.  浮动的目的:</strong>  就是让竖着的东西横着来  </p>
+<p><strong>D.  浮动的三个取值:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">left:元素活动浮动在文本左面</span><br><span class="line">right:元素浮动在右面</span><br><span class="line">none:默认值，不浮动。</span><br></pre></td></tr></table></figure>
+
+<p><strong>E.  清除浮动的三种方法 :</strong></p>
+<p>​    a.  语法：.clear{clear:both;}         不常用</p>
+<p>​    b.  语法：.clear{overflow:hidden;}       不建议使用</p>
+<p>​    c.  语法：最流行、最常用、可兼容所有浏览器 , 开发时推荐使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear：after&#123;</span><br><span class="line">	display:block;</span><br><span class="line">	clear:both;</span><br><span class="line">	content:".";</span><br><span class="line">	visibility:hidden;</span><br><span class="line">	height:0;&#125;</span><br><span class="line">clear&#123;zoom:1;&#125; </span><br><span class="line"></span><br><span class="line">牢记:对于CSS的清除浮动(clear)，这个规则只能影响使用清除的元素本身，不能影响其他元素</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-css文本属性"><a href="#8-css文本属性" class="headerlink" title="8.css文本属性"></a>8.css文本属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">文本大小</td>
+<td align="center">font-size : value</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">文本颜色</td>
+<td align="center">color : 颜色值</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">文本字体</td>
+<td align="center">font-family : 字体1，字体2，字体3</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">文字加粗</td>
+<td align="center">font-weight : bolder(更粗的) / bold（加粗）/ normal（常规）/100—900</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">文字倾斜</td>
+<td align="center">font-style：italic / oblique / normal（取消倾斜，常规显示）</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">水平对齐方式</td>
+<td align="center">text-align : left / right / center</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">文字行高</td>
+<td align="center">line-height : normal / value</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">文本修饰</td>
+<td align="center">text-decoration : none / underline(添加下划线) / overline / line-through</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">首行缩进</td>
+<td align="center">text-indent : value   (例如:  text-indent : 2em )</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">字间距</td>
+<td align="center">letter-spacing : value</td>
+</tr>
+</tbody></table>
+<p><strong>注意: 文字属性可简写</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">font属性的简写：字号，行高，字体</span><br><span class="line">font:12px/24px "宋体";</span><br><span class="line">font-size:12px; line-height:24px; font-family:”宋体”;</span><br><span class="line"></span><br><span class="line">说明:font的属性值应按以下次序书写(各个属性之间用空格隔开)</span><br><span class="line">顺序: font-style font-weight font-size / line-height font-family</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-css列表属性"><a href="#9-css列表属性" class="headerlink" title="9.css列表属性"></a>9.css列表属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">定义列表符号样式</td>
+<td align="center">list-style-type：disc(实心圆) / circle(空心圆) / square(实心方块) / none(去掉列表符号)；list-style-type : none===list-style : none;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">使用图片作为列表符号</td>
+<td align="center">list-style-image：url(所使用图片的路径及全称)；</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">定义列表符号的位置</td>
+<td align="center">list-style-position : outside(外边) / inside(里边)；</td>
+</tr>
+</tbody></table>
+<h3 id="10-css背景属性"><a href="#10-css背景属性" class="headerlink" title="10.css背景属性"></a>10.css背景属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">背景颜色</td>
+<td align="center">background-color : 颜色值 ;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">背景图片的设置</td>
+<td align="center">background-image：url(背景图片的路径及全称)；</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">背景图片平铺属性</td>
+<td align="center">background-repeat : no-repeat(不平铺)/repeat(平铺)/repeat-x(横向平铺)/repeat-y(纵向平铺) ;</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">背景图的固定</td>
+<td align="center">background-attachment : scroll(滚动) / fixed(固定) ;</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">背景图片的位置</td>
+<td align="center">background-position : left / center/right/(水平向上)或数值 top/center/bottom/(水平向下)或数值</td>
+</tr>
+</tbody></table>
+<h3 id="11-css边框属性"><a href="#11-css边框属性" class="headerlink" title="11.css边框属性"></a>11.css边框属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">border : 边框宽度 边框风格 边框颜色</td>
+<td align="center">border : 5px solid red</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">边框圆角(倒角)</td>
+<td align="center">border-radius : 25px</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">边框阴影</td>
+<td align="center">box-shadow : 10px 10px 5px #888888;</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">边框样式</td>
+<td align="center">border-style :  solid(实线)/  dashed(虚线)</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">单独设置各边</td>
+<td align="center">border-top-style : dotted ;  border-right-style : solid ; border-bottom-style : dotted ;  border-left-style : solid;</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">边框宽度</td>
+<td align="center">border-width : 20px</td>
+</tr>
+</tbody></table>
+<h4 id="补充-锚点连接"><a href="#补充-锚点连接" class="headerlink" title="补充 : 锚点连接"></a>补充 : 锚点连接</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#step1"</span>&gt;</span>HTML标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">2.<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">3.<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"step1"</span>&gt;</span></span><br><span class="line">4.<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">执行效果: 点击4跳转到2, 点击1跳转到3.</span><br></pre></td></tr></table></figure>
+
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/2. css属性的基本用法/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/1. html简介与html常用标签/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="一、HTML简介"><a href="#一、HTML简介" class="headerlink" title="一、HTML简介"></a>一、HTML简介</h2><h3 id="1-web标准"><a href="#1-web标准" class="headerlink" title="1.web标准"></a>1.web标准</h3><p><strong>w3c :</strong> 万维网联盟组织    用来制定web标准的机构(组织)</p>
+<p><strong>web标准 :</strong> 制作网页要遵循的规范</p>
+<p><strong>web标准规范的分类 :</strong>  结构标准    表现标准    行为标准</p>
+<p><strong>结构 :</strong>  html             <strong>表现 :</strong> css              <strong>行为 :</strong> javascript (js)</p>
+<h3 id="2-什么是HTML"><a href="#2-什么是HTML" class="headerlink" title="2.什么是HTML"></a>2.什么是HTML</h3><p><strong>HTML</strong>  : 指的是超文本标记语言 (Hyper Text Markup Language), 2014年10月29日，<a href="https://baike.baidu.com/item/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟</a>宣布，经过接近8年的艰苦努力，该标准规范终于制定完成 .</p>
+<p><strong>XHTML</strong>  : 指可扩展超文本标记语言（标识语言）（EXtensible HyperText Markup<br>Language）。“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。</p>
+<p><strong>HTML5</strong>  : 指的是HTML的第五次重大修改（第5个版本）</p>
+<p><strong>XML</strong>  : 可扩展标记语言。（主要用于数据的处理与表达）了解。</p>
+<h3 id="3-HTML的基本结构"><a href="#3-HTML的基本结构" class="headerlink" title="3.HTML的基本结构"></a>3.HTML的基本结构</h3><h4 id="1-html中标签分为："><a href="#1-html中标签分为：" class="headerlink" title="(1). html中标签分为："></a>(1). html中标签分为：</h4><p><strong>单标签：</strong>&lt;!DOCTYPE&gt;<br>&lt;标签名   属性=属性值     属性=属性值 /&gt;</p>
+<p><strong>双标签：</strong><html></html> 、<head></head>、<title></title>、<body></body><br>&lt;标签名   属性=属性值     属性=属性值&gt;  任何内容  &lt;/标签名&gt;</p>
+<h4 id="2-标签的关系"><a href="#2-标签的关系" class="headerlink" title="(2).标签的关系:"></a>(2).标签的关系:</h4><p><strong>包含关系：</strong>像head标签和title标签<br><strong>平行关系：</strong>像head标签和body标签</p>
+<h4 id="3-标签名是不区分大小写的"><a href="#3-标签名是不区分大小写的" class="headerlink" title="(3).标签名是不区分大小写的:"></a>(3).标签名是不区分大小写的:</h4><p>DOCTYPE、doctype、DocType都是一样的, 但是一般的标签我们都小写.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 声明文本类型 html对应的是html5--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 网站的所有的内容都要写到html标签中(不管是网页中可以看到的还是看不到的) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 在这个标签写网页设置相关的一些信息，写在这个标签中的内容是在网页上看不到的</span></span><br><span class="line"><span class="comment">主要包含:meta标签、link标签、style标签等  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 设置网页标题 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>www.baidu.com是百度官网<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- meta标签是单标签，作用是定义html的元数据包括：编码方式、搜索关键字、网站的描述、网站建设者、爬虫方式等 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- charset属性是用来设置网页的编码方式 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"http://www.w3school.com.cn/tags"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 需要在网页中显示的内容就写在body标签中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	hello world</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、HTML常用标签"><a href="#二、HTML常用标签" class="headerlink" title="二、HTML常用标签"></a>二、HTML常用标签</h2><h3 id="1-文本标签"><a href="#1-文本标签" class="headerlink" title="1.文本标签"></a>1.文本标签</h3><h4 id="1-标题标签h1-h6"><a href="#1-标题标签h1-h6" class="headerlink" title="(1) 标题标签h1 - h6"></a>(1) 标题标签h1 - h6</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>二级标签<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>三级标签<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>四级标签<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span>五级标签<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>六级标签<span class="tag">&lt;/<span class="name">h6</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">注意:<span class="comment">&lt;!-- 一个网页中只能有一个h1标签 h2-h6标签可以有多个--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-p标签、br标签、-amp-nbsp；"><a href="#2-p标签、br标签、-amp-nbsp；" class="headerlink" title="(2) p标签、br标签、&amp;nbsp；"></a>(2) p标签、br标签、&amp;nbsp；</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">注意:html里面的文本中直接打的空格和回车是无效</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落文本内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span> :一个p标签的内容就是一个段落，段落间会多空出一行</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> :强制换行，换行后不会多空出一行</span><br><span class="line">&amp;nbsp; :代表一个空格</span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; html是超文本标记语言，标准通用标记语言下的一个应用。 “超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。超文本标记语言的结构包括“头”部分（英语：Head）、和“主体”部分（英语：Body），其中“头”部提供关于网页的信息，“主体”部分提供网页的具体内容 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; html是超文本标记语言，<span class="tag">&lt;<span class="name">strong</span>&gt;</span>标准通用标记语言下的一个应用<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>。 “超文本”就是指页面内可以包含图片、<span class="tag">&lt;<span class="name">strong</span>&gt;</span> <span class="tag">&lt;<span class="name">em</span>&gt;</span>链接<span class="tag">&lt;/<span class="name">em</span>&gt;</span> <span class="tag">&lt;/<span class="name">strong</span>&gt;</span>，甚至音乐、程序等非文字元素。<span class="tag">&lt;<span class="name">i</span>&gt;</span>超文本标记语言<span class="tag">&lt;/<span class="name">i</span>&gt;</span>的结构包括“头”部分（英语：Head）、<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>和“主体”部分<span class="tag">&lt;/<span class="name">font</span>&gt;</span>（英语：Body），其中“头”部提供关于网页的信息，<span class="tag">&lt;<span class="name">br</span>/&gt;</span>“主体”部分提供网页的具体内容 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-font标签"><a href="#3-font标签" class="headerlink" title="(3) font标签"></a>(3) font标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size:字体大小</span><br><span class="line">color:颜色  可以是颜色对应的英语单词、RGB的十六进行值（255，0，0）-&gt; #ff0000  (0,255,0)-&gt;#00ff00</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">"4"</span> <span class="attr">color</span>=<span class="string">#541D1D</span> <span class="attr">face</span>=<span class="string">"幼圆"</span>&gt;</span>html是:超文本标记语言<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-字体加粗和倾斜标签、水平线"><a href="#4-字体加粗和倾斜标签、水平线" class="headerlink" title="(4) 字体加粗和倾斜标签、水平线"></a>(4) 字体加粗和倾斜标签、水平线</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">加粗：</span><br><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>加粗内容<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>加粗内容<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"></span><br><span class="line">倾斜:</span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line">水平线:</span><br><span class="line"> <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-列表标签"><a href="#2-列表标签" class="headerlink" title="2.列表标签"></a>2.列表标签</h3><p><strong>注意</strong> : 所有的列表标签都是配合li标签使用的</p>
+<h4 id="1-无序列表-ul"><a href="#1-无序列表-ul" class="headerlink" title="(1) 无序列表  ul"></a>(1) 无序列表  ul</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>数学<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>语文<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>英语<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-有序列表-ol"><a href="#2-有序列表-ol" class="headerlink" title="(2) 有序列表  ol"></a>(2) 有序列表  ol</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>数学<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>数学是一门令人头疼的学科<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>语文<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>英语<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-自定义列表-dl-gt-dt-dd"><a href="#3-自定义列表-dl-gt-dt-dd" class="headerlink" title="(3) 自定义列表  dl  &gt;  dt  =  dd"></a>(3) 自定义列表  dl  &gt;  dt  =  dd</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span>  <span class="comment">&lt;!-- 自定义列表: 需要通过dt标签来设置列表的名称,多个dd标签对应其多个内容 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dt</span>&gt;</span>水果:<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>葡萄<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>西瓜<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">dt</span>&gt;</span>蔬菜:<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>白菜<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>萝卜<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>茄子<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-插入图片-img"><a href="#3-插入图片-img" class="headerlink" title="3. 插入图片  img"></a>3. 插入图片  img</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"目标文件路径及全称"</span> <span class="attr">alt</span>=<span class="string">"图片替换文本"</span> <span class="attr">title</span>=<span class="string">"图片标题"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">注:所要插入的的图片必须放在站点下</span><br><span class="line">1.title的作用: 在你鼠标悬停在该图片上时显示一个小提示，鼠标离开就没有了，HTML</span><br><span class="line">的绝大多数标签都支持title属性，title属性就是专门做提示信息的.</span><br><span class="line"></span><br><span class="line">2.alt的作用:alt属性是在你的图片因为某种原因不能加载时在页面显示的提示信息，它</span><br><span class="line">会直接输出在原本加载图片的地方。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-超链接-a"><a href="#4-超链接-a" class="headerlink" title="4. 超链接 a"></a>4. 超链接 a</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">语法:  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"目标文件路径及全称/链接地址"</span>&gt;</span>链接文本/图片<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://blog.csdn.net/hanbo6"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>韩波的博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">属性: target:页面打开的方式</span><br><span class="line">_self（默认值）：在当前页面里面打开链接</span><br><span class="line">_blank：在新的窗口中打开链接</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-数据表格的作用及组成"><a href="#5-数据表格的作用及组成" class="headerlink" title="5. 数据表格的作用及组成"></a>5. 数据表格的作用及组成</h3><p><strong>作用:</strong> 显示数据</p>
+<p><strong>组成:  table  &gt;  tr   &gt;   td   =   td</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        .........</span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">1.数据表格的相关属性</span><br><span class="line">width="表格的宽度"</span><br><span class="line">height="表格的高度"</span><br><span class="line">border="表格的边框"</span><br><span class="line">bgcolor="表格的背景色"</span><br><span class="line">cellspacing="单元格与单元格之间的间距"</span><br><span class="line">cellpadding="单元格与内容之间的空隙"</span><br><span class="line">bordercolor=”表示边框颜色”</span><br><span class="line">水平对齐方式：align="left/center/right"</span><br><span class="line"></span><br><span class="line">2.合并单元格属性：</span><br><span class="line">colspan=“所要合并的单元格的列数"合并列;</span><br><span class="line">rowspan=“所要合并单元格的行数”合并行;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-表单的的应用"><a href="#6-表单的的应用" class="headerlink" title="6. 表单的的应用"></a>6. 表单的的应用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">表单的作用：用来收集用户的信息的;</span><br><span class="line">a.表单框</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"表单名称"</span> <span class="attr">method</span>=<span class="string">"post/get"</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">b.文本框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"默认值"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">c.密码框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">d.提交按钮</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"按钮内容"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">e.重置按钮</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"按钮内容"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">f.单选框/单选按钮</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"ral"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"ral"</span> /&gt;</span></span><br><span class="line">注意:单选按钮里的name属性必须写，同一组单选按钮的name属性值必须一样。</span><br><span class="line"></span><br><span class="line">g.复选框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"like"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"like"</span></span></span><br><span class="line"><span class="tag"><span class="attr">disabled</span>=<span class="string">"disabled"</span> /&gt;</span></span><br><span class="line">(disabled="disabled" :禁用)</span><br><span class="line">(checked="checked" :默认选中)</span><br><span class="line"></span><br><span class="line">h.下拉菜单</span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>菜单内容<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">i.多行文本框（文本域）</span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"textarea"</span> <span class="attr">cols</span>=<span class="string">"字符宽度"</span> <span class="attr">rows</span>=<span class="string">"行数"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"></span><br><span class="line">j.按钮</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"'"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">“按钮内容”</span> /&gt;</span></span><br><span class="line">（他和submit的区别是 ，submit是提交按钮 起到提交信息</span><br><span class="line">的作用，button只起到跳转的作用，不进行提交。）</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-div的用法"><a href="#7-div的用法" class="headerlink" title="7. div的用法"></a>7. div的用法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">文档区域，文档布局对象</span><br><span class="line">div是区块，分割的意思</span><br><span class="line">作用：用来把页面划分出不同的区域</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-span的用法"><a href="#8-span的用法" class="headerlink" title="8. span的用法"></a>8. span的用法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">文本结点（某一小段文本，或是某一个字）</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>他有双<span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:blue"</span>&gt;</span>蓝色<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 的眼睛。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/1. html简介与html常用标签/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/11/23/6. AJAX异步请求/"></a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-11-23
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>AJAX(Asynchronous JavaScript and XML): 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术 .</p>
+<h4 id="1-AJAX发起异步请求步骤"><a href="#1-AJAX发起异步请求步骤" class="headerlink" title="1.AJAX发起异步请求步骤:"></a>1.AJAX发起异步请求步骤:</h4><p><strong>(1). 创建异步请求对象</strong></p>
+<p>​    var xhr = new XMLHttpRequest();</p>
+<p><strong>(2). 准备建立连接</strong></p>
+<p>​    xhr.open(‘get’, url, true);</p>
+<p><strong>(3). 发送请求</strong></p>
+<p>​    xhr.send();</p>
+<p><strong>(4). 处理事件相应</strong></p>
+<p>xhr.onreadystatechange = function() {</p>
+<p>​    if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {    //请求处理完毕,响应就绪;  请求成功</p>
+<p>​    var json = JSON.parse(xhr.responseText);  }} ; // 将服务器返回的数据解析成JSON</p>
+<h4 id="2-用原生JS编写AJAX请求"><a href="#2-用原生JS编写AJAX请求" class="headerlink" title="2. 用原生JS编写AJAX请求:"></a>2. 用原生JS编写AJAX请求:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">			#loadBtn &#123;</span><br><span class="line">				width: 200px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				font-size: 30px;</span><br><span class="line">				color: red;</span><br><span class="line">				background-color: blue;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loadBtn"</span>&gt;</span>点击加载图片<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/mylib.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">			+function() &#123;</span><br><span class="line">				bind($('loadBtn'), 'click', function() &#123;</span><br><span class="line">					// 创建异步请求对象</span><br><span class="line">					var xhr = new XMLHttpRequest();</span><br><span class="line">					if (xhr) &#123;</span><br><span class="line">						var url = 'http://api.tianapi.com/meinv/?key=77b2a&amp;num=50';</span><br><span class="line">						// 第一个参数  - 请求的方式get或post</span><br><span class="line">						// 第二个参数 - 请求的资源对应的URL(统一资源定位符)</span><br><span class="line">						// 第三个参数 - true表示异步请求(不中断用户体验的非阻塞式请求)</span><br><span class="line">						xhr.open('get', url, true);</span><br><span class="line">						// 绑定事件回调函数(服务器响应完成并成功后要对页面进行局部刷新)</span><br><span class="line">						xhr.onreadystatechange = function() &#123;</span><br><span class="line">							if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) &#123;</span><br><span class="line">								// 将服务器返回的数据解析成JSON</span><br><span class="line">								var json = JSON.parse(xhr.responseText);</span><br><span class="line">								var mmList = json.newslist;</span><br><span class="line"><span class="xml">								for (var i = 0; i <span class="tag">&lt; <span class="attr">mmList.length</span>; <span class="attr">i</span> += <span class="string">1)</span> &#123;</span></span></span><br><span class="line">									var mm = mmList[i];</span><br><span class="line"><span class="xml">									// 动态创建<span class="tag">&lt;<span class="name">img</span>&gt;</span>标签并绑定src属性</span></span><br><span class="line">									var img = document.createElement('img');</span><br><span class="line">									img.src = mm.picUrl;</span><br><span class="line">									img.width = 800;</span><br><span class="line">									document.body.insertBefore(img, $('loadBtn'));</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;;</span><br><span class="line">						xhr.send();</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						alert('请更换谷歌浏览器');</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;();</span><br><span class="line">            </span><br><span class="line">JSON格式转换:</span><br><span class="line">parse - 把字符串解析成JSON对象</span><br><span class="line">stringify - 把JSON对象转成字符串</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用jQuery编写AJAX请求"><a href="#3-用jQuery编写AJAX请求" class="headerlink" title="3. 用jQuery编写AJAX请求:"></a>3. 用jQuery编写AJAX请求:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loadBtn"</span>&gt;</span>加载<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">			$(function() &#123;</span><br><span class="line">				// var url = 'http://api.tianapi.com/meinv/?key=7b84&amp;num=10';</span><br><span class="line">				$('#loadBtn').on('click', function() &#123;</span><br><span class="line">					$.ajax(&#123;</span><br><span class="line">						type: 'get',</span><br><span class="line">						url: 'http://api.tianapi.com/meinv/',</span><br><span class="line">						data: &#123;</span><br><span class="line">							key: '77231b84',</span><br><span class="line">							num: 10</span><br><span class="line">						&#125;,</span><br><span class="line">						dataType: 'json',</span><br><span class="line">						success: function(json) &#123;</span><br><span class="line"><span class="xml">							for (var i = 0; i <span class="tag">&lt; <span class="attr">json.newslist.length</span>; <span class="attr">i</span> += <span class="string">1)</span> &#123;</span></span></span><br><span class="line">								var mm = json.newslist[i];</span><br><span class="line"><span class="xml">								// $('<span class="tag">&lt;<span class="name">img</span>&gt;</span>').attr('src', mm.picUrl).attr('width', 300)</span></span><br><span class="line">										// .insertBefore($('#loadBtn'));</span><br><span class="line"><span class="xml">								$('<span class="tag">&lt;<span class="name">p</span>&gt;</span>').append($('<span class="tag">&lt;<span class="name">a</span>&gt;</span>')</span></span><br><span class="line">										.attr('href', mm.picUrl)</span><br><span class="line">										.attr('target', '_blank')</span><br><span class="line">										.text(mm.title)</span><br><span class="line">								).insertBefore($('#loadBtn'));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;,</span><br><span class="line">						error: function() &#123;&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/11/23/6. AJAX异步请求/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-">
+    <header class="cube-excerpt-header">
         <h1><a href="/2019/10/31/Java虚拟机/"></a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
@@ -971,371 +2241,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/10/20/MySQL数据库知识点/"></a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-10-20
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>##Mysql数据库知识点<br>1.管理数据库语句：<br>使用数据库：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use test;</span><br></pre></td></tr></table></figure>
-
-<p>添加数据库：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database 数据库名;</span><br><span class="line"></span><br><span class="line">create database test;</span><br></pre></td></tr></table></figure>
-
-<p>修改数据库：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter database 数据库名;</span><br><span class="line"></span><br><span class="line">alter database test;</span><br></pre></td></tr></table></figure>
-
-<p>删除数据库：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br><span class="line"></span><br><span class="line">drop database test;</span><br></pre></td></tr></table></figure>
-
-<p>查看所有数据库：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.管理表语句：<br>添加数据表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束,</span><br><span class="line"></span><br><span class="line">　　列名 数据类型 数据约束</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　age <span class="title">int</span><span class="params">(<span class="number">4</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>修改数据表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名;</span><br></pre></td></tr></table></figure>
-
-<p>1)在表中增加新字段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student add colunm name <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>2)删除表中的字段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student drop name;</span><br></pre></td></tr></table></figure>
-
-<p>3)修改表中字段的类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">alter table student modify name <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>删除数据表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop table 表名;</span><br><span class="line"></span><br><span class="line">drop table student;</span><br></pre></td></tr></table></figure>
-
-<p>查看所有表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>3.管理数据语句：<br>插入数据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (列<span class="number">1</span>,列<span class="number">2</span>...)  values (值<span class="number">1</span>,值<span class="number">2</span>...);</span><br><span class="line"></span><br><span class="line"><span class="function">insert into <span class="title">student</span> <span class="params">(name,age)</span> <span class="title">values</span> <span class="params">(<span class="string">'张三'</span>,<span class="number">20</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>更新数据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列=修改值 where 条件;</span><br><span class="line"></span><br><span class="line">update student set  name=<span class="string">'李四'</span> where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>删除数据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">delete from student where name=<span class="string">'李四'</span>;</span><br><span class="line">```j</span><br><span class="line">查询数据：</span><br><span class="line">```java</span><br><span class="line">selete *  from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">selete * from student where name=<span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>4.各种查询语句：<br>查询时指定别名：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>) selete id as <span class="string">'编号'</span>,name as <span class="string">'姓名'</span> from student;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>) selete id <span class="string">'编号'</span>,name <span class="string">'姓名'</span> from student;(AS可以省略)</span><br></pre></td></tr></table></figure>
-
-<p>查询时合并列：</p>
-<p>需求:查询每个学生的总分</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete name as <span class="string">'姓名'</span>,(servlet+mysql) as <span class="string">'总成绩'</span> from student;</span><br></pre></td></tr></table></figure>
-
-<p>注意:合并列的字段必须是数值类型的字段</p>
-<p>查询时去除重复(distinct)：</p>
-<p>需求:查询有哪些地区的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete distinct address from student;</span><br></pre></td></tr></table></figure>
-
-<p>另一种语法</p>
-<p>selete distinct(address) from student;</p>
-<p>条件查询<br>逻辑条件: and  or</p>
-<p>需求:查询学生的id为1，且姓名为张三的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">1</span> and name=<span class="string">'张三'</span>;(交集)</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询学生的id为2，或姓名为张三的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where id=<span class="number">2</span> or name=<span class="string">'张三'</span>;(并集)</span><br></pre></td></tr></table></figure>
-
-<p>比较条件: &gt;  &lt;  &gt;=  &lt;=  =  &lt;&gt;  (between and–在…之间 包前包后)</p>
-<p>需求:查询servlet分数大于80分的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;<span class="number">80</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询mysql分数小于或等于85分的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where mysql&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询servlet分数大于或等于80分，且小于或等于85分的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet&gt;=<span class="number">80</span> and servlet&lt;=<span class="number">85</span>;</span><br></pre></td></tr></table></figure>
-
-<p>代替上面语句的语法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where servlet between <span class="number">80</span> and <span class="number">85</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询年龄不等于30的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where age&lt;&gt;<span class="number">30</span>;</span><br></pre></td></tr></table></figure>
-
-<p>判空条件: is null,   is not null,   =’’,   &lt;&gt;’’</p>
-<p>Null:表示没有数据</p>
-<p>空字符:表示有数据</p>
-<p>需求:查询没有性别数据的学生(数据‘男’或‘女’)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete* from student where gender IS <span class="keyword">null</span> or gender=<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询有性别数据的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selete * from student where gender IS not <span class="keyword">null</span> and gender&lt;&gt;<span class="string">''</span>;</span><br></pre></td></tr></table></figure>
-
-<p>模糊条件: like</p>
-<p>模糊替代符号:</p>
-<p>%:替代任意个字符</p>
-<p>_:替代一个字符</p>
-<p>需求:查询姓“李”的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李%'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询姓名中包含‘四’字的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'%四%'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询姓‘李’，全名只有两个字的学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM STUDENT WHERE NAME LIKE <span class="string">'李_'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>聚合函数查询(用于统计结果)</p>
-<p>Max()取最大值  min()取最小值  avg()取平均值  count()统计标的记录数量 sum()求和</p>
-<p>需求:查询servlet的最高分</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MAX</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询mysql的最低分</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">MIN</span><span class="params">(MYSQL)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询servlet的平均分</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">AVG</span><span class="params">(SERVLET)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询当前有几个学生</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELECT <span class="title">COUNT</span><span class="params">(*)</span> FROM student</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:查询servlet成绩的总和</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SELETE <span class="title">SUM</span><span class="params">(servlet)</span> from student</span>;</span><br></pre></td></tr></table></figure>
-
-<p>分页查询(limit)</p>
-<p>Limit起始行数，查询的行数</p>
-<p>起始行数从0开始</p>
-<p>需求:查询第1,2条数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student LIMIT <span class="number">0</span>,<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-<p>分页查询需知道:当前页码，每页显示条数</p>
-<p>结论分页查询当前页数据:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="function">from student <span class="title">limit</span> <span class="params">(当前页码<span class="number">-1</span>)</span>*每页显示条数，每页显示条数</span>;</span><br></pre></td></tr></table></figure>
-
-<p>需求:学生共20条数据，每页显示5条，共4页</p>
-<p>查询第3页(第11到15条)的学生数据:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student limit <span class="number">10</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<p>查询后排序(order by)</p>
-<p>DESC:降序。数值从大到小</p>
-<p>ASC:升序。数值从小到大</p>
-<p>默认情况下，按照插入的顺序排序</p>
-<p>需求:按照id的升序排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by id asc;</span><br></pre></td></tr></table></figure>
-
-<p>需求:按照servlet成绩降序排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by servlet desc;</span><br></pre></td></tr></table></figure>
-
-<p>多个排序条件的情况:先按照前面的条件排序，当出现重复记录，再按照后面的条件排序</p>
-<p>需求:按照age升序，再按照servlet成绩升序排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student order by age asc,servlet asc;</span><br></pre></td></tr></table></figure>
-
-<p>分组查询(group by)</p>
-<p>需求:查询每个地区有多少人</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) FROM student GROUP BY address;</span><br></pre></td></tr></table></figure>
-
-<p>需求:统计男女的人数</p>
-<p>注意:where条件必须放在group by 分组之前</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT gender,COUNT(*) FROM student WHERE gender IS NOT NULL AND gender&lt;&gt;<span class="string">''</span> GROUP BY gender;</span><br></pre></td></tr></table></figure>
-
-<p>分组后筛选(having)</p>
-<p>需求:查询哪些地区的人数是大于2个的地区</p>
-<p>查询哪些地区多少人 2)筛选人数大于2的地区</p>
-<p>注意:having使用在group by分组之后，对分组后的条件进行筛选</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT address,COUNT(*) <span class="function">FROM student GROUP BY address HAVING <span class="title">COUNT</span><span class="params">(*)</span>&gt;2</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>5.数据约束（给表添加数据约束，从而约束用户操作表数据的行为）<br>1）默认值约束(default)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> <span class="keyword">default</span> ‘男’</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>需求:当不插入gender的时候，分配一个‘男’的默认值</p>
-<p>注意:1)当没有插入gender字段的时候，分配一个默认值</p>
-<p>2）非空约束（not null）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　gender <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>需求；name字段一定要有值(不能不插入数据，不能是null)，这是给name添加非空约束</p>
-<p>1)非空约束，不能不插入值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(gender)</span> <span class="title">values</span><span class="params">(‘男’)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>2)非空约束，不能插入null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(name,gender)</span> <span class="title">values</span><span class="params">(<span class="keyword">null</span>,’男’)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>3)唯一约束(unique)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> unique,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>需求:id的值不能出现重复。这时就要给id添加一个唯一约束</p>
-<p>1)不能插入重复的值</p>
-<p>2)唯一约束，可以插入多个null。所以唯一约束不能约束null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Insert into <span class="title">test</span><span class="params">(id,name)</span> <span class="title">values</span><span class="params">(<span class="number">1</span>,’张三’)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>4)主键约束(primary key)(唯一+非空)</p>
-<p>注意；</p>
-<p>1)通常情况下，我们会给每张表都设置一个主键字段，用来标记记录的唯一性</p>
-<p>2)但是不建议把业务含义字段作为主键，因为随着业务的变化，业务字段可能出现重复</p>
-<p>3)建议给每张表都独立添加一个叫id的字段，把这个id字段设置成主键，用来作为记录的唯一性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>1)唯一性</p>
-<p>2)非空性</p>
-<p>5)自增长约束(auto_increment)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">test</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>自增长约束:初始值为0，每次递增1</p>
-<p>使用truncate table 删除数据的时候，可以把自增长的初始值置为0</p>
-<p>6)外键约束</p>
-<p>员工表(副表:被别的表约束的表，外键设置在副表)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">employee</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　name varchar(<span class="number">20</span>)</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　deptId <span class="keyword">int</span>,</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　添加外键约束<span class="params">(foreign key)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">　　Constraint employee_dept_fk foreign <span class="title">key</span><span class="params">(deptId)</span> references <span class="title">dept</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">          　　　　　　 外键名                               外键字段                </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>部门表(主表:约束别人的表)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Create table <span class="title">dept</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Id <span class="keyword">int</span> primary key auto_increment,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">　　Name varchar(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
-
-<p>外键约束在什么情况下会起作用？</p>
-<p>插入数据:当往副表插入了主表中不存在的数据时，外键起作用</p>
-<p>修改数据:当往副表中修改主表中不存在的数据时，外键起作用</p>
-<p>删除数据:副表中有关联主表数据的情况下，当删除主表数据时，外键起作用</p>
-<p>当有了外键之后，应该如何管理数据呢？</p>
-<p>插入数据:先插入主表的数据，再插入副表数据</p>
-<p>修改数据:先修改主表数据，再修改副表数据</p>
-<p>删除数据:先删除副表数据，再删除主表数据</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/10/20/MySQL数据库知识点/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-JAVA oop总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/10/10/JAVA oop知识点/">JAVA oop总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-10-10
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h2 id="Java-OOP基础语法总结"><a href="#Java-OOP基础语法总结" class="headerlink" title="Java OOP基础语法总结"></a>Java OOP基础语法总结</h2><p><strong><strong><strong>***</strong></strong></strong> Java OOP 基 础 语 法 总 结 <strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong><br>1,类与对象<br>1),类(class)是相同属性和方法的一组集合。<br>A,类的组成：属性和方法。<br>B,语法声明：使用class关键字，eg：public class Student{}//类名首字母大写，且必须和文件名一致<br>C,类的实例化：使用new关键字，eg：Student student=new Student();//声明一个Student类型的变量or实例化一个Student对象<br>D,类与文件的关系;<br>a，一个java文件可以包含多个java类<br>b,一个java文件最多只能有一个public类<br>c,java文件的名称必须和其中的public类名一致  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;<span class="comment">//类(首字母大写)   </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">()</span></span>&#123;<span class="comment">//方法(一般为动词+名词，动词首字母小写，名词首字母大写)  </span></span><br><span class="line">String name；<span class="comment">//属性(数据类型+属性名)   </span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2),对象(object)是一个具体的实体(entity)。</p>
-<p>eg：某某学生即可作为一个对象</p>
-<hr>
-<p>2,方法<br>1),可以重复执行的代码块，对于调用者来说相当于一个“黑盒子”。<br>2),语法声明;访问控制修饰符 返回值类型 方法名 (参数列表){ 方法体； }  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> eg：<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123; </span><br><span class="line">String name； </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
-
-<p>3),方法的传参–数据类型：A,8种基本数据类型(byte,int,short,long,float,double,char,boolean)<br>   B,引用数据类型(eg:Student student=new Student();中的student就是引用数据类型)  </p>
-<p>注：基本数据类型与引用数据类型的区别：<br>a,存储方式不同，基本数据类型存在 栈 中，是按值传<br>       引用数控类型存在 堆 中，是按址传<br>b,使用方式不同，基本数据类型 无属性和方法<br>       引用数控类型 有属性和方法</p>
-<hr>
-<p>3,构造方法(Constructor)<br>1),是一个特殊的方法，该方法的作用是实例化对象，会在内存中分配空间，且可以对类的属性进行初始化<br>2),语法特征： </p>
-<p>a,构造方法的名字必须与所在的类一致<br>b,没有返回值类型，注意和没有返回值不是一回事<br>c,默认情况下有一个隐式的无参构造方法，其访问控制修饰与所在的类的访问控制修饰一致<br>d,如果我们自定义了构造方法，则隐式无参构造方法就不存在了<br>3),使用方法：使用new关键字调用   </p>
-<hr>
-<p>7,方法重载<br>1),在一个类中，具有相同的方法名，但是参数列表不同的方法。<br>2),可分为一般方法重载和构造方法重载。<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">eg：<span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;<span class="comment">//同一个类   </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInformation</span><span class="params">(String name)</span></span>&#123;<span class="comment">//相同的方法名，不同的参数列表   </span></span><br><span class="line">***;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInformation</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;<span class="comment">//相同的方法名，不同的参数列表</span></span><br><span class="line">***;</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>8,this关键字<br>(1),使用环境：方法和构造方法中。<br>(2),使用方法两种：   </p>
-<p>1)，this.属性(方法);//this表示当前运行的实列(对象)，注意：this未运行时，不代表任何属性(方法)。<br>2)，this();//只能用在构造方法中。表示调用其他重载形式的构造方法，而且必须放在第一行。<br>(3),注意：静态方法中不能使用this！（静态方法属于类，不是实列，而this代表了当前运行的实列，放一起顺序会逻辑混乱），main中也不能使用this！</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">eg：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span></span>&#123;</span><br><span class="line"><span class="number">3</span>     Text(<span class="keyword">int</span> num)&#123;<span class="comment">//this();只能用在构造方法中</span></span><br><span class="line"><span class="number">4</span>         <span class="keyword">this</span>.num=num;</span><br><span class="line"><span class="number">5</span>     &#125;</span><br><span class="line"><span class="number">6</span>     Text()&#123;</span><br><span class="line"><span class="number">7</span>         <span class="keyword">this</span>(<span class="number">100</span>);<span class="comment">//无参方法调用有参</span></span><br><span class="line"><span class="number">8</span>     &#125;</span><br><span class="line"><span class="number">9</span>     <span class="keyword">int</span> num=<span class="number">1</span>;</span><br><span class="line"><span class="number">10</span>     <span class="function"><span class="keyword">int</span> <span class="title">getNum</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">11</span>         <span class="keyword">return</span> num;<span class="comment">//此处可以直接放回num</span></span><br><span class="line"><span class="number">12</span>     &#125;</span><br><span class="line"><span class="number">13</span>     <span class="function"><span class="keyword">void</span> <span class="title">setNum</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;<span class="comment">//新定义的num不同于成员变量num</span></span><br><span class="line"><span class="number">14</span>         <span class="keyword">this</span>.num=num;<span class="comment">//此处this不可省</span></span><br><span class="line"><span class="number">15</span>     &#125;</span><br><span class="line"><span class="number">16</span>     <span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">17</span>         </span><br><span class="line"><span class="number">18</span>     &#125;</span><br><span class="line"><span class="number">19</span>     <span class="function"><span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">this</span>.m1();<span class="comment">//此处this可以省</span></span><br><span class="line"><span class="number">21</span>     &#125;</span><br><span class="line"><span class="number">22</span>      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">23</span>         System.out.println(<span class="keyword">this</span>.num);<span class="comment">//Error！Cannot use this in a static context</span></span><br><span class="line"><span class="number">24</span>     &#125;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>9,super关键字（对比this关键字）<br>(1),使用环境：一般的实列方法中和构造方法中<br>(2),使用方法两种：           </p>
-<p>(1),super.属性(方法);//调用父类的属性(方法)<br>(2),super();//只能用在构造方法中。表示调用父类相应的构造方法，而且必须放在第一行。</p>
-<hr>
-<p>10,final关键字<br>(1),final修饰类，表示该类不能再被继承；   </p>
-<p>eg：final class Animal(){}//Animal不能再被继承。<br>(2),final修饰变量，该变量必须被赋值，final修饰后该变量变为常量，不能再改变； </p>
-<p>eg：final int num=10;//num不可再改变。<br>(3),final修饰方法，该方法不能再被重写；    </p>
-<p>eg：final void m1(){}//方法m1在f父类，在子类中final不能再被重写。<br>(4),final修饰属性   </p>
-<p>  1),可以直接在声明时赋值<br>  2),可以在代码块中赋值<br>  3),静态的可以在静态代码块中赋值</p>
-<hr>
-<p>11,继承<br>(1)，概念，继承是OOP特征之一，是子类通过继承获取父类中的部分属性和方法。<br>(2)，使用extends关键字   </p>
-<p>1)，符合is-a关系的设计使用继承<br>2)，继承是代码重用的一种方式<br>(3)，好处：</p>
-<p>1)，做到代码重用<br>2)，系统维护性更好。<br>(4),不能继承的有：</p>
-<p>1)，子类不能继承父类的构造方法。<br>2)，子类不能继承父类的私有方法（private）。<br>3)，子类和父类不在同一包，使用默认的访问权限的成员    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;<span class="comment">//公共的属性或方法</span></span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span> &#125;</span><br><span class="line"><span class="number">6</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;<span class="comment">//继承父类的属性，一个子类只能继承一个父类(单根继承)</span></span><br><span class="line"><span class="number">7</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">8</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">9</span>         dog.name = <span class="string">"大黄"</span>;</span><br><span class="line"><span class="number">10</span>         dog.age = <span class="number">300</span>;</span><br><span class="line"><span class="number">11</span>         String na= <span class="string">"田不易"</span>;<span class="comment">//也可以有子类的特有属性（方法）</span></span><br><span class="line"><span class="number">12</span>     &#125;</span><br><span class="line"><span class="number">13</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>12,类的初始化顺序：(从上到下)     </p>
-<p>父类的静态代码块<br>子类的静态代码块<br>父类的代码块<br>父类的构造方法<br>子类的代码块<br>子类的构造方法<br>注意：静态代码块只能执行一次！</p>
-<hr>
-<p>13,访问控制修饰符<br>1),概念，  </p>
-<p>a:Java提供四种访问控制修饰符(public private 包 )<br>b:放在方法与变量前，部分访问控制修饰符也可以放在类前<br>c:目的是控制代码的访问权限。<br>2),控制范围(从大到小)<br>   public      所有代码都可以访问<br>   protected   本类，包及其子类的代码可以访问<br>   包          本类，同一个包中访问<br>   private     私有的，它修饰的属性，方法，或内部类只能本类使用    </p>
-<hr>
-<p>14,方法重写<br>1),概念：在子类中对父类的方法重新实现一遍，即在子类中对父类中某方法的默认逻辑进行修改。<br>2),语法：</p>
-<p>a,方法名一样<br>b,方法的参数一样<br>c,子类重写的方法返回值类型要与父类返回值类型一样或者是其子类<br>d,子类访问控制修饰符的范围不能比父类不能小<br>e,子类抛出的异常不能比父类抛出的异常多或范围更大<br>3),以下方法不能重写：     </p>
-<p>a,private方法<br>b,构造方法(Constructor)<br>c,static方法<br>d,final方法</p>
-<hr>
-<p>15,Object类<br>(1),java是单根继承，在java中不允许多根继承。<br>(2),Object是所有类的最终父类，所有类或者是数组都可以直接或间接继承Object类。<br>(3),Object类来自java.lang包。<br>(4),可以将所有的引用类型值赋给Object类型声明的变量，包括null。<br>(5),Object提供9中可用方法，所有的子类都都可以使用，其中<br>getClass()，notiFy()，notiFyall()，wait()不可以被子类重写<br>toString()，equals()，hashCode()，clone()，finalize()可以被子类重写<br>(6),toString()方法<br>1),自动调用toString()方法的场景：字符串拼接和控制台输出，如下列：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">18</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">19</span>         dog.setName(<span class="string">"大黄"</span>);</span><br><span class="line"><span class="number">20</span>         dog.setAge(<span class="number">300</span>);</span><br><span class="line"><span class="number">21</span>         System.out.println(dog);<span class="comment">//等同于System.out.println(dog.toString());会自动调用toString方法，故有以下结果</span></span><br><span class="line"><span class="number">22</span>     &#125;</span><br><span class="line"><span class="number">23</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： com.zhi.java.course.Dog@2a139a55 //默认实现输出格式：全限定类名@哈希码的16进制 </p>
-<p>2),重写toString()方法      </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="meta">@Override</span><span class="comment">//重写注解，可判断是否重写</span></span><br><span class="line"><span class="number">18</span>     <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>         <span class="keyword">return</span> <span class="string">"名字："</span>+name+<span class="string">"\n年龄："</span>+age;  <span class="comment">//重写获得需要的值</span></span><br><span class="line"><span class="number">20</span>     &#125;</span><br><span class="line"><span class="number">21</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">22</span>         Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="number">23</span>         dog.setName(<span class="string">"大黄"</span>);</span><br><span class="line"><span class="number">24</span>         dog.setAge(<span class="number">300</span>);</span><br><span class="line"><span class="number">25</span>         System.out.println(dog);<span class="comment">//等同于System.out.println(dog.toString());已经重写toString()方法</span></span><br><span class="line"><span class="number">26</span>     &#125;</span><br><span class="line"><span class="number">27</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：名字：大黄 年龄：300<br>　　<br>(7),equals()方法重写<br>1),当类有逻辑上的等同意义而不仅是对象意义上的等同时 需要重写equals()方法。<br>2),以下情况不能重写：    </p>
-<p>a,每个类实列本质上是唯一的。<br>b,不关心类是否提供了“逻辑意义上的等同”测试。<br>c,超类已经重新了equals，该方法也适合子类。<br>3),回顾 “==”：比较基本数据类型的值是否相等(按值比较)，比较引用数据类型是否是同一个对象(按址比较)。<br>equals：默认与”==”相同，重写可自定义比较规则。   </p>
-<p>4),未重写时结果如下：   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     <span class="keyword">private</span> String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span> &#125;</span><br><span class="line"><span class="number">18</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsJob</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">20</span>         Game g1 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">21</span>         g1.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">22</span>         g1.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">23</span>         Game g2 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">24</span>         g2.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">25</span>         g2.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">26</span>         System.out.println(g1.equals(g2));<span class="comment">// 用equals直接比较两个相同的引用类型,等同System.out.println(g1==g2);</span></span><br><span class="line"><span class="number">27</span>     &#125;</span><br><span class="line"><span class="number">28</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：false  </p>
-<p>5),重写equals()后如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">package</span> com.zhi.java.course;</span><br><span class="line"><span class="number">2</span> <span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line"><span class="number">3</span>     <span class="keyword">private</span> String name;</span><br><span class="line"><span class="number">4</span>     <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"><span class="number">5</span>     <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">6</span>         <span class="keyword">return</span> name;</span><br><span class="line"><span class="number">7</span>     &#125;</span><br><span class="line"><span class="number">8</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="number">9</span>         <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="number">10</span>     &#125;</span><br><span class="line"><span class="number">11</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">12</span>         <span class="keyword">return</span> age;</span><br><span class="line"><span class="number">13</span>     &#125;</span><br><span class="line"><span class="number">14</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line"><span class="number">15</span>         <span class="keyword">this</span>.age = age;</span><br><span class="line"><span class="number">16</span>     &#125;</span><br><span class="line"><span class="number">17</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">18</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="number">19</span>         <span class="keyword">if</span> (<span class="keyword">this</span> == obj) &#123;</span><br><span class="line"><span class="number">20</span>             <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="number">21</span>         &#125;</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Game) &#123;<span class="comment">//向下转型需要通过instanceof判断obj和Game是否同一类型</span></span><br><span class="line"><span class="number">23</span>             Game g = (Game) obj;<span class="comment">//类型一致则强转类型，向下转型</span></span><br><span class="line"><span class="number">24</span>             <span class="keyword">return</span> g.getAge() == age &amp;&amp; g.getName().equals(name);<span class="comment">//自定义比较规则</span></span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="number">27</span>     &#125;</span><br><span class="line"><span class="number">28</span> &#125;</span><br><span class="line"><span class="number">29</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsJob</span> </span>&#123;</span><br><span class="line"><span class="number">30</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="number">31</span>         Game g1 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">32</span>         g1.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">33</span>         g1.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">34</span>         Game g2 = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="number">35</span>         g2.setName(<span class="string">"LOL"</span>);</span><br><span class="line"><span class="number">36</span>         g2.setAge(<span class="number">6</span>);</span><br><span class="line"><span class="number">37</span>         System.out.println(g1.equals(g2));<span class="comment">// 使用equals直接比较两个相同的引用类型</span></span><br><span class="line"><span class="number">38</span>     &#125;</span><br><span class="line"><span class="number">39</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：true  </p>
-<p>6),equals()重写约定   </p>
-<p>a,自反性<br>b,对称性<br>c,传递性<br>d,一致性<br>e,任何非空x,x.equals(null)总是false<br>f,重写equals方法时永远要重载hashCode方法   </p>
-<hr>
-<p>16,向上转型与向下转型：<br>(1),向上转型：子类的实例可以自动转换为父类的类型<br>(2),向下转型：父类型需要强制转化为子类型，前提是该对象本身就是子类型的对象，使用instanceof做判断</p>
-<hr>
-<p>17,抽象类：    </p>
-<p>(public abstract class shape{}就是一个抽象类)<br>(1),使用abstract声明抽象类或抽象方法<br>(2),抽象类可以有抽象方法，也可以没有抽象方法，但是抽象方法必须在抽象类中<br>(3),抽象类不能实例化<br>(4),抽象类可以有构造方法<br>抽象方法：(public sbstract void sss();就是一个抽象方法)<br>(1),没有实现体<br>(2),不能被final，private，static修饰<br>(3),主要给子类来重写的    </p>
-<p> 如果抽象类的子类是一个具体的类，该具体类必须实现父类的所有抽象方法<br> 如果子类也是抽象类，子类既可以实训父类的抽象方法，也可以不实现     </p>
-<hr>
-<p>18,接口<br> (1),概念：它是一个纯粹的抽象类，其它的方法全部都是抽象方法。它是一种约定，一种能力<br> (2),声明语法：使用interface关键字，</p>
-<pre><code>eg：public interface Swimable{} </code></pre><p>1),可以声明属性，该属性默认是public static final修饰的，必须赋初始值<br>2),可以有方法，全部是抽象方法，<br>3),接口不能直接实例化(接口是一个纯粹的抽象类)<br>(3),接口成员-常量属性     </p>
-<p>1),接口中所有的属性都是public static final修饰的<br>2)，常量可以是基本数据类型，也可以是引用数据类型</p>
-<p>(4),注意：</p>
-<p>1),常量的命名规范是全部字母大写，eg：public static final int NUM=10;<br>2),接口的修饰符可能是包级访问级别的，所以public常量有可能访问不到<br>3),推荐使用枚举保存一组相关的值(至少java5)<br>(5),继承接口    </p>
-<p>1),接口可以使用extends关键字继承另一个接口<br>2),可以继承：抽象方法和默认方法，常量属性，嵌套类型<br>3),不能继承静态方法<br>(6),实现接口</p>
-<p>1),实现接口的具体类需要使用implements关键字，并且需要重写接口中所有的抽象方法。eg：public class Fish implements Swimable{}<br>2),实现接口的抽象类可以重写接口中的部分抽象方法。<br>3),一个类可以实现多个接口，但是只能继承一个类，而且应先继承后实现。<br>4),接口可以作为数据类型用来声明变量。<br>5),接口也可以继承接口。</p>
-<hr>
-<p>19,面向对象的三大特征：封装，继承，多态<br>(1),封装：将实现的代码或属性放在一个类或方法中，不让外部代码随意访问。    </p>
-<p> 好处：安全。<br> 使用访问控制修饰符 private<br>(2),继承：子类会将父类的部分属性或方法继承下来。</p>
-<p> 好处：做到代码重用，提高系统的维护性能<br> 使用关键字：extends<br>(3),多态：在不同的场景下，类或方法有不同的指向。   </p>
-<p> 好处：代码量可以减少<br> 体现：1),方法上的多态：重写和重载<br>2),类的多态：类作为方法的参数或返回值类型  </p>
-<hr>
-<p>20,接口与抽象类的区别？   </p>
-<p>1),语法上，接口是使用interface声明，使用implements实现，<br> 抽象类是使用abstract声明，使用extends继承。<br>2),特定,接口不能有具体的方法，属性都是静态常量，<br>抽象类可以有构造方法、抽象方法、普通方法，还有属性。<br>3),设计上，表达某种能力使用接口，</p>
-<hr>
-<p>21,方法重写与重载的区别?   </p>
-<p>方法重写是在子类中对父类的方法重新实现一遍，即在子类中对父类中某方法的默认逻辑进行修改。方法名和参数列表都相同。<br>方法重载是在一个类中，具有相同的方法名，但是参数列表不同的方法。</p>
-
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/10/10/JAVA oop知识点/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -1352,11 +2257,17 @@
             </li>
             
         
+            
+            <li class="cube-pagination-index">
+                <a href="/page/2">2</a>
+            </li>
+            
+        
     
 
     
-    <li class="cube-pagination-next disabled">
-        <span>Next »</span>
+    <li class="cube-pagination-next">
+        <a href="/page/2/">Next »</a>
     </li>
     
 </ul>
@@ -1399,7 +2310,7 @@
     
     
     <div class="count">
-        <a class="count articles"><span>6</span>Article</a>
+        <a class="count articles"><span>12</span>Article</a>
         <a class="count tags"><span>0</span>Tags</a>
         <a class="count categories"><span>0</span>Categories</a>
     </div>
@@ -1438,7 +2349,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/31/Java虚拟机/" title=""></a>
+                    <a href="/2019/11/23/5. jQuery用法/" title=""></a>
                 </p>
             </div>
             
@@ -1452,7 +2363,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/31/Java并发/" title=""></a>
+                    <a href="/2019/11/23/4. JavaScript的BOM与DOM对象/" title=""></a>
                 </p>
             </div>
         </li>
@@ -1465,7 +2376,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/31/Java容器/" title=""></a>
+                    <a href="/2019/11/23/3. JS基本语法/" title=""></a>
                 </p>
             </div>
         </li>
@@ -1478,7 +2389,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/31/JAVA知识点/" title=""></a>
+                    <a href="/2019/11/23/2. css属性的基本用法/" title=""></a>
                 </p>
             </div>
         </li>
@@ -1491,7 +2402,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/20/MySQL数据库知识点/" title=""></a>
+                    <a href="/2019/11/23/1. html简介与html常用标签/" title=""></a>
                 </p>
             </div>
         </li>

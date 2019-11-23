@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="C">
+    
+    
+    
+    
+    
+    
+    <title>Hexo</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -356px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-position: center -400px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1414'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title"></h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-11-23
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="JavaScript基本语法"><a href="#JavaScript基本语法" class="headerlink" title="JavaScript基本语法"></a>JavaScript基本语法</h3><p><strong>a.</strong>  JavaScript 是一种轻量级的、基于对象和事件驱动的、跨平台的客户端脚本语言。</p>
+<p><strong>b.</strong>  JavaScript 是用来制作web页面交互效果，提升用户体验(具有简单易用, 解释执行,基于对象等特点)</p>
+<h3 id="1-引入方式"><a href="#1-引入方式" class="headerlink" title="1.引入方式"></a>1.引入方式</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">&lt;script type=”text/javascript” src=”main.js”&gt;&lt;/script&gt;</td>
+<td align="center">导入外部js文件</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">&lt;script type=”text/javascript”&gt;&lt;/script&gt;</td>
+<td align="center">写在body的最下方</td>
+</tr>
+</tbody></table>
+<h3 id="2-输出方式"><a href="#2-输出方式" class="headerlink" title="2.输出方式"></a>2.输出方式</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">window.alert()</td>
+<td align="center">弹出对话框提示</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">document.write()</td>
+<td align="center">将内容写入到 HTML 文档中</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">console.log()</td>
+<td align="center">从浏览器控制台输出</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">document.getElementById(‘p1’).innerHTML = ‘innerHTML’;</td>
+<td align="center">显示在指定的标签中</td>
+</tr>
+</tbody></table>
+<h3 id="3-变量"><a href="#3-变量" class="headerlink" title="3.变量"></a>3.变量</h3><p><strong>语法格式：</strong>var 变量名 = 变量值</p>
+<p><strong>变量的命名规则:</strong><br><strong>a.</strong> 变量名可以包含字母、数字、下划线、美元符号$。</p>
+<p><strong>b.</strong> 变量名不能以数字开头，可以以字母或下划线开头。如：var _name;（正确） var 3abc;（语法错误）</p>
+<p><strong>c.</strong> 变量名不能是系统关键字，如：var、switch、try、case、else、while等。</p>
+<p><strong>d.</strong> JS中的变量名是区分大小写的。如：name和Name是两个变量。</p>
+<p><strong>e.</strong> JS中变量的名称一定要有意义，也就是常说的语义化。</p>
+<p><strong>f.</strong> 驼峰式命名。</p>
+<p><strong>g.</strong> 下划线式命名。</p>
+<h3 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h3><p><strong>typeof()</strong> : 查看数据类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">类型</th>
+<th align="center">语义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">String</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Number</td>
+<td align="center">数字型</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Boolean</td>
+<td align="center">布尔型</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Array</td>
+<td align="center">数组型</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Object</td>
+<td align="center">对象型</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Null</td>
+<td align="center">空型</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">Undefined</td>
+<td align="center">未定义型</td>
+</tr>
+</tbody></table>
+<h3 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5.运算符"></a>5.运算符</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能</th>
+<th>运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>算术运算符</td>
+<td>+、 -、 *、 /、 %、 ++、 –</td>
+</tr>
+<tr>
+<td>2</td>
+<td>赋值运算符</td>
+<td>=、  +=、  -=、  *=、  /=、  %=</td>
+</tr>
+<tr>
+<td>3</td>
+<td>比较运算符</td>
+<td>&gt;、 &lt;、 &gt;=、 &lt;=、 !=、 !==、 ==、 ===</td>
+</tr>
+<tr>
+<td>4</td>
+<td>逻辑运算符</td>
+<td>&amp;&amp; (and)、    || (or)、    ! (not)</td>
+</tr>
+</tbody></table>
+<h3 id="6-条件语句"><a href="#6-条件语句" class="headerlink" title="6.条件语句"></a>6.条件语句</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">if 语句</td>
+<td align="center">只有当指定条件为 true 时，使用该语句来执行代码</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">if…else 语句</td>
+<td align="center">当条件为 true 时执行代码，当条件为 false 时执行其他代码</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">if…else if….else 语句</td>
+<td align="center">使用该语句来选择多个代码块之一来执行</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">switch 语句</td>
+<td align="center">使用该语句来选择多个代码块之一来执行</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">条件表达式？结果1：结果2</td>
+<td align="center">三元运算符 ( 三目运算符 )</td>
+</tr>
+</tbody></table>
+<p><strong>基本结构形式如下:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">(1). if单分支选择结构：</span><br><span class="line">if条件判断----只判断true，不判断false。</span><br><span class="line">语法结构：</span><br><span class="line">if(条件判断，结果只要两个true或false)</span><br><span class="line">&#123;</span><br><span class="line">	条件为true，将执行该代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2).  if...else双分支选择结构：</span><br><span class="line">语法结构-----既判断true，又判断false。</span><br><span class="line">if(条件判断：结果只有两个true或false)</span><br><span class="line">&#123;</span><br><span class="line">	条件为true，将执行该代码</span><br><span class="line">&#125;else</span><br><span class="line">&#123;</span><br><span class="line">	条件为false，将执行该代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(3).  if...else if...else多分支选择结构：</span><br><span class="line">语法结构语句来选择多个代码块之一来执行</span><br><span class="line">if (条件1)</span><br><span class="line">&#123;</span><br><span class="line">    当条件 1 为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line">else if (条件2)</span><br><span class="line">&#123;</span><br><span class="line">    当条件 2 为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">  当条件 1 和 条件 2 都不为 true 时执行的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(4)switch 语句是用来选择要执行的多个代码块之一</span><br><span class="line">switch(n)</span><br><span class="line">&#123;</span><br><span class="line">    case 1:</span><br><span class="line">        执行代码块 1</span><br><span class="line">        break;</span><br><span class="line">    case 2:</span><br><span class="line">        执行代码块 2</span><br><span class="line">        break;</span><br><span class="line">    default:</span><br><span class="line">        与 case 1 和 case 2 不同时执行的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(5)三元运算符(三目运算符)</span><br><span class="line">语法：条件表达式？结果1：结果2</span><br><span class="line">语法：操作数！？操作数2：操作数3</span><br><span class="line">含义：如果条件为true，则执行"结果1"的代码；如果条件为false，则执行"结果2"的代码。</span><br><span class="line">其实：三元运算符，就是if else的变形形式</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-循环结构"><a href="#7-循环结构" class="headerlink" title="7.循环结构"></a>7.循环结构</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">语法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">for循环</td>
+<td>循环代码块一定的次数</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">for in循环</td>
+<td>循环遍历对象的属性</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">while循环</td>
+<td>当指定的条件为 true 时循环指定的代码块</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">do  while循环</td>
+<td>同样当指定的条件为 true 时循环指定的代码块</td>
+</tr>
+</tbody></table>
+<p><strong>基本循环结构语法如下:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">(1) for循环:</span><br><span class="line">for (变量初始化; 条件判断; 变量更新)</span><br><span class="line">&#123;</span><br><span class="line">    循环体代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2)for in 循环:</span><br><span class="line">var person=&#123;name:"hanbo", age:23&#125;; </span><br><span class="line">for (x in person)    // x 为属性名</span><br><span class="line">&#123;</span><br><span class="line">    txt=txt + person[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(3)while循环:</span><br><span class="line">while(条件判断)</span><br><span class="line">&#123;</span><br><span class="line">	如果条件为true，则执行循环体代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(4)do while循环:  先斩后奏，先执行一次</span><br><span class="line">表达式1;             //表达式1：从哪里开始</span><br><span class="line">    do</span><br><span class="line">    &#123;  </span><br><span class="line">        语句组;       //当我们满足循环时要执行的语句</span><br><span class="line">        表达式3;      //步长（步进）</span><br><span class="line">    &#125;</span><br><span class="line">    while()表达式2：  //到哪里结束（循环条件）</span><br><span class="line"></span><br><span class="line">注意：循环体中，应有结束循环的条件，否则会造成死循环。</span><br><span class="line"></span><br><span class="line">在循环中break是终止循环, continue是跳过本次循环继续循环</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-函数"><a href="#8-函数" class="headerlink" title="8.函数"></a>8.函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">语法:</span><br><span class="line">function foo（形参1, 形参2, ...）</span><br><span class="line">&#123;</span><br><span class="line">     函数功能代码</span><br><span class="line">     return 参数(表达式);</span><br><span class="line">&#125;</span><br><span class="line">foo（实参1, 实参2, ...）;    //调用函数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prototype:给类添加方法:</span><br><span class="line">类名.prototype.方法名 = 函数</span><br><span class="line">Number.prototype.sum = function(num) </span><br><span class="line">&#123;</span><br><span class="line">	// body...</span><br><span class="line">	// js中this就相当于python中的self;谁调用当前这个方法，this就指向谁</span><br><span class="line">	return this+num;</span><br><span class="line">&#125;;</span><br><span class="line">var a = 20</span><br><span class="line">var b = a.sum(30);</span><br><span class="line">console.log(&apos;b:&apos;,b);  &gt;&gt;&gt;b:50</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/11/23/4. JavaScript的BOM与DOM对象/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/11/23/2. css属性的基本用法/">
+                
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>C</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>12</span>Article</a>
+        <a class="count tags"><span>0</span>Tags</a>
+        <a class="count categories"><span>0</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/5. jQuery用法/" title=""></a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/4. JavaScript的BOM与DOM对象/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/3. JS基本语法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/2. css属性的基本用法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/1. html简介与html常用标签/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/ZEROKISEKI" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
+            
+            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
+            
+            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
+            
+            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://aonosora.com/" target="_blank">C</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 C
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

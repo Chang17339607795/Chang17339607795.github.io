@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="C">
+    
+    
+    
+    
+    
+    
+    <title>Hexo</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -356px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-position: center -400px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1414'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title"></h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-11-23
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h1 id="CSS的基本属性"><a href="#CSS的基本属性" class="headerlink" title="CSS的基本属性"></a>CSS的基本属性</h1><h3 id="1、CSS简介"><a href="#1、CSS简介" class="headerlink" title="1、CSS简介"></a>1、CSS简介</h3><p>英文全名：cascading style sheets</p>
+<p>定义:  层叠样式表,  是WEB标准中的表现标准语言,  表现标准语言在网页中主要对网页信息的显示进行控制，简单说就是如何修饰网页信息的显示样式。</p>
+<p>目前推荐遵循的是W3C发布的CSS3.0.<br>用来表现XHTML或者XML等样式文件的计算机语言。</p>
+<p>1998年5月21日由w3C正式推出的css2.0</p>
+<h3 id="2-css语法"><a href="#2-css语法" class="headerlink" title="2.css语法"></a>2.css语法</h3><p>CSS语法：选择符{属性：属性值；属性：属性值；} </p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">属性值</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">text-align</td>
+<td align="center">center,  left,  right</td>
+<td align="center">文字居中格式</td>
+</tr>
+<tr>
+<td align="center">font-size</td>
+<td align="center">18px</td>
+<td align="center">设置文字大小</td>
+</tr>
+<tr>
+<td align="center">font-family</td>
+<td align="center">微软雅黑,  宋体等</td>
+<td align="center">设置字体</td>
+</tr>
+<tr>
+<td align="center">font-weight</td>
+<td align="center">normal(默认), bold(粗体), 100px ,等</td>
+<td align="center">设置字体加粗</td>
+</tr>
+<tr>
+<td align="center">font-style</td>
+<td align="center">normal(默认), italic(斜体)</td>
+<td align="center">设置字体样式</td>
+</tr>
+<tr>
+<td align="center">color</td>
+<td align="center">颜色值</td>
+<td align="center">设置文字颜色</td>
+</tr>
+<tr>
+<td align="center">background-color</td>
+<td align="center">颜色值</td>
+<td align="center">设置背景颜色</td>
+</tr>
+</tbody></table>
+<h3 id="3-样式的创建"><a href="#3-样式的创建" class="headerlink" title="3.样式的创建"></a>3.样式的创建</h3><h4 id="1-内部样式"><a href="#1-内部样式" class="headerlink" title="(1)  内部样式:"></a>(1)  内部样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">        css语句</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-外部样式"><a href="#2-外部样式" class="headerlink" title="(2)  外部样式:"></a>(2)  外部样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">第一种:</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"目标文件的路径及文件名全称"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">rel（relation）：用于定义文档关联，表示关联样式表；</span><br><span class="line">type：定义文档类型</span><br><span class="line"></span><br><span class="line">第二种:</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">        @import url(目标文件的路径及文件名全称);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">注意:a.  @和import之间没有空格 url和小括号之间也没有空格；必须结尾以分号结束</span><br><span class="line">	b.  @import是CSS2.1提出的，所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-内联样式"><a href="#3-内联样式" class="headerlink" title="(3)内联样式:"></a>(3)内联样式:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：<span class="tag">&lt;<span class="name">标签</span> <span class="attr">style</span>=<span class="string">"属性：属性值;属性:属性值;"</span>&gt;</span><span class="tag">&lt;/<span class="name">标签</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-样式表的优先级"><a href="#4-样式表的优先级" class="headerlink" title="4.样式表的优先级"></a>4.样式表的优先级</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A、内联样式表的优先级别最高</span><br><span class="line">B、内部样式表与外部样式表的优先级和书写的顺序有关，后书写的优先级别高。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-css选择器"><a href="#5-css选择器" class="headerlink" title="5.css选择器"></a>5.css选择器</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">选择器</th>
+<th align="left">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">标签选择器</td>
+<td align="left">标签名称{属性：属性值；}</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">id选择器</td>
+<td align="left">#id名{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">class选择器</td>
+<td align="left">.class名{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">通配符</td>
+<td align="left">*{属性：属性值；}</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">群组选择器</td>
+<td align="left">选择符1，选择符2，选择符3{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">包含选择器</td>
+<td align="left">选择符1 选择符2{属性：属性值;}</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">伪类选择器</td>
+<td align="left">如下 : 注意3</td>
+</tr>
+</tbody></table>
+<p><strong>注意1: class选择器 定义类名称要规范:</strong>    如下表格是常见的命名:</p>
+<table>
+<thead>
+<tr>
+<th align="center">部位</th>
+<th align="center">命名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">头</td>
+<td align="center">header</td>
+</tr>
+<tr>
+<td align="center">内容</td>
+<td align="center">content</td>
+</tr>
+<tr>
+<td align="center">尾</td>
+<td align="center">footer</td>
+</tr>
+<tr>
+<td align="center">导航</td>
+<td align="center">nav</td>
+</tr>
+<tr>
+<td align="center">侧边栏</td>
+<td align="center">sidebar</td>
+</tr>
+<tr>
+<td align="center">标志</td>
+<td align="center">logo</td>
+</tr>
+<tr>
+<td align="center">广告</td>
+<td align="center">banner</td>
+</tr>
+<tr>
+<td align="center">页面主体</td>
+<td align="center">main</td>
+</tr>
+</tbody></table>
+<p><strong>注意2 : 包含选择器</strong>选择符之间是用空格隔开,并且选择符1&gt;大于选择符2;<br>         而群组选择器选择符之间是用逗号隔开.</p>
+<h4 id="注意3-伪类选择器"><a href="#注意3-伪类选择器" class="headerlink" title="注意3.  伪类选择器"></a>注意3.  伪类选择器</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">语法 ：</span><br><span class="line">a:link&#123;属性：属性值;&#125;超链接的初始状态;</span><br><span class="line">a:visited&#123;属性：属性值;&#125;超链接被访问后的状态;</span><br><span class="line">a:hover&#123;属性：属性值;&#125;鼠标悬停，即鼠标划过超链接时的状态;</span><br><span class="line">a:active&#123;属性：属性值;&#125;超链接被激活时的状态，即鼠标按下时超链接的状态;</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">a:hover&#123;color: red;&#125;</span><br><span class="line">a&#123;text-decoration: none;&#125;   /*去掉超链接的下划线*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-css选择器的权重"><a href="#6-css选择器的权重" class="headerlink" title="6.css选择器的权重"></a>6.css选择器的权重</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">css中用四位数字表示权重，权重的表达方式如：0，0，0，0</span><br><span class="line">标签选择器的权重为0001</span><br><span class="line">class选择器的权重为0010</span><br><span class="line">id选择器的权重为0100</span><br><span class="line">伪类选择器的权重为0001 </span><br><span class="line">包含选择器的权重：为包含选择符的权中之和</span><br><span class="line">内联样式的权重为1000</span><br><span class="line">!important 语法是提升指定样式条目的应用优先权</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-浮动属性的应用"><a href="#7-浮动属性的应用" class="headerlink" title="7.浮动属性的应用"></a>7.浮动属性的应用</h3><p><strong>A.  语法:</strong>  float : none / left / right ;</p>
+<p><strong>B.  float:</strong>  定义网页中其它文本如何环绕该元素显示 </p>
+<p><strong>C.  浮动的目的:</strong>  就是让竖着的东西横着来  </p>
+<p><strong>D.  浮动的三个取值:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">left:元素活动浮动在文本左面</span><br><span class="line">right:元素浮动在右面</span><br><span class="line">none:默认值，不浮动。</span><br></pre></td></tr></table></figure>
+
+<p><strong>E.  清除浮动的三种方法 :</strong></p>
+<p>​    a.  语法：.clear{clear:both;}         不常用</p>
+<p>​    b.  语法：.clear{overflow:hidden;}       不建议使用</p>
+<p>​    c.  语法：最流行、最常用、可兼容所有浏览器 , 开发时推荐使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear：after&#123;</span><br><span class="line">	display:block;</span><br><span class="line">	clear:both;</span><br><span class="line">	content:".";</span><br><span class="line">	visibility:hidden;</span><br><span class="line">	height:0;&#125;</span><br><span class="line">clear&#123;zoom:1;&#125; </span><br><span class="line"></span><br><span class="line">牢记:对于CSS的清除浮动(clear)，这个规则只能影响使用清除的元素本身，不能影响其他元素</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-css文本属性"><a href="#8-css文本属性" class="headerlink" title="8.css文本属性"></a>8.css文本属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">文本大小</td>
+<td align="center">font-size : value</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">文本颜色</td>
+<td align="center">color : 颜色值</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">文本字体</td>
+<td align="center">font-family : 字体1，字体2，字体3</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">文字加粗</td>
+<td align="center">font-weight : bolder(更粗的) / bold（加粗）/ normal（常规）/100—900</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">文字倾斜</td>
+<td align="center">font-style：italic / oblique / normal（取消倾斜，常规显示）</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">水平对齐方式</td>
+<td align="center">text-align : left / right / center</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">文字行高</td>
+<td align="center">line-height : normal / value</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">文本修饰</td>
+<td align="center">text-decoration : none / underline(添加下划线) / overline / line-through</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">首行缩进</td>
+<td align="center">text-indent : value   (例如:  text-indent : 2em )</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">字间距</td>
+<td align="center">letter-spacing : value</td>
+</tr>
+</tbody></table>
+<p><strong>注意: 文字属性可简写</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">font属性的简写：字号，行高，字体</span><br><span class="line">font:12px/24px "宋体";</span><br><span class="line">font-size:12px; line-height:24px; font-family:”宋体”;</span><br><span class="line"></span><br><span class="line">说明:font的属性值应按以下次序书写(各个属性之间用空格隔开)</span><br><span class="line">顺序: font-style font-weight font-size / line-height font-family</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-css列表属性"><a href="#9-css列表属性" class="headerlink" title="9.css列表属性"></a>9.css列表属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">定义列表符号样式</td>
+<td align="center">list-style-type：disc(实心圆) / circle(空心圆) / square(实心方块) / none(去掉列表符号)；list-style-type : none===list-style : none;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">使用图片作为列表符号</td>
+<td align="center">list-style-image：url(所使用图片的路径及全称)；</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">定义列表符号的位置</td>
+<td align="center">list-style-position : outside(外边) / inside(里边)；</td>
+</tr>
+</tbody></table>
+<h3 id="10-css背景属性"><a href="#10-css背景属性" class="headerlink" title="10.css背景属性"></a>10.css背景属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">背景颜色</td>
+<td align="center">background-color : 颜色值 ;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">背景图片的设置</td>
+<td align="center">background-image：url(背景图片的路径及全称)；</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">背景图片平铺属性</td>
+<td align="center">background-repeat : no-repeat(不平铺)/repeat(平铺)/repeat-x(横向平铺)/repeat-y(纵向平铺) ;</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">背景图的固定</td>
+<td align="center">background-attachment : scroll(滚动) / fixed(固定) ;</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">背景图片的位置</td>
+<td align="center">background-position : left / center/right/(水平向上)或数值 top/center/bottom/(水平向下)或数值</td>
+</tr>
+</tbody></table>
+<h3 id="11-css边框属性"><a href="#11-css边框属性" class="headerlink" title="11.css边框属性"></a>11.css边框属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">功能</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">border : 边框宽度 边框风格 边框颜色</td>
+<td align="center">border : 5px solid red</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">边框圆角(倒角)</td>
+<td align="center">border-radius : 25px</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">边框阴影</td>
+<td align="center">box-shadow : 10px 10px 5px #888888;</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">边框样式</td>
+<td align="center">border-style :  solid(实线)/  dashed(虚线)</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">单独设置各边</td>
+<td align="center">border-top-style : dotted ;  border-right-style : solid ; border-bottom-style : dotted ;  border-left-style : solid;</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">边框宽度</td>
+<td align="center">border-width : 20px</td>
+</tr>
+</tbody></table>
+<h4 id="补充-锚点连接"><a href="#补充-锚点连接" class="headerlink" title="补充 : 锚点连接"></a>补充 : 锚点连接</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#step1"</span>&gt;</span>HTML标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">2.<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">3.<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"step1"</span>&gt;</span></span><br><span class="line">4.<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#top"</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">执行效果: 点击4跳转到2, 点击1跳转到3.</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/11/23/3. JS基本语法/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/11/23/1. html简介与html常用标签/">
+                
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>C</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>12</span>Article</a>
+        <a class="count tags"><span>0</span>Tags</a>
+        <a class="count categories"><span>0</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/5. jQuery用法/" title=""></a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/4. JavaScript的BOM与DOM对象/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/3. JS基本语法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/2. css属性的基本用法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/1. html简介与html常用标签/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/ZEROKISEKI" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
+            
+            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
+            
+            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
+            
+            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://aonosora.com/" target="_blank">C</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 C
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

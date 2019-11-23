@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="C">
+    
+    
+    
+    
+    
+    
+    <title>Hexo</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -356px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.jpg');
+            background-position: center -400px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">世界上对勇气的最大考验是忍受失败而不丧失信心。</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1414'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title"></h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-11-23
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h2 id="JavaScript-的组成部分"><a href="#JavaScript-的组成部分" class="headerlink" title="JavaScript  的组成部分:"></a>JavaScript  的组成部分:</h2><p><strong>ECMAScript :</strong> 核心;  ECMAScript是JavaScript的规格，JavaScript是ECMAScript的一种实现 .</p>
+<p><strong>BOM :</strong> 浏览器对象模型;  它定义了JavaScript可以进行操作的浏览器的各个功能部件的接口, BOM 的核心对象是    </p>
+<p>​         window, 它的作用使JavaScript有能力与浏览器’对话.</p>
+<p><strong>DOM :</strong> 文档对象模型;   DOM是一个使程序和脚本有能力动态地访问和更新文档的内容、结构以及样式的平台和语言中立的接口, 它是W3C 的标准[所有浏览器公共遵守的标准] .</p>
+<h2 id="1-BOM-浏览器对象模型"><a href="#1-BOM-浏览器对象模型" class="headerlink" title="1.BOM  浏览器对象模型"></a>1.BOM  浏览器对象模型</h2><h3 id="1-window对象"><a href="#1-window对象" class="headerlink" title="(1) window对象"></a>(1) window对象</h3><p><strong>window对象:</strong> 代表的是浏览器中打开的窗口, 在js中我们使用window来引用window对象,  window对象是最顶层的一个对象, 它的属性和方法的调用都可以省略window.</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">innerHeight / innerWidth</td>
+<td>获取浏览器窗口的内部高度 / 宽度(包括滚动条)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">screen.availWidth / availHeight</td>
+<td>获取可用的屏幕宽度 / 高度</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">prompt()</td>
+<td>弹出输入框</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">alert()</td>
+<td>弹框警告框</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">confirm()</td>
+<td>弹出确认与取消提示框(返回的布尔值true和false)</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">open(‘url’)</td>
+<td>打开新窗口</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">close()</td>
+<td>关闭浏览器窗口</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left">print()</td>
+<td>打印当前窗口的内容(调出打印机)</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left">moveTo(*, *)</td>
+<td>移动当前窗口</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">resizeTo(*, *)</td>
+<td>调整当前窗口的尺寸</td>
+</tr>
+</tbody></table>
+<h3 id="2-location对象"><a href="#2-location对象" class="headerlink" title="(2) location对象"></a>(2) location对象</h3><p><strong>location对象:</strong> 代表的是URL(统一资源定位符, 通常所说的网址);  使用location. 来调用属性</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">location.hostname</td>
+<td>返回 web 主机的域名</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">location.pathname</td>
+<td>返回当前页面的路径和文件名</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">location.port</td>
+<td>返回 web 主机的端口 （80 或 443）</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">location.protocol</td>
+<td>返回所使用的 web 协议（http:// 或 https://）</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">location.href</td>
+<td>返回当前页面的URL</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">location.assign(‘url’)</td>
+<td>加载新的文档网页</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">location.reload()</td>
+<td>重新加载, 刷新页面</td>
+</tr>
+</tbody></table>
+<h3 id="3-history对象"><a href="#3-history对象" class="headerlink" title="(3) history对象"></a>(3) history对象</h3><p><strong>window.history:</strong> 对象返回浏览器的历史记录列表;   使用 history. 来调用属性</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>history.forward()</td>
+<td>前进</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>history.back()</td>
+<td>后退</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>go(number)</td>
+<td>+前进 / -后退</td>
+</tr>
+</tbody></table>
+<h3 id="4-navigator对象"><a href="#4-navigator对象" class="headerlink" title="(4) navigator对象"></a>(4) navigator对象</h3><p><strong>navigator对象</strong>: 包含有关浏览器的信息 </p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>navigator.appCodeName</td>
+<td>浏览器代号</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>navigator.appName</td>
+<td>浏览器名称</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>navigator.appVersion</td>
+<td>浏览器版本</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>navigator.cookieEnabled</td>
+<td>启用Cookies</td>
+</tr>
+</tbody></table>
+<h3 id="5-计时器-计时事件"><a href="#5-计时器-计时事件" class="headerlink" title="(5)计时器 (计时事件)"></a>(5)计时器 (计时事件)</h3><p><strong>计时事件:</strong> 我们通过使用JavaScript能做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行.</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>setInterval (function() {) },2000);</td>
+<td>间隔指定的毫秒数不停地执行指定的代码(周期执行)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>clearInterval()</td>
+<td>用于停止 setInterval() 方法执行的函数代码。</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>setTimeout (function(){)}, 2000);</td>
+<td>在指定的毫秒数后执行指定代码(执行一次)</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>clearTimeout()</td>
+<td>用于停止执行setTimeout()方法的函数代码</td>
+</tr>
+</tbody></table>
+<h2 id="2-DOM-文档对象模型"><a href="#2-DOM-文档对象模型" class="headerlink" title="2.DOM  文档对象模型"></a>2.DOM  文档对象模型</h2><p>使用DOM模型能够使用JS操作文档内容进行  添加, 删除, 修改, 查询, 复制, 等.</p>
+<h3 id="1-获取元素节点"><a href="#1-获取元素节点" class="headerlink" title="(1)获取元素节点"></a>(1)获取元素节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">document. getElementById() /  document.querySelector</td>
+<td align="center">通过id查找元素, 返回带有指定id的元素对象(拿单个元素)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">document. getElementsByTagName() / getElementsByName</td>
+<td align="center">通过标签名查找元素, 返回指定标签的所有元素的集合(使用lenght获取元素个数)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">document. getElementsByClassName() /  document. querySelectorAll</td>
+<td align="center">通过类名查找元素, 返回指定类名的所有元素的集合(使用lenght获取元素个数)</td>
+</tr>
+</tbody></table>
+<h3 id="2-添加节点"><a href="#2-添加节点" class="headerlink" title="(2) 添加节点"></a>(2) 添加节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>var 变量名 = document.createElement(‘li’)</td>
+<td>创建元素节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>var 变量名 = document.createTextNode(‘hello’)</td>
+<td>创建文本节点</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>ul.appendChild(li)</td>
+<td>添加节点(添加到内部末尾)</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>ul. insertBefore(li, li[0])</td>
+<td>插入节点(添加到内部之前)</td>
+</tr>
+</tbody></table>
+<h3 id="3-删除节点"><a href="#3-删除节点" class="headerlink" title="(3) 删除节点"></a>(3) 删除节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>父元素.removeChild(删除的节点对象)</td>
+<td>删除指定的节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>元素. removeAttribute(属性名)</td>
+<td>删除指定的属性</td>
+</tr>
+</tbody></table>
+<h3 id="4-修改元素内容及属性"><a href="#4-修改元素内容及属性" class="headerlink" title="(4) 修改元素内容及属性"></a>(4) 修改元素内容及属性</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>元素. innerHTML</td>
+<td>获取 / 修改内部的HTML文本, 会渲染标签</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>元素. innerText  /  textContent</td>
+<td>获取 / 修改内部的纯文本</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>元素. setAttribute(属性名, 属性值)</td>
+<td>修改元素的的属性, 设置新属性</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>元素. getAttribute(属性名)</td>
+<td>通过元素名获取属性的值</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>元素. 属性名 = 属性值</td>
+<td>直接修改属性值</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>元素. style. 属性名 = 属性值</td>
+<td>修改CSS的属性</td>
+</tr>
+</tbody></table>
+<h3 id="5-节点查找-层次"><a href="#5-节点查找-层次" class="headerlink" title="(5) 节点查找(层次)"></a>(5) 节点查找(层次)</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>parentNode</td>
+<td>查找某节点的父节点</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>childNodes</td>
+<td>查找所有孩子节点</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>children</td>
+<td>查找被选元素的所有直接子元素</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>firstChild</td>
+<td>查找被选节点的第一个节点</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>lastChild</td>
+<td>查找被选节点的最后一个节点</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>previousSibling</td>
+<td>查找被选节点的上一个兄弟节点</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>nextSibling</td>
+<td>查找备选节点的后一个兄弟节点</td>
+</tr>
+</tbody></table>
+<h3 id="6-复制节点"><a href="#6-复制节点" class="headerlink" title="(6) 复制节点"></a>(6) 复制节点</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>var copy = node. cloneNode(true / false)</td>
+<td>参数表示是否克隆后代, 默认为false, 即不克隆后代</td>
+</tr>
+</tbody></table>
+<h3 id="7-事件对象"><a href="#7-事件对象" class="headerlink" title="(7) 事件对象"></a>(7) 事件对象</h3><p><strong>事件驱动模型 :</strong> 事件(动作) –&gt; 事件类型(动作类型) –&gt; 事件源(事件发生的地方) –&gt; 事件处理程序(事件响应程序 - 函                        </p>
+<p>​               数) –&gt; 事件监听器(监听事件的发生 - 浏览器).</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onclick</td>
+<td>事件在元素被点击时发生(元素被点击的整个过程)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onload</td>
+<td>事件在页面或图像加载完成后立即发生</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onunload</td>
+<td>事件在用户退出页面时发生</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>onchange</td>
+<td>事件会在域的内容改变时发生</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>onfocus</td>
+<td>获得焦点是发生</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>onblur</td>
+<td>失去焦点时发生</td>
+</tr>
+</tbody></table>
+<h4 id="A-鼠标属性"><a href="#A-鼠标属性" class="headerlink" title="A. 鼠标属性"></a>A. 鼠标属性</h4><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onmouseover</td>
+<td>鼠标移至元素上方时触发函数</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onmouseout</td>
+<td>鼠标移至移出元素时触发函数</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onmousedown</td>
+<td>鼠标按下时发生</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>onmouseup</td>
+<td>鼠标释放时发生</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>onmousemove</td>
+<td>鼠标被移动时发生</td>
+</tr>
+</tbody></table>
+<h4 id="B-键盘属性"><a href="#B-键盘属性" class="headerlink" title="B. 键盘属性"></a>B. 键盘属性</h4><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>onkeydown</td>
+<td>某个键盘按键被按下</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>onkeyup</td>
+<td>某个键盘按键被松开</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>onkeypress</td>
+<td>某个键盘按键被按下并松开的整个过程</td>
+</tr>
+</tbody></table>
+<p><strong>注意:</strong> 事件回柄需要加on, 添加事件监听addEventListener类型不需要加’on’前缀, 其他都要加on.</p>
+<h3 id="8-事件冒泡与捕获"><a href="#8-事件冒泡与捕获" class="headerlink" title="(8) 事件冒泡与捕获"></a>(8) 事件冒泡与捕获</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>evt.stopPropagation()</td>
+<td>阻止事件冒泡</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>evt.cancelBubble = true</td>
+<td>阻止事件冒泡(IE9之前)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>evt.preventDefault()</td>
+<td>阻止事件默认行为</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>evt.returnValue = false</td>
+<td>阻止事件默认行为(IE9之前)</td>
+</tr>
+</tbody></table>
+<h3 id="9-事件监听"><a href="#9-事件监听" class="headerlink" title="(9) 事件监听"></a>(9) 事件监听</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td>document. addEventListener(“click”,  function(){ }, true)    #捕获方式默认为false</td>
+<td>添加事件监听</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>document. attachEvent(‘onclick’ , function(){ })</td>
+<td>添加事件监听(IE9之前)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>document. removeEventListener(“click”,  function(){ })</td>
+<td>移除事件监听</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>document. detachEvent(‘onclick’ , function(){ })</td>
+<td>移除事件监听(IE9之前)</td>
+</tr>
+</tbody></table>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/11/23/5. jQuery用法/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/11/23/3. JS基本语法/">
+                
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>C</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>12</span>Article</a>
+        <a class="count tags"><span>0</span>Tags</a>
+        <a class="count categories"><span>0</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/5. jQuery用法/" title=""></a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/4. JavaScript的BOM与DOM对象/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/3. JS基本语法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/2. css属性的基本用法/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/11/23/1. html简介与html常用标签/" title=""></a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/ZEROKISEKI" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
+            
+            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
+            
+            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
+            
+            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
+            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
+            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/friend_links.jpg ">
+            <a href="https://aonosora.com/" target="_blank">C</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 C
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
